@@ -76,7 +76,7 @@ export class CreateVideoFormComponent implements OnInit {
         response = await this.api.post(this.data.resourceUrl, formData).toPromise();
       } else {
         const url = `${this.data.resourceUrl}/${_id}`;
-        response = await this.api.put(url, formData).toPromise();
+        response = await this.api.put(url, othr).toPromise();
       }
 
       this.dialogRef.close(response);
