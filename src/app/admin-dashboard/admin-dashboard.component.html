@@ -1,0 +1,15 @@
+<mat-toolbar>Rehani Physics</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+    <app-side-menu></app-side-menu>
+  </mat-drawer>
+
+  <div class="dashboard-container">
+    <!-- <app-resource resourceUrl="/classes"></app-resource> -->
+    <!-- <app-resource resourceUrl="/users"></app-resource> -->
+
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

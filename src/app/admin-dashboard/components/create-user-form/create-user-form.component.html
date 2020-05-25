@@ -1,0 +1,42 @@
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-title>{{form.value._id == '' ? 'Create User' : 'Update User'}}</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Mobile Number" formControlName="mobileNumber">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>Class</mat-label>
+            <mat-select formControlName="class">
+              <mat-option [value]="classs._id" *ngFor="let classs of data.classList " >
+                {{classs.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-checkbox formControlName="isSubscribed">Is Subscribed</mat-checkbox>
+        </p>
+  
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+  
+        <div class="button">
+          <button type="button" (click)="form.reset(initialValues)" [disabled]="!form.touched" mat-button>Reset</button>
+          <button type="submit" [disabled]="form.invalid" mat-button>{{form.value._id == '' ? 'Create' : 'Update'}}</button>
+        </div>
+  
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
