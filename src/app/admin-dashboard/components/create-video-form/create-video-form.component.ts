@@ -10,6 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class CreateVideoFormComponent implements OnInit {
 
+  isUploading = false;
   form: FormGroup;
   selectedFile: File;
   initialValues;
@@ -72,6 +73,7 @@ export class CreateVideoFormComponent implements OnInit {
         formData.append('file', this.selectedFile);
       }
 
+      this.isUploading = true;
       if (formValues._id == '') {
         response = await this.api.post(this.data.resourceUrl, formData).toPromise();
       } else {
@@ -79,6 +81,7 @@ export class CreateVideoFormComponent implements OnInit {
         response = await this.api.put(url, formData).toPromise();
       }
 
+      this.isUploading = false;
       this.dialogRef.close(response);
     }
   }

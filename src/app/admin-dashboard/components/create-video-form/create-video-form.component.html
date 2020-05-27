@@ -39,8 +39,17 @@
 
         <div class="button">
           <button type="button" (click)="onReset()" [disabled]="!form.touched" mat-button>Reset</button>
-          <button type="submit" [disabled]="form.invalid"
-            mat-button>{{form.value._id == '' ? 'Create' : 'Update'}}</button>
+          <button type="submit" [disabled]="form.invalid || isUploading"
+            mat-button>
+            <ng-container *ngIf="!isUploading">
+              {{form.value._id == '' ? 'Create' : 'Update'}}
+            </ng-container>
+            <ng-container *ngIf="isUploading">
+              {{form.value._id == '' ? 'Creating...' : 'Updating...'}}
+            </ng-container>
+            
+            <!-- <mat-icon *ngIf="isUploading" aria-hidden="false" aria-label="Example home icon">backup</mat-icon> -->
+          </button>
         </div>
 
       </form>
