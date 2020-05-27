@@ -22,7 +22,7 @@
 
     <ng-container matColumnDef="url">
       <th mat-header-cell *matHeaderCellDef> Url </th>
-      <td mat-cell *matCellDef="let element"> <a [href]="'http://localhost:3000'+element.url">{{element.url}}</a></td>
+      <td mat-cell *matCellDef="let element"> <a [href]="element.s3.Location">{{element.s3.Key}}</a></td>
     </ng-container>
 
     <ng-container matColumnDef="class">
