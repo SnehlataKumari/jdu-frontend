@@ -1,5 +1,9 @@
 <mat-toolbar>
-  <a routerLink="/dashboard">Rehani Physics</a>
+  <mat-toolbar-row>
+    <a routerLink="/dashboard">Rehani Physics</a>
+    <span class="example-spacer"></span>
+    <a class="btn logout-button" (click)="onLogout()">Logout</a>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-drawer-container class="example-container">

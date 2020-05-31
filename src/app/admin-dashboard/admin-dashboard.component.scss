@@ -23,3 +23,15 @@ a {
   text-decoration: none;
   color: inherit;
 } 
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logout-button {
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  color: #2B78FE;
+}
