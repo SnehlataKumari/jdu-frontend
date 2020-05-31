@@ -6,18 +6,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { CreateVideoFormComponent } from '../create-video-form/create-video-form.component';
 
 @Component({
-  selector: 'app-videos-page',
-  templateUrl: './videos-page.component.html',
-  styleUrls: ['./videos-page.component.scss']
+  selector: 'app-chapters-page',
+  templateUrl: './chapters-page.component.html',
+  styleUrls: ['./chapters-page.component.scss']
 })
-export class VideosPageComponent implements OnInit {
+export class ChaptersPageComponent implements OnInit {
 
-  @Input() resourceUrl: string = '/assets';
+  @Input() resourceUrl: string = '/chapters';
   classMap;
   classList;
-
-  chapterMap;
-  chapterList;
 
   constructor(
     private resourceService: ResourceService,
@@ -33,13 +30,10 @@ export class VideosPageComponent implements OnInit {
     const classesResponse = await this.resourceService.fetchAll('/classes').toPromise();
     this.classList = classesResponse['data'];
     this.classMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.name]));
-    const chaptersResponse = await this.resourceService.fetchAll('/chapters').toPromise();
-    this.chapterList = chaptersResponse['data'];
-    this.chapterMap = new Map(chaptersResponse['data'].map((chapter) => [chapter._id, chapter.title]));
 
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['title', 'description', 'class', 'chapter',  'videoS3', 'pdfS3', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = ['title', 'description', 'class', 'createdAt', 'updatedAt', 'action'];
     this.dataSource = new MatTableDataSource(list['data']);
     this.dataSource.paginator = this.paginator;
   }
@@ -54,18 +48,12 @@ export class VideosPageComponent implements OnInit {
     return this.classMap.get(classId) || 'Class has been deleted';
   }
 
-  getChapterName(chapterId) {
-    console.log(this.chapterMap[chapterId]);
-    return this.chapterMap.get(chapterId) || 'Chapter has been deleted';
-  }
-
   openDialogue(video) {
     const dialogRef = this.dialog.open(CreateVideoFormComponent, {
       width: '600px',
       data: {
         resourceUrl: this.resourceUrl,
         classList: this.classList,
-        chapterList: this.chapterList,
         video
       }
     });

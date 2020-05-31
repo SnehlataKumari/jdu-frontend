@@ -24,14 +24,38 @@
           </mat-form-field>
         </p>
 
-        <button type="button" mat-raised-button (click)="onUploadClick(fileField)">
-          Select File to Upload
-        </button>
+        <p>
+          <mat-form-field>
+            <mat-label>Chapter</mat-label>
+            <mat-select formControlName="chapter">
+              <mat-option [value]="chapter._id" *ngFor="let chapter of data.chapterList ">
+                {{chapter.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
 
-        <input id="fileInput" #fileField hidden type="file" (change)="fileChange($event.target.files)">
-        <span *ngIf="selectedFile && selectedFile.name">
-          {{selectedFile.name}}
-        </span>
+        <p>
+          <button type="button" mat-raised-button (click)="onUploadClick(pdfFileField)">
+            Select PDF to upload
+          </button>
+          
+          <input id="pdfFileInput" #pdfFileField hidden type="file" (change)="pdfFileChange($event.target.files)">
+          <span *ngIf="selectedPdfFile && selectedPdfFile.name">
+            {{selectedPdfFile.name}}
+          </span>
+        </p>
+
+        <p>
+          <button type="button" mat-raised-button (click)="onUploadClick(videoFileField)">
+            Select video to uplaod
+          </button>
+          
+          <input id="videoFileInput" #videoFileField hidden type="file" (change)="videoFileChange($event.target.files)">
+          <span *ngIf="selectedVideoFile && selectedVideoFile.name">
+            {{selectedVideoFile.name}}
+          </span>
+        </p>
 
         <p *ngIf="error" class="error">
           {{ error }}

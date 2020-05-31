@@ -20,6 +20,11 @@ export class SideMenuComponent implements OnInit {
       icon: 'class'
     },
     {
+      link: '/dashboard/chapter',
+      title: 'Manage Chapters',
+      icon: 'play_circle_outline'
+    },
+    {
       link: '/dashboard/users',
       title: 'Manage Users',
       icon: 'supervised_user_circle'

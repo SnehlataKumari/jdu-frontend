@@ -18,6 +18,7 @@ import { VideosPageComponent } from './components/videos-page/videos-page.compon
 import { BooleanComponent } from './components/boolean/boolean.component';
 import { CreateUserFormComponent } from './components/create-user-form/create-user-form.component';
 import { CreateVideoFormComponent } from './components/create-video-form/create-video-form.component';
+import { ChaptersPageComponent } from './components/chapters-page/chapters-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CreateVideoFormComponent } from './components/create-video-form/create-
     VideosPageComponent,
     BooleanComponent,
     CreateUserFormComponent,
-    CreateVideoFormComponent
+    CreateVideoFormComponent,
+    ChaptersPageComponent
   ],
   imports: [
     CommonModule,

@@ -12,7 +12,8 @@ export class CreateVideoFormComponent implements OnInit {
 
   isUploading = false;
   form: FormGroup;
-  selectedFile: File;
+  selectedPdfFile: File;
+  selectedVideoFile: File;
   initialValues;
   @Input() error: string | null;
 
@@ -37,6 +38,7 @@ export class CreateVideoFormComponent implements OnInit {
       title: [this.data.video.title, Validators.required],
       description: [this.data.video.description, Validators.required],
       class: [this.data.video.class, Validators.required],
+      chapter: [this.data.video.chapter, Validators.required],
     });
   }
 
@@ -44,13 +46,18 @@ export class CreateVideoFormComponent implements OnInit {
     fileField.click();
   }
 
-  fileChange(files) {
-    this.selectedFile = files[0];
+  pdfFileChange(files) {
+    this.selectedPdfFile = files[0];
+  }
+
+  videoFileChange(files) {
+    this.selectedVideoFile = files[0];
   }
 
   onReset() {
     this.form.reset(this.initialValues);
-    this.selectedFile = undefined;
+    this.selectedVideoFile = undefined;
+    this.selectedPdfFile = undefined;
   }
 
   async submit() {
@@ -69,8 +76,12 @@ export class CreateVideoFormComponent implements OnInit {
         }
       }
 
-      if(this.selectedFile) {
-        formData.append('file', this.selectedFile);
+      if (this.selectedVideoFile) {
+        formData.append('video', this.selectedVideoFile);
+      }
+
+      if(this.selectedPdfFile) {
+        formData.append('pdf', this.selectedPdfFile);
       }
 
       this.isUploading = true;
