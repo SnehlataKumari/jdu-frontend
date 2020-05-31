@@ -28,7 +28,7 @@
           <mat-form-field>
             <mat-label>Chapter</mat-label>
             <mat-select formControlName="chapter">
-              <mat-option [value]="chapter._id" *ngFor="let chapter of data.chapterList ">
+              <mat-option [value]="chapter._id" *ngFor="let chapter of filteredChapterList ">
                 {{chapter.title}}
               </mat-option>
             </mat-select>

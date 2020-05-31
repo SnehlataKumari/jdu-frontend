@@ -17,6 +17,8 @@ export class CreateVideoFormComponent implements OnInit {
   initialValues;
   @Input() error: string | null;
 
+  filteredChapterList = [];
+
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
@@ -31,7 +33,7 @@ export class CreateVideoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialValues = this.data.video;
-
+    this.filteredChapterList = this.data.chapterList;
 
     this.form = this.fb.group({
       _id: [this.data.video._id],
@@ -40,6 +42,14 @@ export class CreateVideoFormComponent implements OnInit {
       class: [this.data.video.class, Validators.required],
       chapter: [this.data.video.chapter, Validators.required],
     });
+
+    this.form.controls.class.valueChanges.subscribe((classId) => {
+      console.log({
+        classId,
+      });
+      
+      this.filteredChapterList = this.data.chapterList.filter(ch => ch.class === classId);
+    })
   }
 
   onUploadClick(fileField) {

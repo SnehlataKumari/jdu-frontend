@@ -3,7 +3,7 @@ import { ResourceService } from '../../services/resource.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { CreateVideoFormComponent } from '../create-video-form/create-video-form.component';
+import { CreateChapterFormComponent } from '../create-chapter-form/create-chapter-form.component';
 
 @Component({
   selector: 'app-chapters-page',
@@ -48,13 +48,13 @@ export class ChaptersPageComponent implements OnInit {
     return this.classMap.get(classId) || 'Class has been deleted';
   }
 
-  openDialogue(video) {
-    const dialogRef = this.dialog.open(CreateVideoFormComponent, {
+  openDialogue(chapter) {
+    const dialogRef = this.dialog.open(CreateChapterFormComponent, {
       width: '600px',
       data: {
         resourceUrl: this.resourceUrl,
         classList: this.classList,
-        video
+        chapter
       }
     });
 
