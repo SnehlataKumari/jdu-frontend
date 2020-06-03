@@ -20,6 +20,9 @@ import { CreateUserFormComponent } from './components/create-user-form/create-us
 import { CreateVideoFormComponent } from './components/create-video-form/create-video-form.component';
 import { ChaptersPageComponent } from './components/chapters-page/chapters-page.component';
 import { CreateChapterFormComponent } from './components/create-chapter-form/create-chapter-form.component';
+import { SubjectsPageComponent } from './components/subjects-page/subjects-page.component';
+import { CreateSubjectFormComponent } from './components/create-subject-form/create-subject-form.component';
+import { CreateClassFormComponent } from './components/create-class-form/create-class-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { CreateChapterFormComponent } from './components/create-chapter-form/cre
     CreateUserFormComponent,
     CreateVideoFormComponent,
     ChaptersPageComponent,
-    CreateChapterFormComponent
+    CreateChapterFormComponent,
+    SubjectsPageComponent,
+    CreateSubjectFormComponent,
+    CreateClassFormComponent
   ],
   imports: [
     CommonModule,

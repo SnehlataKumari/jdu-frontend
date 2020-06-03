@@ -15,6 +15,11 @@ export class SideMenuComponent implements OnInit {
 
   menuList: MenuList[] = [
     {
+      link: '/dashboard/subject',
+      title: 'Manage Subjects',
+      icon: 'class'
+    },
+    {
       link: '/dashboard/classes',
       title: 'Manage Classes',
       icon: 'class'

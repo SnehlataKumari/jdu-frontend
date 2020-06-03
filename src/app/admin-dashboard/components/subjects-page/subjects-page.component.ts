@@ -3,30 +3,16 @@ import { ResourceService } from '../../services/resource.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { CreateClassFormComponent } from '../create-class-form/create-class-form.component';
+import { CreateSubjectFormComponent } from '../create-subject-form/create-subject-form.component';
 
-interface ColumnConfig {
-  columnName: string,
-  title: string,
-}
 @Component({
-  selector: 'app-classes-page',
-  templateUrl: './classes-page.component.html',
-  styleUrls: ['./classes-page.component.scss']
+  selector: 'app-subjects-page',
+  templateUrl: './subjects-page.component.html',
+  styleUrls: ['./subjects-page.component.scss']
 })
-export class ClassesPageComponent implements OnInit {
+export class SubjectsPageComponent implements OnInit {
 
-  columnConfig: ColumnConfig[] = [
-    {columnName: '_id', title: 'Id'},
-    {columnName: 'name', title: 'Name'},
-    {columnName: 'createdAt', title: 'Created on'},
-    {columnName: 'updatedAt', title: 'Updated On'},
-  ];
-
-  @Input() resourceUrl: string = '/classes';
-  subjectMap;
-  subjectList;
-
+  @Input() resourceUrl: string = '/subjects';
   constructor(
     private resourceService: ResourceService,
     public dialog: MatDialog
@@ -38,13 +24,9 @@ export class ClassesPageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   async ngOnInit() {
-    const classesResponse = await this.resourceService.fetchAll('/subjects').toPromise();
-    this.subjectList = classesResponse['data'];
-    this.subjectMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.title]));
-
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['name', 'subject', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = ['title', 'description', 'createdAt', 'updatedAt', 'action'];
     this.dataSource = new MatTableDataSource(list['data']);
     this.dataSource.paginator = this.paginator;
   }
@@ -54,17 +36,12 @@ export class ClassesPageComponent implements OnInit {
     this.dataSource = new MatTableDataSource(list['data']);
   }
 
-  getSubjectName(subjectId) {
-    return this.subjectMap.get(subjectId) || 'Subject has been deleted';
-  }
-
-  openDialogue(classObj) {
-    const dialogRef = this.dialog.open(CreateClassFormComponent, {
+  openDialogue(subject) {
+    const dialogRef = this.dialog.open(CreateSubjectFormComponent, {
       width: '600px',
       data: {
         resourceUrl: this.resourceUrl,
-        subjectList: this.subjectList,
-        classObj
+        subject
       }
     });
 
@@ -74,12 +51,13 @@ export class ClassesPageComponent implements OnInit {
   }
 
   onAddResource() {
-    const classObj = {
+    const subject = {
       _id: '',
-      name: '',
-      subject: '',
+      title: '',
+      description: '',
+      class: '',
     };
-    this.openDialogue(classObj);
+    this.openDialogue(subject);
 
   }
 

@@ -1,8 +1,7 @@
-<!-- <app-resource resourceUrl="/classes" [columnConfig]="columnConfig"></app-resource> -->
 <div class="mat-elevation-z8">
   <div class="resource-actions-panel">
     <h3 class="table-heading">
-      Classes
+      Subjects
     </h3>
     <button mat-icon-button color="warn" mat-mini-fab aria-label="Example icon button with a home icon"
       (click)="onAddResource()">
@@ -11,14 +10,14 @@
   </div>
   <table mat-table [dataSource]="dataSource">
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="subject">
-      <th mat-header-cell *matHeaderCellDef> Subject </th>
-      <td mat-cell *matCellDef="let element"> {{getSubjectName(element.subject)}} </td>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
 
     <ng-container matColumnDef="createdAt">

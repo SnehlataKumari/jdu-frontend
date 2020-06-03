@@ -1,0 +1,42 @@
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-title>{{form.value._id == '' ? 'Create Class' : 'Update Class'}}</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Subject</mat-label>
+            <mat-select formControlName="subject">
+              <mat-option [value]="subject._id" *ngFor="let subject of data.subjectList ">
+                {{subject.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+
+        <div class="button">
+          <button type="button" (click)="onReset()" [disabled]="!form.touched" mat-button>Reset</button>
+          <button type="submit" [disabled]="form.invalid || isUploading" mat-button>
+            <ng-container *ngIf="!isUploading">
+              {{form.value._id == '' ? 'Create' : 'Update'}}
+            </ng-container>
+            <ng-container *ngIf="isUploading">
+              {{form.value._id == '' ? 'Creating...' : 'Updating...'}}
+            </ng-container>
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
