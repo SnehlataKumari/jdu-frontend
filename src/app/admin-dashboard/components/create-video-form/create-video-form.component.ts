@@ -2,6 +2,10 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HttpEventType, HttpResponse, HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { S3Service } from 'src/app/services/s3.service';
+import { Progress } from 'aws-sdk/lib/request';
 
 @Component({
   selector: 'app-create-video-form',
@@ -19,9 +23,13 @@ export class CreateVideoFormComponent implements OnInit {
 
   filteredChapterList = [];
 
+  uploadProgress = {};
+
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
+    private httpClient: HttpClient,
+    private s3Service: S3Service,
     public dialogRef: MatDialogRef<CreateVideoFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
     console.log(data.classList);
@@ -44,10 +52,6 @@ export class CreateVideoFormComponent implements OnInit {
     });
 
     this.form.controls.class.valueChanges.subscribe((classId) => {
-      console.log({
-        classId,
-      });
-      
       this.filteredChapterList = this.data.chapterList.filter(ch => ch.class === classId);
     })
   }
@@ -78,33 +82,43 @@ export class CreateVideoFormComponent implements OnInit {
         _id, ...othr
       } = formValues;
 
-      const formData = new FormData();
-      for (const key in othr) {
-        if (othr.hasOwnProperty(key)) {
-          const value = othr[key];
-          formData.append(key, value);
-        }
-      }
-
-      if (this.selectedVideoFile) {
-        formData.append('video', this.selectedVideoFile);
-      }
-
-      if(this.selectedPdfFile) {
-        formData.append('pdf', this.selectedPdfFile);
+      if (formValues._id == '' && (!this.selectedVideoFile || !this.selectedPdfFile)) {
+        alert('Please upload video and pdf!');
+        return;
       }
 
       this.isUploading = true;
       if (formValues._id == '') {
-        response = await this.api.post(this.data.resourceUrl, formData).toPromise();
+        
+        const pdfS3 = await this.uploadOnS3(this.selectedPdfFile.name, this.selectedPdfFile);
+        const videoS3 = await this.uploadOnS3(this.selectedVideoFile.name, this.selectedVideoFile);
+        response = await this.api.post(this.data.resourceUrl, { ...othr, pdfS3, videoS3}).toPromise();
       } else {
         const url = `${this.data.resourceUrl}/${_id}`;
-        response = await this.api.put(url, formData).toPromise();
+        let pdfS3;
+        let videoS3;
+        if (this.selectedPdfFile) {
+          pdfS3 = await this.uploadOnS3(this.selectedPdfFile.name, this.selectedPdfFile);
+        }
+
+        if (this.selectedVideoFile) {
+          videoS3 = await this.uploadOnS3(this.selectedVideoFile.name, this.selectedVideoFile);
+        }
+        response = await this.api.put(url, { ...othr, pdfS3, videoS3}).toPromise();
       }
 
       this.isUploading = false;
       this.dialogRef.close(response);
     }
+  }
+
+  async uploadOnS3(fileName, fileData) {
+    const request = this.s3Service.uploadFile(fileName, fileData);
+    request.on('httpUploadProgress', (progress: Progress) => {
+      this.uploadProgress[fileName] = Math.round(100 * progress.loaded / progress.total);
+    });
+
+    return request.promise();
   }
 
 }

@@ -52,4 +52,8 @@ export class ApiService {
 
     return this.httpClient.delete(fullUrl, { headers: withAuthToken, ...options });
   }
+
+  getFullUrl(url) {
+    return `${this.hostUrl}${url}`;
+  }
 }

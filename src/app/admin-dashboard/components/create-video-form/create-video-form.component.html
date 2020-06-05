@@ -45,16 +45,23 @@
             {{selectedPdfFile.name}}
           </span>
         </p>
+        <p *ngIf="selectedPdfFile && uploadProgress[selectedPdfFile.name]">
+          <mat-progress-bar mode="buffer" [value]="uploadProgress[selectedPdfFile.name]"></mat-progress-bar>
+        </p>
 
         <p>
           <button type="button" mat-raised-button (click)="onUploadClick(videoFileField)">
-            Select video to uplaod
+            Select video to upload
           </button>
           
           <input id="videoFileInput" #videoFileField hidden type="file" (change)="videoFileChange($event.target.files)">
           <span *ngIf="selectedVideoFile && selectedVideoFile.name">
             {{selectedVideoFile.name}}
           </span>
+        </p>
+
+        <p *ngIf="selectedVideoFile && uploadProgress[selectedVideoFile.name]">
+          <mat-progress-bar mode="buffer" [value]="uploadProgress[selectedVideoFile.name]"></mat-progress-bar>
         </p>
 
         <p *ngIf="error" class="error">
@@ -70,10 +77,7 @@
             </ng-container>
             <ng-container *ngIf="isUploading">
               {{form.value._id == '' ? 'Creating...' : 'Updating...'}}
-              <!-- <mat-spinner [diameter]="10"></mat-spinner> -->
             </ng-container>
-            
-            <!-- <mat-icon *ngIf="isUploading" aria-hidden="false" aria-label="Example home icon">backup</mat-icon> -->
           </button>
         </div>
 

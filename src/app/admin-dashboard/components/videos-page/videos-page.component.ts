@@ -50,12 +50,10 @@ export class VideosPageComponent implements OnInit {
   }
 
   getClassName(classId) {
-    console.log(this.classMap[classId]);
     return this.classMap.get(classId) || 'Class has been deleted';
   }
 
   getChapterName(chapterId) {
-    console.log(this.chapterMap[chapterId]);
     return this.chapterMap.get(chapterId) || 'Chapter has been deleted';
   }
 
