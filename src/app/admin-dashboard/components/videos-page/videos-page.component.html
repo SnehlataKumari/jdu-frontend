@@ -56,6 +56,11 @@
       <td mat-cell *matCellDef="let element"> {{getClassName(element.class)}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef> Subject </th>
+      <td mat-cell *matCellDef="let element"> {{getSubjectName(element.subject)}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="createdAt">
       <th mat-header-cell *matHeaderCellDef> Created on </th>
       <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>

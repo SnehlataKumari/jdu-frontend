@@ -15,13 +15,13 @@ export class SideMenuComponent implements OnInit {
 
   menuList: MenuList[] = [
     {
-      link: '/dashboard/subject',
-      title: 'Manage Subjects',
+      link: '/dashboard/classes',
+      title: 'Manage Classes',
       icon: 'class'
     },
     {
-      link: '/dashboard/classes',
-      title: 'Manage Classes',
+      link: '/dashboard/subject',
+      title: 'Manage Subjects',
       icon: 'class'
     },
     {
@@ -30,14 +30,14 @@ export class SideMenuComponent implements OnInit {
       icon: 'play_circle_outline'
     },
     {
-      link: '/dashboard/users',
-      title: 'Manage Users',
-      icon: 'supervised_user_circle'
-    },
-    {
       link: '/dashboard/videos',
       title: 'Manage Videos',
       icon: 'play_circle_outline'
+    },
+    {
+      link: '/dashboard/users',
+      title: 'Manage Users',
+      icon: 'supervised_user_circle'
     },
   ];
   constructor() { }

@@ -9,17 +9,6 @@
           </mat-form-field>
         </p>
 
-        <p>
-          <mat-form-field>
-            <mat-label>Subject</mat-label>
-            <mat-select formControlName="subject">
-              <mat-option [value]="subject._id" *ngFor="let subject of data.subjectList ">
-                {{subject.title}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </p>
-
         <p *ngIf="error" class="error">
           {{ error }}
         </p>

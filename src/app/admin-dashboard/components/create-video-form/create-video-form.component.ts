@@ -2,11 +2,10 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { HttpEventType, HttpResponse, HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { S3Service } from 'src/app/services/s3.service';
 import { Progress } from 'aws-sdk/lib/request';
-
+import { filter } from 'lodash';
 @Component({
   selector: 'app-create-video-form',
   templateUrl: './create-video-form.component.html',
@@ -22,8 +21,11 @@ export class CreateVideoFormComponent implements OnInit {
   @Input() error: string | null;
 
   filteredChapterList = [];
+  filteredSubjectList = [];
 
   uploadProgress = {};
+
+  filterOnKeys = {};
 
   constructor(
     private fb: FormBuilder,
@@ -42,6 +44,7 @@ export class CreateVideoFormComponent implements OnInit {
   ngOnInit(): void {
     this.initialValues = this.data.video;
     this.filteredChapterList = this.data.chapterList;
+    this.filteredSubjectList = this.data.subjectList;
 
     this.form = this.fb.group({
       _id: [this.data.video._id],
@@ -49,11 +52,29 @@ export class CreateVideoFormComponent implements OnInit {
       description: [this.data.video.description, Validators.required],
       class: [this.data.video.class, Validators.required],
       chapter: [this.data.video.chapter, Validators.required],
+      subject: [this.data.video.subject, Validators.required],
     });
 
     this.form.controls.class.valueChanges.subscribe((classId) => {
-      this.filteredChapterList = this.data.chapterList.filter(ch => ch.class === classId);
-    })
+      this.filterOnKeys = {
+        ...this.filterOnKeys,
+        class: classId
+      }
+      this.setFilteredChapterList();
+    });
+    
+    this.form.controls.subject.valueChanges.subscribe((subjectId) => {
+      this.filterOnKeys = {
+        ...this.filterOnKeys,
+        subject: subjectId
+      }
+      this.setFilteredChapterList();
+      
+    });
+  }
+
+  setFilteredChapterList() {
+    this.filteredChapterList = filter(this.data.chapterList, this.filterOnKeys);
   }
 
   onUploadClick(fileField) {
@@ -70,6 +91,7 @@ export class CreateVideoFormComponent implements OnInit {
 
   onReset() {
     this.form.reset(this.initialValues);
+
     this.selectedVideoFile = undefined;
     this.selectedPdfFile = undefined;
   }

@@ -19,6 +19,11 @@
       <th mat-header-cell *matHeaderCellDef> Description </th>
       <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
+<!-- 
+    <ng-container matColumnDef="class">
+      <th mat-header-cell *matHeaderCellDef> Class </th>
+      <td mat-cell *matCellDef="let element"> {{getClassName(element.class)}} </td>
+    </ng-container> -->
 
     <ng-container matColumnDef="createdAt">
       <th mat-header-cell *matHeaderCellDef> Created on </th>

@@ -18,12 +18,19 @@ export class SubjectsPageComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
+  classMap;
+  classList;
+
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   async ngOnInit() {
+    // const classesResponse = await this.resourceService.fetchAll('/classes').toPromise();
+    // this.classList = classesResponse['data'];
+    // this.classMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.name]));
+
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
     this.displayedColumns = ['title', 'description', 'createdAt', 'updatedAt', 'action'];
@@ -41,6 +48,7 @@ export class SubjectsPageComponent implements OnInit {
       width: '600px',
       data: {
         resourceUrl: this.resourceUrl,
+        classList: this.classList,
         subject
       }
     });
@@ -63,6 +71,10 @@ export class SubjectsPageComponent implements OnInit {
 
   onUpdate() {
     this.reFetchResourceList();
+  }
+
+  getClassName(subjectId) {
+    return this.classMap.get(subjectId) || 'Subject has been deleted';
   }
 
   async onDelete(resource) {

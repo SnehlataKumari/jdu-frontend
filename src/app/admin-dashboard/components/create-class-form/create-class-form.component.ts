@@ -31,8 +31,7 @@ export class CreateClassFormComponent implements OnInit {
 
     this.form = this.fb.group({
       _id: [this.initialValues._id],
-      name: [this.initialValues.name, Validators.required],
-      subject: [this.initialValues.subject, Validators.required],
+      name: [this.initialValues.name, Validators.required]
     });
   }
 

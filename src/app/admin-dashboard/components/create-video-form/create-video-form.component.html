@@ -5,20 +5,21 @@
       <form [formGroup]="form" (ngSubmit)="submit()">
         <p>
           <mat-form-field>
-            <input type="text" matInput placeholder="Title" formControlName="title">
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field>
-            <input type="text" matInput placeholder="Description" formControlName="description">
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field>
             <mat-label>Class</mat-label>
             <mat-select formControlName="class">
               <mat-option [value]="classs._id" *ngFor="let classs of data.classList ">
                 {{classs.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Subject</mat-label>
+            <mat-select formControlName="subject">
+              <mat-option [value]="subject._id" *ngFor="let subject of filteredSubjectList ">
+                {{subject.title}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -32,6 +33,18 @@
                 {{chapter.title}}
               </mat-option>
             </mat-select>
+          </mat-form-field>
+        </p>
+        
+
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Title" formControlName="title">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Description" formControlName="description">
           </mat-form-field>
         </p>
 

@@ -24,9 +24,6 @@ export class ClassesPageComponent implements OnInit {
   ];
 
   @Input() resourceUrl: string = '/classes';
-  subjectMap;
-  subjectList;
-
   constructor(
     private resourceService: ResourceService,
     public dialog: MatDialog
@@ -38,13 +35,9 @@ export class ClassesPageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   async ngOnInit() {
-    const classesResponse = await this.resourceService.fetchAll('/subjects').toPromise();
-    this.subjectList = classesResponse['data'];
-    this.subjectMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.title]));
-
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['name', 'subject', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = ['name', 'createdAt', 'updatedAt', 'action'];
     this.dataSource = new MatTableDataSource(list['data']);
     this.dataSource.paginator = this.paginator;
   }
@@ -54,16 +47,13 @@ export class ClassesPageComponent implements OnInit {
     this.dataSource = new MatTableDataSource(list['data']);
   }
 
-  getSubjectName(subjectId) {
-    return this.subjectMap.get(subjectId) || 'Subject has been deleted';
-  }
+  
 
   openDialogue(classObj) {
     const dialogRef = this.dialog.open(CreateClassFormComponent, {
       width: '600px',
       data: {
         resourceUrl: this.resourceUrl,
-        subjectList: this.subjectList,
         classObj
       }
     });

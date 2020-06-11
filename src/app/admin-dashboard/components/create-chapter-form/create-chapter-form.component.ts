@@ -34,6 +34,7 @@ export class CreateChapterFormComponent implements OnInit {
       title: [this.initialValues.title, Validators.required],
       description: [this.initialValues.description, Validators.required],
       class: [this.initialValues.class, Validators.required],
+      subject: [this.initialValues.subject, Validators.required],
     });
   }
   

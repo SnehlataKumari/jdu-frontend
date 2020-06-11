@@ -15,6 +15,9 @@ export class ChaptersPageComponent implements OnInit {
   @Input() resourceUrl: string = '/chapters';
   classMap;
   classList;
+  
+  subjectMap;
+  subjectList;
 
   constructor(
     private resourceService: ResourceService,
@@ -30,10 +33,14 @@ export class ChaptersPageComponent implements OnInit {
     const classesResponse = await this.resourceService.fetchAll('/classes').toPromise();
     this.classList = classesResponse['data'];
     this.classMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.name]));
+    
+    const subjectsResponse = await this.resourceService.fetchAll('/subjects').toPromise();
+    this.subjectList = subjectsResponse['data'];
+    this.subjectMap = new Map(subjectsResponse['data'].map((clas) => [clas._id, clas.title]));
 
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['title', 'description', 'class', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = ['title', 'description', 'class', 'subject', 'createdAt', 'updatedAt', 'action'];
     this.dataSource = new MatTableDataSource(list['data']);
     this.dataSource.paginator = this.paginator;
   }
@@ -48,12 +55,18 @@ export class ChaptersPageComponent implements OnInit {
     return this.classMap.get(classId) || 'Class has been deleted';
   }
 
+  getSubjectName(classId) {
+    console.log(this.subjectMap[classId]);
+    return this.subjectMap.get(classId) || 'Subject has been deleted';
+  }
+
   openDialogue(chapter) {
     const dialogRef = this.dialog.open(CreateChapterFormComponent, {
       width: '600px',
       data: {
         resourceUrl: this.resourceUrl,
         classList: this.classList,
+        subjectList: this.subjectList,
         chapter
       }
     });
@@ -69,6 +82,7 @@ export class ChaptersPageComponent implements OnInit {
       title: '',
       description: '',
       class: '',
+      subject: ''
     };
     this.openDialogue(video);
 
