@@ -27,13 +27,13 @@ export class SubjectsPageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   async ngOnInit() {
-    // const classesResponse = await this.resourceService.fetchAll('/classes').toPromise();
-    // this.classList = classesResponse['data'];
-    // this.classMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.name]));
+    const classesResponse = await this.resourceService.fetchAll('/classes').toPromise();
+    this.classList = classesResponse['data'];
+    this.classMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.name]));
 
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['title', 'description', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = ['title', 'description', 'class', 'createdAt', 'updatedAt', 'action'];
     this.dataSource = new MatTableDataSource(list['data']);
     this.dataSource.paginator = this.paginator;
   }

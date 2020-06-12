@@ -60,6 +60,7 @@ export class CreateVideoFormComponent implements OnInit {
         ...this.filterOnKeys,
         class: classId
       }
+      this.setFilteredSubjectList({class: classId});
       this.setFilteredChapterList();
     });
     
@@ -69,8 +70,11 @@ export class CreateVideoFormComponent implements OnInit {
         subject: subjectId
       }
       this.setFilteredChapterList();
-      
     });
+  }
+
+  setFilteredSubjectList(filterOptions) {
+    this.filteredSubjectList = filter(this.data.subjectList, filterOptions);
   }
 
   setFilteredChapterList() {

@@ -32,7 +32,8 @@ export class CreateSubjectFormComponent implements OnInit {
     this.form = this.fb.group({
       _id: [this.initialValues._id],
       title: [this.initialValues.title, Validators.required],
-      description: [this.initialValues.description, Validators.required]
+      description: [this.initialValues.description, Validators.required],
+      class: [this.initialValues.class, Validators.required],
     });
   }
 

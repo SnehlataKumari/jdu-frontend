@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import {filter} from 'lodash';
 @Component({
   selector: 'app-create-chapter-form',
   templateUrl: './create-chapter-form.component.html',
@@ -14,6 +14,9 @@ export class CreateChapterFormComponent implements OnInit {
   form: FormGroup;
   initialValues;
   @Input() error: string | null;
+
+  filteredSubjectList = [];
+
 
   constructor(
     private fb: FormBuilder,
@@ -36,6 +39,15 @@ export class CreateChapterFormComponent implements OnInit {
       class: [this.initialValues.class, Validators.required],
       subject: [this.initialValues.subject, Validators.required],
     });
+
+
+    this.form.controls.class.valueChanges.subscribe((classId) => {
+      this.setFilteredSubjectList({ class: classId });
+    });
+  }
+
+  setFilteredSubjectList(filterOptions) {
+    this.filteredSubjectList = filter(this.data.subjectList, filterOptions);
   }
   
   onReset() {
