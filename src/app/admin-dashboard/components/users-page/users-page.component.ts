@@ -32,7 +32,7 @@ export class UsersPageComponent implements OnInit {
     this.classMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.name]));
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['name', 'mobileNumber', 'role', 'class', 'isSubscribed', 'isBlocked', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = ['name', 'mobileNumber', 'role', 'createdAt', 'updatedAt', 'action'];
     this.dataSource = new MatTableDataSource(list['data']);
     this.dataSource.paginator = this.paginator;
   }

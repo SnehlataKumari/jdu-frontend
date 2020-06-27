@@ -34,8 +34,6 @@ export class CreateUserFormComponent implements OnInit {
       _id: [this.data.user._id],
       name: [this.data.user.name, Validators.required],
       mobileNumber: [this.data.user.mobileNumber, Validators.required],
-      class: [this.data.user.class, Validators.required],
-      isSubscribed: [this.data.user.isSubscribed, Validators.required],
     });
   }
 
