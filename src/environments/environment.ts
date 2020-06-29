@@ -5,10 +5,10 @@
 export const environment = {
   production: false,
   hostUrl: 'http://localhost:3000',
-  AWSAccessKeyId: 'AKIAIYVBZAAX6A3UXAIQ',
-  AWSSecretKey: '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',
-  AWSregion: 'ap-south-1',
-  S3Bucket: 'rehani'
+  AWSAccessKeyId: '',
+  AWSSecretKey: '',
+  AWSregion: '',
+  S3Bucket: ''
 };
 
 /*
