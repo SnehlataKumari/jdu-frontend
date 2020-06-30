@@ -23,6 +23,7 @@ import { CreateChapterFormComponent } from './components/create-chapter-form/cre
 import { SubjectsPageComponent } from './components/subjects-page/subjects-page.component';
 import { CreateSubjectFormComponent } from './components/create-subject-form/create-subject-form.component';
 import { CreateClassFormComponent } from './components/create-class-form/create-class-form.component';
+import { LiveStreamComponent } from './components/live-stream/live-stream.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CreateClassFormComponent } from './components/create-class-form/create-
     CreateChapterFormComponent,
     SubjectsPageComponent,
     CreateSubjectFormComponent,
-    CreateClassFormComponent
+    CreateClassFormComponent,
+    LiveStreamComponent
   ],
   imports: [
     CommonModule,

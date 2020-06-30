@@ -1,0 +1,64 @@
+<div class="content">
+
+  <div class="loading" *ngIf="!liveStreamStatus">
+    <mat-spinner></mat-spinner>
+  </div>
+  
+  <div class="stream-body" *ngIf="!!liveStreamStatus">
+    {{errorMessage}}
+  
+    <p *ngIf="liveStreamStatus=='started'">
+      <!-- <a href="https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html" target="_blank">
+        Go to live stream player
+      </a>
+      <br />
+      OR -->
+      Please share this link to users to view your live stream
+      <b>https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html</b>
+    </p>
+  
+  
+    <button (click)="onStartLiveStream()" mat-raised-button color="primary" *ngIf="liveStreamStatus !=='started'"
+      [disabled]="liveStreamStatus =='starting'">
+      
+      <ng-container *ngIf="liveStreamStatus !== 'starting'">
+        Prepare Live Stream
+      </ng-container>
+
+      <ng-container *ngIf="liveStreamStatus == 'starting'">
+
+        <!-- <mat-spinner diameter="20" *ngIf="liveStreamStatus == 'starting'"></mat-spinner> -->
+        Preparing Live Stream ...
+      </ng-container>
+    </button>
+  
+    <button (click)="onStopLiveStream()" mat-raised-button color="primary" *ngIf="liveStreamStatus =='started'">
+      Stop Stream
+    </button>
+  
+    <button (click)="gotoStreamPage()" style="margin-left: '10px';"mat-raised-button color="primary" *ngIf="liveStreamStatus =='started'">
+      Go to stream page
+    </button>
+  
+    <!-- <button (click)="setLiveStreamStatus()" mat-raised-button color="primary">
+      Refresh Status
+    </button> -->
+  
+    
+    <div class="info" *ngIf="liveStreamStatus == 'starting'">
+      Have patience, Streaming engine take some time to start.
+    </div>
+
+    <p *ngIf="liveStreamStatus == 'starting'">
+      <!-- status: {{liveStreamStatus}} -->
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <!-- <mat-spinner diameter="20" *ngIf="liveStreamStatus == 'starting'"></mat-spinner> -->
+    </p>
+  
+    
+  
+  </div>
+
+</div>
+
+

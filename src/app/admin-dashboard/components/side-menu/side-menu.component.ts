@@ -19,6 +19,11 @@ export class SideMenuComponent implements OnInit {
       title: 'Manage Users',
       icon: 'supervised_user_circle'
     },
+    {
+      link: '/dashboard/live-stream',
+      title: 'Live Stream',
+      icon: 'supervised_user_circle'
+    },
   ];
   constructor() { }
 

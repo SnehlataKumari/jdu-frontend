@@ -8,6 +8,7 @@ import { MaterialImportModule } from './material-import.module';
 import { AuthModule } from './auth/auth.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { WebsiteModule } from './website/website.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialImportModule,
-    AuthModule
+    AuthModule,
+    WebsiteModule
   ],
   exports: [
     ReactiveFormsModule,

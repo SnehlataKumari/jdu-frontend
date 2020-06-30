@@ -12,3 +12,5 @@ auth/components/
 
 admin-dashboard/components
 admin-dashboard/services
+
+website/components
