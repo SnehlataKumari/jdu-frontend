@@ -3,15 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full'
-  },
   // {
   //   path: '',
-  //   loadChildren: () => import('./website/website.module').then(m => m.WebsiteModule)
+  //   redirectTo: 'auth',
+  //   pathMatch: 'full'
   // },
+  {
+    path: '',
+    loadChildren: () => import('./website/website.module').then(m => m.WebsiteModule)
+  },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)

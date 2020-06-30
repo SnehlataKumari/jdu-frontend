@@ -13,6 +13,8 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
   liveStreamStatus = '';
   errorMessage = '';
   liveStream;
+  redirectedToStreamPage = false;
+
   constructor(
     private _liveStream: LiveStreamService
   ) { }
@@ -22,9 +24,16 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     
     await this.setLiveStreamDetails();
-    this.$intervalRef = interval(5 * 1000).pipe(
-      flatMap(async () => await this.setLiveStreamStatus())
-    ).subscribe();
+    this.$intervalRef = this._liveStream.getLiveRailyStatus().subscribe((state) => {
+      this.liveStreamStatus = state;
+      if(state === 'started') {
+        if (!this.redirectedToStreamPage) {
+          this.gotoStreamPage();
+          this.redirectedToStreamPage = true;
+        }
+      }
+      console.log(state);
+    });
   }
 
   ngOnDestroy() {

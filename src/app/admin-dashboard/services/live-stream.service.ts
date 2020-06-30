@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { interval } from 'rxjs';
+import { flatMap, map } from 'rxjs/operators';
 
 const WSC_API_KEY = "29CC3MQmAET3pwuOFHPABreCp9OZInbYD8B9tmEDrpUIaDjAVCQFzFCFgc8g3115";
 const WSC_ACCESS_KEY = "iNrOB9jmcuGj5hccNXBedZ1NsyXnP9WtVhPWkXrrw8GcoBkrUrccWMiDFV3Z3628";
@@ -48,5 +50,14 @@ export class LiveStreamService {
     const url = `${hostUrl}/transcoders/${liveStreamId}/state`;
     const withAuthToken = this.getAuthHeaders();
     return this.httpClient.get(url, { headers: withAuthToken });
+  }
+
+  getLiveRailyStatus(liveStreamId = 'kgjcfbhv') {
+    return interval(5 * 1000).pipe(
+      flatMap(() => this.getLiveStreamStatus(liveStreamId).pipe(map((liveStreamStatus: any) => {
+        const { transcoder: { state } } = liveStreamStatus;
+        return state;
+      })))
+    )
   }
 }

@@ -1,2 +1,422 @@
-<p>website works!</p>
-<a routerLink="/auth">Login</a>
+<header class="header-with-topbar">
+  <!-- topbar -->
+  <div class="top-header-area bg-white padding-5px-tb">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 text-uppercase alt-font xs-no-padding-lr xs-text-center">
+          <!--  <a href="tel:1234567890" class="text-link-white xs-width-100" title="Call us 123-456-7890">Call us 123-456-7890</a>
+                            <div class="separator-line-verticle-extra-small bg-dark-gray display-inline-block margin-two-lr hidden-xs position-relative vertical-align-middle top-minus1"></div>
+                            <a href="mailto:no-reply@domain.com" class="text-link-white xs-width-100" title="no-reply@domain.com">no-reply@domain.com</a>-->
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 hidden-xs xs-no-padding-lr text-right">
+          <div class="icon-social-very-small xs-width-100 xs-text-center display-inline-block">
+            <a href="javascript:void(0)" title="Facebook" target="_blank" class="text-link-white"><i
+                class="fa fa-facebook" aria-hidden="true"></i></a>
+
+            <a href="javascript:void(0)" title="Youtube" target="_blank" class="text-link-white"><i
+                class="fa fa-youtube" aria-hidden="true"></i></a>
+
+            <a href="javascript:void(0)" title="Twitter" target="_blank" class="text-link-white"><i
+                class="fa fa-twitter"></i></a>
+            <a href="javascript:void(0)" title="Linked In" target="_blank" class="text-link-white"><i
+                class="fa fa-linkedin"></i></a>
+            <a href="javascript:void(0)" title="Google Plus" target="_blank" class="text-link-white"><i
+                class="fa fa-google-plus"></i></a>
+          </div>
+          <div
+            class="separator-line-verticle-extra-small bg-black display-inline-block margin-two-lr hidden-xs position-relative vertical-align-middle">
+          </div>
+          <div
+            class="btn-group dropdown-style-1 xs-width-100 xs-text-center xs-margin-three-bottom display-inline-block">
+            <select name="cars" id="cars"
+              style="font-size: 14px; padding: 3px 2px; width: 100%; margin: 0 0 0px 0;  /* max-width: 100%; */ resize: none; background: #fff; border: none; color: #217921;">
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end topbar -->
+  <!-- start navigation -->
+  <nav class="navbar navbar-default bootsnav navbar-top bg-black nav-box-width">
+    <div class="container nav-header-container">
+      <!-- start logo -->
+      <div class="row">
+        <div class="col-md-2 col-xs-5">
+          <a href="index.html" title="jdu logo" class="logo"><img src="/assets/img/logo.png" data-at2x="/assets/img/logo.png"
+              class="logo-dark default" alt="JDU"><img src="/assets/img/logo.png" data-at2x="/assets/img/logo.png" alt="jdu"
+              class="logo-light"></a> </div>
+        <!-- end logo -->
+        <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">
+          <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse"
+            data-target="#navbar-collapse-toggle-1">
+            <span class="sr-only">toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> </button>
+          <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
+            <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn"
+              data-out="fadeOut">
+              <!-- start menu item -->
+              <li> <a href="index.html">Home</a></li>
+              <li> <a href="suggestion.html">Suggestion</a></li>
+              <li> <a href="yatrayen.html">Yatrayen</a></li>
+              <li> <a href="impect.html">Impacts</a></li>
+              <li> <a href="brand_bihar.html">Brand Bihar TV</a></li>
+              <li> <a routerLink="auth">Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- end navigation -->
+</header>
+
+
+<!-- start video  section -->
+<section class="parallax wow fadeIn margin-100px-top" data-stellar-background-ratio="0.1"
+  style="background-image:url('/assets/img/live_video_bg.jpg');">
+  <div class="opacity-extra-medium bg-black"></div>
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 text-center center-col">
+        <a
+          target="_blank"
+          [class.disabled]="liveRailyStatus !== 'started'"
+          [href]="liveRailyStatus == 'started' ? 'https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html' : ''" class="pop up-vimeo">
+          <img src="/assets/img/icon-play.png"class="width-30" alt="" />
+        </a>
+        <h5 class="alt-font text-white">
+          {{liveRailyStatus == 'started' ? 'Raily is live, Click button view Rally' : 'The Rally Starting Soon'}}
+        </h5>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end video style  section -->
+
+<!-- start about agency -->
+<section class="wow fadeIn bg-light-gray" style="padding:60px 0;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-11 col-xs-12 center-col text-center wow fadeInUp ">
+        <div class="row">
+          <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
+            <div class="position-relative overflow-hidden width-100">
+              <span
+                class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">About
+                Janata Dal United</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-black font-weight-500 text-justify display-block alt-font margin-10px-bottom">Welcome to the
+          official web portal of <b>Janata Dal United</b> . Why and how are we different from other parties? What is our
+          ideology? How are our leaders, policy and programs creating tomorrow? What are our achievements in the journey
+          so far and in which direction are we struggling? You will get answers to all such questions here. If you want,
+          please communicate with us. If there are suggestions, then definitely, we will welcome.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- end about  section -->
+
+
+
+<!-- start slider -->
+      <!--====================================
+——— BEGIN MAIN SLIDE LIST
+===================================== -->
+
+<section class="bg-light-gray" style="padding:60px 0px !important;" >
+    <svg viewbox="0 0 0 0" width="0" height="0" style="display:block;position:relative;left:0px;top:0px;">
+        <defs>
+            <filter id="jssor_1_flt_1" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stddeviation="4"></feGaussianBlur>
+            </filter>
+            <radialGradient id="jssor_1_grd_2">
+                <stop offset="0" stop-color="#fff"></stop>
+                <stop offset="1" stop-color="#000"></stop>
+            </radialGradient>
+            <mask id="jssor_1_msk_3">
+                <path fill="url(#jssor_1_grd_2)" d="M600,0L600,400L0,400L0,0Z" x="0" y="0" style="position:absolute;overflow:visible;"></path>
+            </mask>
+        </defs>
+    </svg>
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1600px;height:640px;overflow:hidden;visibility:hidden;">
+        <!-- Loading Screen -->
+        <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/assets/img/spin.svg" />
+        </div>
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1600px;height:640px;overflow:hidden;">
+          <div >
+            <img data-u="image"  data-src="/assets/img/banner1.jpg" />
+          </div>
+            
+             
+             <div >
+                <img data-u="image"  data-src="/assets/img/banner2.jpg" />
+                
+            </div>
+            
+             
+             <div >
+                <img data-u="image"  data-src="/assets/img/banner3.jpg" />
+                
+            </div>
+            
+             <div >
+                <img data-u="image"  data-src="/assets/img/banner4.jpg" />
+                
+            </div>
+         
+        </div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">slider html</a>
+        <!-- Bullet Navigator -->
+        <div data-u="navigator" class="jssorb132" style="position:absolute;bottom:24px;right:16px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+            <div data-u="prototype" class="i" style="width:12px;height:12px;">
+                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    <circle class="b" cx="8000" cy="8000" r="5800"></circle>
+                </svg>
+            </div>
+        </div>
+        <!-- Arrow Navigator -->
+        <div data-u="arrowleft" class="jssora051" style="width:55px;height:55px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
+            </svg>
+        </div>
+        <div data-u="arrowright" class="jssora051" style="width:55px;height:55px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
+            </svg>
+        </div>
+    </div>
+</section>
+        <!-- end slider -->
+
+
+<section class="parallax wow fadeIn" data-stellar-background-ratio="0.4"
+  style="background-image: url(&quot;/assets/img/testimonial-bg.png&quot;); background-position: 0px 43.275px; visibility: visible; animation-name: fadeIn; padding:60px 0px;">
+  <div class="container-fluid no-padding">
+    <div class="row">
+      <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
+        <div class="position-relative overflow-hidden width-100">
+          <span
+            class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">Upcoming
+            Events</span>
+        </div>
+      </div>
+    </div>
+    <div class="row no-margin">
+      <!-- start information item -->
+      <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+        <div class="feature-box-wrap">
+          <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px"
+            style="background: url(/assets/img/homepage-3-parallax-img1.jpg)"></div>
+          <div class="width-100 small-screen xs-height-300px display-table arrow-top">
+            <div
+              class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all text-black">
+              <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">Event 1
+              </h6>
+              <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum
+                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+              <span
+                class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end information item -->
+      <!-- start information item -->
+      <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+        <div class="feature-box-wrap sm-swap-block">
+          <div class="width-100 small-screen xs-height-300px display-table arrow-bottom">
+            <div
+              class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all text-black">
+              <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">Event 2
+              </h6>
+              <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum
+                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+              <span
+                class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+            </div>
+          </div>
+          <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px"
+            style="background: url(/assets/img/homepage-3-parallax-img2.jpg)"></div>
+        </div>
+      </div>
+      <!-- end information item -->
+      <!-- start information item -->
+      <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
+        <div class="feature-box-wrap">
+          <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px"
+            style="background: url(/assets/img/homepage-3-parallax-img3.jpg)"></div>
+          <div class="width-100 small-screen xs-height-300px display-table arrow-top">
+            <div
+              class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all text-black">
+              <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">Event 3
+              </h6>
+              <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum
+                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+              <span
+                class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end information item -->
+    </div>
+  </div>
+</section>
+
+<!-- start Historical Events Start -->
+<section class="wow fadeIn bg-light-gray" style="padding:30px 0;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
+        <div class="position-relative overflow-hidden width-100">
+          <span
+            class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">Historical
+            Events</span>
+        </div>
+      </div>
+    </div>
+    <div class="row equalize xs-equalize-auto">
+
+      <!-- start features box item -->
+      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp">
+        <div class="text-center text-black" style="background: rgb(105,255,104);
+background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+          <a href="javascript:void(0)"><img src="/assets/img/latest-blog6.jpg" alt=""></a>
+          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
+            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Event 1</span>
+            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.
+            </p>
+            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
+                class="ti-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- end feature box item -->
+      <!-- start features box item -->
+      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp"
+        data-wow-delay="0.2s">
+        <div class="text-center text-black" style="background: rgb(105,255,104);
+background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+          <a href="javascript:void(0)"><img src="/assets/img/latest-blog5.jpg" alt=""></a>
+          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
+            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Event 2</span>
+            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.
+            </p>
+            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
+                class="ti-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- end feature box item -->
+      <!-- start features box item -->
+      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-no-margin-bottom wow fadeInUp"
+        data-wow-delay="0.4s">
+        <div class="text-center text-black" style="background: rgb(105,255,104);
+background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+          <a href="javascript:void(0)"><img src="/assets/img/latest-blog7.jpg" alt=""></a>
+          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
+            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Event 3</span>
+            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.
+            </p>
+            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Detail<i
+                class="ti-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- end feature box item -->
+    </div>
+  </div>
+</section>
+<!-- end Historical Events  section -->
+
+<!-- start footer -->
+<footer class="footer-standard text-white" style="background:#217921;">
+  <div class="footer-widget-area padding-five-tb xs-padding-30px-tb">
+    <div class="container">
+      <div class="row equalize xs-equalize-auto">
+        <div
+          class="col-md-4 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray sm-no-border-right sm-margin-30px-bottom xs-text-center">
+          <!-- start logo -->
+          <a href="index.html" class="margin-20px-bottom display-inline-block"><img class="" src="img/logo.png"
+              data-at2x="img/logo.png" alt="JDU"></a>
+          <!-- end logo -->
+          <p class="text-small width-95 xs-width-100">Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <!-- start social media -->
+          <div class="social-icon-style-8 display-inline-block vertical-align-middle text-black">
+            <ul class="small-icon no-margin-bottom">
+              <li><a class="facebook" href="javascript:void(0)" target="_blank"><i class="fa fa-facebook"
+                    aria-hidden="true"></i></a></li>
+              <li><a class="Youtube" href="javascript:void(0)" target="_blank"><i class="fa fa-youtube"
+                    aria-hidden="true"></i></a></li>
+              <li><a class="twitter" href="javascript:void(0)" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="Linkedin" href="javascript:void(0)" target="_blank"><i
+                    class="fa fa-linkedin no-margin-right" aria-hidden="true"></i></a></li>
+              <li><a class="google" href="javascript:void(0)" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+
+            </ul>
+          </div>
+          <!-- end social media -->
+        </div>
+        <!-- start additional links -->
+        <div
+          class="col-md-4 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
+          <div class="widget-title alt-font text-medium text-white text-uppercase margin-10px-bottom font-weight-600">
+            Quick Links</div>
+          <ul class="list-unstyled">
+            <li><a class="text-small" href="suggestion.html">SUGGESTION</a></li>
+            <li><a class="text-small" href="yatrayen.html">YATRAYEN</a></li>
+            <li><a class="text-small" href="impect.html">IMPACTS</a></li>
+            <li><a class="text-small" href="brand_bihar.html">BRAND BIHAR TV</a></li>
+            <li><a class="text-small" href="login/index.html">LOGIN</a></li>
+          </ul>
+        </div>
+        <!-- end additional links -->
+        <!-- start contact information -->
+        <div
+          class="col-md-4 col-sm-6 col-xs-12 widget  padding-45px-left sm-padding-15px-left sm-clear-both sm-no-border-right  xs-margin-30px-bottom xs-text-center">
+          <div class="widget-title alt-font text-medium text-white text-uppercase margin-10px-bottom font-weight-600">
+            Contact Info</div>
+          <p class="text-small display-block margin-15px-bottom width-80 sm-width-70 xs-center-col"><strong>Janata Dal
+              United</strong><br />
+            149, MLA Flat, Virchand Patel Path<br />
+            Patna-800001
+          </p>
+          <div class="text-small">Email: <a href="mailto:jdumedia@gmail.com">jdumedia@gmail.com</a></div>
+          <div class="text-small">Phone: +xx xxxxxxxx</div>
+
+        </div>
+        <!-- end contact information -->
+
+      </div>
+    </div>
+  </div>
+  <div class="padding-15px-tb text-center xs-padding-30px-tb" style="background:#014601;">
+    <div class="container">
+      <div class="row">
+        <!-- start copyright -->
+        <div class="col-md-6 col-sm-6 col-xs-12 text-left text-small xs-text-center text-white">Copyright &copy; 2020
+          JDU Media Cell. </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 text-right text-small xs-text-center">
+          Designed By : <a href="javascript:void(0);" class="text-white">Aquadsoft</a>
+        </div>
+        <!-- end copyright -->
+      </div>
+    </div>
+  </div>
+</footer>
+
+<router-outlet></router-outlet>
