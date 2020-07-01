@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LiveStreamService } from '../../services/live-stream.service';
 import { interval, Subscription } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-live-stream',
@@ -14,9 +14,11 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
   errorMessage = '';
   liveStream;
   redirectedToStreamPage = false;
+  urlSafe: SafeResourceUrl;
 
   constructor(
-    private _liveStream: LiveStreamService
+    private _liveStream: LiveStreamService,
+    public sanitizer: DomSanitizer
   ) { }
 
   $intervalRef: Subscription;
@@ -72,11 +74,15 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
     
     const hostedPageURL = this.liveStream.hosted_page_url;
     const url = `https://www.wowza.com/webrtc/publish?applicationName=${connInfo.application_name}&hostedPageURL=${hostedPageURL}&sdpURL=${connInfo.sdp_url}&streamName=${connInfo.stream_name}&transcoderState=started`;
-    window.open(url, "_blank");
+    this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+
+    // window.open(url, "_blank");
   }
 
   async onStopLiveStream() {
     await this._liveStream.stopLiveStream().toPromise();
     await this.setLiveStreamStatus();
+
+    this.urlSafe = undefined;
   }
 }

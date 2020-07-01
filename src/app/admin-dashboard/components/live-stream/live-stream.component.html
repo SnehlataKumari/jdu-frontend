@@ -4,7 +4,7 @@
     <mat-spinner></mat-spinner>
   </div>
   
-  <div class="stream-body" *ngIf="!!liveStreamStatus">
+  <div class="stream-body" *ngIf="!!liveStreamStatus && !urlSafe">
     {{errorMessage}}
   
     <p *ngIf="liveStreamStatus=='started'">
@@ -26,25 +26,11 @@
       </ng-container>
 
       <ng-container *ngIf="liveStreamStatus == 'starting'">
-
         <!-- <mat-spinner diameter="20" *ngIf="liveStreamStatus == 'starting'"></mat-spinner> -->
         Preparing Live Stream ...
       </ng-container>
     </button>
   
-    <button (click)="onStopLiveStream()" mat-raised-button color="primary" *ngIf="liveStreamStatus =='started'">
-      Stop Stream
-    </button>
-  
-    <button (click)="gotoStreamPage()" style="margin-left: '10px';"mat-raised-button color="primary" *ngIf="liveStreamStatus =='started'">
-      Go to stream page
-    </button>
-  
-    <!-- <button (click)="setLiveStreamStatus()" mat-raised-button color="primary">
-      Refresh Status
-    </button> -->
-  
-    
     <div class="info" *ngIf="liveStreamStatus == 'starting'">
       Have patience, Streaming engine take some time to start.
     </div>
@@ -54,9 +40,14 @@
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       <!-- <mat-spinner diameter="20" *ngIf="liveStreamStatus == 'starting'"></mat-spinner> -->
     </p>
-  
-    
-  
+  </div>
+
+  <div class="stream-frame" *ngIf="urlSafe">
+    <iframe width="100%" height="100%" allow="camera; microphone" frameBorder="0" [src]="urlSafe" *ngIf="urlSafe"
+      class="iframe"></iframe>
+    <button (click)="onStopLiveStream()" mat-raised-button color="primary" *ngIf="liveStreamStatus =='started'">
+      Stop Stream
+    </button>
   </div>
 
 </div>

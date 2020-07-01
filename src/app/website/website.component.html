@@ -80,14 +80,15 @@
 <section class="parallax wow fadeIn margin-100px-top" data-stellar-background-ratio="0.1"
   style="background-image:url('/assets/img/live_video_bg.jpg');">
   <div class="opacity-extra-medium bg-black"></div>
+  
   <div class="container position-relative">
-    <div class="row">
+    <app-live-stream-player *ngIf="liveRailyStatus == 'started'"></app-live-stream-player>
+    <div class="row"  *ngIf="liveRailyStatus !== 'started'">
       <div class="col-lg-6 col-md-6 text-center center-col">
-        <a
-          target="_blank"
-          [class.disabled]="liveRailyStatus !== 'started'"
-          [href]="liveRailyStatus == 'started' ? 'https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html' : ''" class="pop up-vimeo">
-          <img src="/assets/img/icon-play.png"class="width-30" alt="" />
+        <a target="_blank" [class.disabled]="liveRailyStatus !== 'started'"
+          [href]="liveRailyStatus == 'started' ? 'https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html' : ''"
+          class="pop up-vimeo">
+          <img src="/assets/img/icon-play.png" class="width-30" alt="" />
         </a>
         <h5 class="alt-font text-white">
           {{liveRailyStatus == 'started' ? 'Raily is live, Click button view Rally' : 'The Rally Starting Soon'}}
