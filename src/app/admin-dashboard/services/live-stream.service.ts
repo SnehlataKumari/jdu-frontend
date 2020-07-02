@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { interval } from 'rxjs';
-import { flatMap, map } from 'rxjs/operators';
+import { interval, of, from } from 'rxjs';
+import { flatMap, map, catchError } from 'rxjs/operators';
 
 const WSC_API_KEY = "29CC3MQmAET3pwuOFHPABreCp9OZInbYD8B9tmEDrpUIaDjAVCQFzFCFgc8g3115";
 const WSC_ACCESS_KEY = "iNrOB9jmcuGj5hccNXBedZ1NsyXnP9WtVhPWkXrrw8GcoBkrUrccWMiDFV3Z3628";
@@ -58,6 +58,15 @@ export class LiveStreamService {
         const { transcoder: { state } } = liveStreamStatus;
         return state;
       })))
+    )
+  }
+
+  isStreamLive() {
+    const url = `https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8`;
+    const withAuthToken = this.getAuthHeaders();
+
+    return interval(5 * 1000).pipe(
+      flatMap(() => from(fetch(url)))
     )
   }
 }

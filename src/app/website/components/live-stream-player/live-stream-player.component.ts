@@ -42,6 +42,12 @@ export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
       player.play();
     }, 1000);
 
+    player.addEventListener('error', function (e) {
+      console.log(e);
+      
+      
+    })
+
     // // player.autoplay = true;
     // // player.preload = 'auto';
 
@@ -64,7 +70,7 @@ export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
     //     }, 100);
     //   }, 100);
     // }, 1000);
-    // window['player'] = player;
+    window['player'] = player;
   }
 
   

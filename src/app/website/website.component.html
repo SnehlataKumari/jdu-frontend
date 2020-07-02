@@ -77,13 +77,15 @@
 
 
 <!-- start video  section -->
-<section class="parallax wow fadeIn margin-100px-top" data-stellar-background-ratio="0.1"
+<app-live-stream-player *ngIf="liveRailyStatus === 'started'"></app-live-stream-player>
+<section class="parallax wow fadeIn margin-100px-top"
+  *ngIf="liveRailyStatus !== 'started'"
+  data-stellar-background-ratio="0.1"
   style="background-image:url('/assets/img/live_video_bg.jpg');">
   <div class="opacity-extra-medium bg-black"></div>
   
   <div class="container position-relative">
-    <app-live-stream-player *ngIf="liveRailyStatus == 'started'"></app-live-stream-player>
-    <div class="row"  *ngIf="liveRailyStatus !== 'started'">
+    <div class="row">
       <div class="col-lg-6 col-md-6 text-center center-col">
         <a target="_blank" [class.disabled]="liveRailyStatus !== 'started'"
           [href]="liveRailyStatus == 'started' ? 'https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html' : ''"
@@ -199,149 +201,143 @@
 </section>
         <!-- end slider -->
 
-
-<section class="parallax wow fadeIn" data-stellar-background-ratio="0.4"
-  style="background-image: url(&quot;/assets/img/testimonial-bg.png&quot;); background-position: 0px 43.275px; visibility: visible; animation-name: fadeIn; padding:60px 0px;">
-  <div class="container-fluid no-padding">
-    <div class="row">
-      <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
-        <div class="position-relative overflow-hidden width-100">
-          <span
-            class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">Upcoming
-            Events</span>
-        </div>
-      </div>
-    </div>
-    <div class="row no-margin">
-      <!-- start information item -->
-      <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
-        <div class="feature-box-wrap">
-          <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px"
-            style="background: url(/assets/img/homepage-3-parallax-img1.jpg)"></div>
-          <div class="width-100 small-screen xs-height-300px display-table arrow-top">
-            <div
-              class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all text-black">
-              <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">Event 1
-              </h6>
-              <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum
-                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-              <span
-                class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+        <section class="parallax wow fadeIn" data-stellar-background-ratio="0.4"
+          style="background-image: url(&quot;/assets/img/testimonial-bg.png&quot;); background-position: 0px 43.275px; visibility: visible; animation-name: fadeIn; padding:30px 0px;">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
+                <div class="position-relative overflow-hidden width-100">
+                  <span
+                    class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">UPCOMING
+                    EVENTS</span>
+                </div>
+              </div>
+            </div>
+            <div class="row equalize xs-equalize-auto">
+        
+              <!-- start features box item -->
+              <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp">
+                <div class="text-center text-black" style="background: rgb(105,255,104);
+        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+                  <a href="javascript:void(0)"><img src="/assets/img/upcoming_events/001.jpg" alt=""></a>
+                  <div class="padding-35px-all sm-padding-15px-all inner-match-height">
+                    <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Economic
+                      Solution, Force on Youth</span>
+                    <p class="text-justify">Self-help allowance of Rs 1000 per month for all youth between 20 and 25 years and
+                      student loans up to Rs 4 lakh for all 12th grade passing students through credit cards and for which the
+                      state guarantor is like five Ambitious schemes are running under this determination.</p><br />
+                    <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
+                        class="ti-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- end feature box item -->
+              <!-- start features box item -->
+              <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp"
+                data-wow-delay="0.2s">
+                <div class="text-center text-black" style="background: rgb(105,255,104);
+        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+                  <a href="javascript:void(0)"><img src="/assets/img/upcoming_events/002.jpg" alt=""></a>
+                  <div class="padding-35px-all sm-padding-15px-all inner-match-height">
+                    <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Reserved
+                      Employment, Women Rights</span>
+                    <p class="text-justify">The Bihar government has ensured that there will be a 35 percent horizontal
+                      reservation for women for direct appointments at all levels and in all types of posts of all government
+                      services-cadres. Bihar is the first state to do so.</p><br />
+                    <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
+                        class="ti-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- end feature box item -->
+              <!-- start features box item -->
+              <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-no-margin-bottom wow fadeInUp"
+                data-wow-delay="0.4s">
+                <div class="text-center text-black" style="background: rgb(105,255,104);
+        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+                  <a href="javascript:void(0)"><img src="/assets/img/upcoming_events/003.jpg" alt=""></a>
+                  <div class="padding-35px-all sm-padding-15px-all inner-match-height">
+                    <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Opportunities
+                      Increased, Read Further</span>
+                    <p class="text-justify">The Government is committed to establish five new Medical Colleges, Nursing
+                      Colleges, ANM Schools, GNM Schools, Para-Medical Institutes, Polytechnics, Industrial Training Institutes,
+                      Engineering Universities etc., so that all kinds of opportunities are available within the state.</p>
+                    <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Detail<i
+                        class="ti-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- end feature box item -->
             </div>
           </div>
-        </div>
-      </div>
-      <!-- end information item -->
-      <!-- start information item -->
-      <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
-        <div class="feature-box-wrap sm-swap-block">
-          <div class="width-100 small-screen xs-height-300px display-table arrow-bottom">
-            <div
-              class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all text-black">
-              <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">Event 2
-              </h6>
-              <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum
-                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-              <span
-                class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
+        </section>
+
+
+        <!-- start Historical Events Start -->
+        <section class="wow fadeIn bg-light-gray" style="padding:30px 0;">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
+                <div class="position-relative overflow-hidden width-100">
+                  <span class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">Our
+                    Achievements</span>
+                </div>
+              </div>
+            </div>
+            <div class="row equalize xs-equalize-auto">
+        
+              <!-- start features box item -->
+              <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp">
+                <div class="text-center text-black" style="background: rgb(105,255,104);
+        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+                  <a href="javascript:void(0)"><img src="/assets/img/achievements/01.jpg" alt=""></a>
+                  <div class="padding-45px-all sm-padding-15px-all inner-match-height">
+                    <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Bicycle and
+                      Dress Plan</span>
+                    <p>It sounds small to hear a bicycle, but it gave girls in Bihar a new perspective to see the world and
+                      touch their targets.</p>
+                    <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
+                        class="ti-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- end feature box item -->
+              <!-- start features box item -->
+              <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp"
+                data-wow-delay="0.2s">
+                <div class="text-center text-black" style="background: rgb(105,255,104);
+        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+                  <a href="javascript:void(0)"><img src="/assets/img/achievements/02.jpg" alt=""></a>
+                  <div class="padding-45px-all sm-padding-15px-all inner-match-height">
+                    <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Public
+                      Grievances Redressal Act</span>
+                    <p>Shri Nitish Kumar has empowered 11 crore people of Bihar as Public Grievances Redressal Rights Act.</p>
+                    <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
+                        class="ti-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- end feature box item -->
+              <!-- start features box item -->
+              <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-no-margin-bottom wow fadeInUp"
+                data-wow-delay="0.4s">
+                <div class="text-center text-black" style="background: rgb(105,255,104);
+        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
+                  <a href="javascript:void(0)"><img src="/assets/img/achievements/03.jpg" alt=""></a>
+                  <div class="padding-45px-all sm-padding-15px-all inner-match-height">
+                    <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Agricultural
+                      Roadmap</span>
+                    <p>The agricultural roadmap has given a new shape and dimension to the rural economy of Bihar.</p>
+                    <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Detail<i
+                        class="ti-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- end feature box item -->
             </div>
           </div>
-          <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px"
-            style="background: url(/assets/img/homepage-3-parallax-img2.jpg)"></div>
-        </div>
-      </div>
-      <!-- end information item -->
-      <!-- start information item -->
-      <div class="col-md-4 no-padding image-hover-style-3 height-100 last-paragraph-no-margin bg-light-gray">
-        <div class="feature-box-wrap">
-          <div class="width-100 display-table position-relative cover-background small-screen xs-height-300px"
-            style="background: url(/assets/img/homepage-3-parallax-img3.jpg)"></div>
-          <div class="width-100 small-screen xs-height-300px display-table arrow-top">
-            <div
-              class="display-table-cell vertical-align-middle padding-eighteen-lr md-padding-twelve-lr text-center sm-padding-ten-lr xs-padding-seven-all text-black">
-              <h6 class="text-extra-dark-gray alt-font width-95 center-col sm-width-100 xs-margin-15px-bottom">Event 3
-              </h6>
-              <p class="no-letter-spacing padding-two-lr line-height-26 xs-line-height-20 xs-no-padding-lr">Lorem Ipsum
-                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-              <span
-                class="separator-line-horrizontal-medium-light2 bg-deep-pink display-inline-block margin-40px-top xs-margin-20px-top"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end information item -->
-    </div>
-  </div>
-</section>
-
-<!-- start Historical Events Start -->
-<section class="wow fadeIn bg-light-gray" style="padding:30px 0;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
-        <div class="position-relative overflow-hidden width-100">
-          <span
-            class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">Historical
-            Events</span>
-        </div>
-      </div>
-    </div>
-    <div class="row equalize xs-equalize-auto">
-
-      <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/latest-blog6.jpg" alt=""></a>
-          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Event 1</span>
-            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.
-            </p>
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- end feature box item -->
-      <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp"
-        data-wow-delay="0.2s">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/latest-blog5.jpg" alt=""></a>
-          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Event 2</span>
-            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.
-            </p>
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- end feature box item -->
-      <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-no-margin-bottom wow fadeInUp"
-        data-wow-delay="0.4s">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/latest-blog7.jpg" alt=""></a>
-          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Event 3</span>
-            <p>Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.
-            </p>
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Detail<i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- end feature box item -->
-    </div>
-  </div>
-</section>
-<!-- end Historical Events  section -->
+        </section>
+        <!-- end Historical Events  section -->
 
 <!-- start footer -->
 <footer class="footer-standard text-white" style="background:#217921;">
@@ -351,7 +347,7 @@ background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47
         <div
           class="col-md-4 col-sm-6 col-xs-12 widget border-right border-color-extra-light-gray sm-no-border-right sm-margin-30px-bottom xs-text-center">
           <!-- start logo -->
-          <a href="index.html" class="margin-20px-bottom display-inline-block"><img class="" src="img/logo.png"
+          <a href="index.html" class="margin-20px-bottom display-inline-block"><img class="" src="/assets/img/logo.png"
               data-at2x="img/logo.png" alt="JDU"></a>
           <!-- end logo -->
           <p class="text-small width-95 xs-width-100">Lorem Ipsum is simply dummy text of the printing and typesetting

@@ -13,16 +13,43 @@ export class WebsiteComponent implements OnInit, OnDestroy, AfterViewInit {
 
   $intervalRef: Subscription;
   liveRailyStatus = '';
+  isStreamLive = false;
 
   constructor(
     private _liveStream: LiveStreamService
   ) { }
 
   ngOnInit(): void {
-    // this.loadAssets();
     this.$intervalRef = this._liveStream.getLiveRailyStatus().subscribe(state => {
       this.liveRailyStatus = state;
+      // if (state === 'started' && !this.isStreamLive) {
+      //   this.fetchIsStreamLive();
+      // }
+
+      // if (state !== 'started') {
+      //   this.isStreamLive = false;
+      // }
     })
+
+    // this.$intervalRef = this._liveStream.isStreamLive().subscribe(event => {
+    //   console.log(event.status);
+    //   if (event.status === 200) {
+    //     this.isStreamLive = true;
+    //   }
+    // });
+
+  }
+
+  async fetchIsStreamLive() {
+    console.log('Fetching');
+    
+    fetch('https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/nrdmshkv/640/chunklist.m3u8').then(event => {
+      if(event.status == 200) {
+        this.isStreamLive = true;
+      } else {
+        this.isStreamLive = false;
+      }
+    });
   }
   
   ngOnDestroy() {

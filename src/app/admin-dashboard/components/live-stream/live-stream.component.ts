@@ -84,5 +84,6 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
     await this.setLiveStreamStatus();
 
     this.urlSafe = undefined;
+    this.redirectedToStreamPage = false;
   }
 }
