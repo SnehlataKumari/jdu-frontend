@@ -7,13 +7,26 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AuthService {
 
+  user;
+  token;
+
   constructor(
     private router: Router,
     private api: ApiService
-  ) { }
+  ) {
+
+    const accessToken = localStorage.getItem('access_token');
+    const user = localStorage.getItem('user');
+
+    if(user) {
+      this.user = JSON.parse(user);
+    }
+
+    this.token = accessToken;
+   }
 
   async login({username, password}) {
-    const url = `/auth/login-admin`;
+    const url = `/auth/login-with-username`;
     const response: any = await this.api.post(url, {
       username, password
     }).toPromise()
@@ -27,16 +40,41 @@ export class AuthService {
 
   afterLogin(response) {
     const {data: {access_token, user}} = response;
+    this.user = user;
+    this.token = access_token;
 
     localStorage.setItem('access_token', access_token);
     localStorage.setItem('user', JSON.stringify(user));
 
-    this.router.navigate(['dashboard']);
+    let navigateTo = ['private-room'];
+    if (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN') {
+      navigateTo = ['dashboard'];
+    }
+
+    this.router.navigate(navigateTo);
   }
 
   afterLogout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user');
+    this.user = null;
+    this.token = null;
     this.router.navigate(['login']);
   }
+
+  logout() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+
+    this.user = null;
+    this.token = null;
+
+    this.router.navigate(['']);
+  }
+
+  isLoggedIn() {
+    const accessToken = localStorage.getItem('access_token');
+    return !!accessToken;
+  }
 }
+

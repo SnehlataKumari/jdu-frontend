@@ -8,11 +8,6 @@
     {{errorMessage}}
   
     <p *ngIf="liveStreamStatus=='started'">
-      <!-- <a href="https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html" target="_blank">
-        Go to live stream player
-      </a>
-      <br />
-      OR -->
       Please share this link to users to view your live stream
       <b>https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html</b>
     </p>
@@ -26,7 +21,6 @@
       </ng-container>
 
       <ng-container *ngIf="liveStreamStatus == 'starting'">
-        <!-- <mat-spinner diameter="20" *ngIf="liveStreamStatus == 'starting'"></mat-spinner> -->
         Preparing Live Stream ...
       </ng-container>
     </button>
@@ -36,11 +30,14 @@
     </div>
 
     <p *ngIf="liveStreamStatus == 'starting'">
-      <!-- status: {{liveStreamStatus}} -->
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      <!-- <mat-spinner diameter="20" *ngIf="liveStreamStatus == 'starting'"></mat-spinner> -->
     </p>
   </div>
+
+  <!-- <app-live-streamer *ngIf="urlSafe" [connInfo]="liveStream.source_connection_information"></app-live-streamer>
+  <button (click)="onStopLiveStream()" mat-raised-button color="primary" *ngIf="liveStreamStatus =='started'">
+    Stop Stream
+  </button> -->
 
   <div class="stream-frame" *ngIf="urlSafe">
     <iframe width="100%" height="100%" allow="camera; microphone" frameBorder="0" [src]="urlSafe" *ngIf="urlSafe"
@@ -51,5 +48,6 @@
   </div>
 
 </div>
+
 
 

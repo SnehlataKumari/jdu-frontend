@@ -9,7 +9,7 @@ import { ResourceComponent } from './components/resource/resource.component';
 import { ResourceActionsComponent } from './components/resource-actions/resource-actions.component';
 import { CreateResourceComponent } from './components/create-resource/create-resource.component';
 import { CreateResourceFormComponent } from './components/create-resource-form/create-resource-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UpdateResourceFormComponent } from './components/update-resource-form/update-resource-form.component';
 import { UpdateResourceDialogComponent } from './components/update-resource-dialog/update-resource-dialog.component';
 import { UsersPageComponent } from './components/users-page/users-page.component';
@@ -26,6 +26,7 @@ import { CreateClassFormComponent } from './components/create-class-form/create-
 import { LiveStreamComponent } from './components/live-stream/live-stream.component';
 import { PrivateRoomComponent } from './components/private-room/private-room.component';
 import { PublicRoomComponent } from './components/public-room/public-room.component';
+import { LiveStreamerComponent } from './components/live-streamer/live-streamer.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +51,13 @@ import { PublicRoomComponent } from './components/public-room/public-room.compon
     CreateClassFormComponent,
     LiveStreamComponent,
     PrivateRoomComponent,
-    PublicRoomComponent
+    PublicRoomComponent,
+    LiveStreamerComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     AdminDashboardRoutingModule,
     MaterialImportModule
   ]

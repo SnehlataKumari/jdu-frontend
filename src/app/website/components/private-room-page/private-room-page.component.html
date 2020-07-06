@@ -1,4 +1,5 @@
 <!-- start video  section -->
-<app-live-stream-player *ngIf="liveRailyStatus === 'started'"></app-live-stream-player>
+<app-live-stream-player *ngIf="liveRailyStatus === 'started'" [streamUrl]="streamUrl"></app-live-stream-player>
+<app-banner *ngIf="liveRailyStatus !== 'started'" [bannerMessage]="bannerMessage"></app-banner>
 
 <!-- end video style  section -->

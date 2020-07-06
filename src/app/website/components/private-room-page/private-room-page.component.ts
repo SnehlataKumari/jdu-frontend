@@ -9,6 +9,8 @@ import { LiveStreamService } from 'src/app/admin-dashboard/services/live-stream.
 })
 export class PrivateRoomPageComponent implements OnInit, OnDestroy {
 
+  bannerMessage = 'Private room will start soon';
+
   $intervalRef: Subscription;
   liveRailyStatus = '';
   isStreamLive = false;

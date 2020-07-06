@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 declare var window: any;
 
 @Component({
@@ -8,6 +8,7 @@ declare var window: any;
 })
 export class BannerComponent implements OnInit, AfterViewInit {
 
+  @Input() bannerMessage = '';
   constructor() { }
 
   ngOnInit(): void {
@@ -15,7 +16,9 @@ export class BannerComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
-    this.loadJsSliderFile();
+    setTimeout(() => {
+      this.loadJsSliderFile();
+    }, 500);
   }
 
   loadJsSliderFile() {

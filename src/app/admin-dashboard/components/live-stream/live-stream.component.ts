@@ -74,7 +74,8 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
     console.log(connInfo);
     
     const hostedPageURL = this.liveStream.hosted_page_url;
-    const url = `https://www.wowza.com/webrtc/publish?applicationName=${connInfo.application_name}&hostedPageURL=${hostedPageURL}&sdpURL=${connInfo.sdp_url}&streamName=${connInfo.stream_name}&transcoderState=started`;
+    // http://localhost:3000/webrtc/dev-view-publish.html?sdpURL=wss%3A%2F%2F4465bd.entrypoint.cloud.wowza.com%2Fwebrtc-session.json&applicationName=app-84b5&streamName=N0NtNnZM&audioBitrate=64&audioCodec=opus&videoBitrate=3500&videoCodec=42e01f&videoFrameRate=30&frameSize=1280x720
+    const url = `http://localhost:3000/webrtc//dev-view-publish.html?applicationName=${connInfo.application_name}&hostedPageURL=${hostedPageURL}&sdpURL=${connInfo.sdp_url}&streamName=${connInfo.stream_name}&transcoderState=started`;
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 

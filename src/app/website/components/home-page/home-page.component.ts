@@ -11,6 +11,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   $intervalRef: Subscription;
   liveRailyStatus = '';
   isStreamLive = false;
+  bannerMessage = 'The Rally Starting Soon ';
+
 
   streamUrl = 'https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8'
 
