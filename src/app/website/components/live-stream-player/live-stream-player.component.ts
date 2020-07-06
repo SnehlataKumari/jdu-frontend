@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, ViewChild, ElementRef, Input } from '@angular/core';
 declare var THEOplayer: any;
 
 @Component({
@@ -10,9 +10,9 @@ declare var THEOplayer: any;
 export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
   
   @ViewChild('streaming', { static: false }) streamingcanvas: ElementRef; 
+  @Input() streamUrl = 'https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8';
   constructor() { }
   
-
   ngOnInit(): void {
   }
 
@@ -33,7 +33,7 @@ export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
     // Customized video player parameters
     player.source = {
       sources: [{
-        "src": "https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8",
+        "src": this.streamUrl,
         "type": "application/x-mpegurl"
       }]
     };
@@ -44,35 +44,7 @@ export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
 
     player.addEventListener('error', function (e) {
       console.log(e);
-      
-      
     })
-
-    // // player.autoplay = true;
-    // // player.preload = 'auto';
-
-    // (document.querySelector(".vjs-big-play-button") as HTMLButtonElement).click();
-    // setTimeout(() => {
-    //   (document.querySelector(".vjs-play-control") as HTMLButtonElement).click();
-    //   setTimeout(() => {
-    //     (document.querySelector(".vjs-play-control") as HTMLButtonElement).click();
-    //   }, 100);
-    // }, 100);
-
-    // console.log('Played to auto play video');
-
-    // setTimeout(() => {
-    //   (document.querySelector(".vjs-big-play-button") as HTMLButtonElement).click();
-    //   setTimeout(() => {
-    //     (document.querySelector(".vjs-play-control") as HTMLButtonElement).click();
-    //     setTimeout(() => {
-    //       (document.querySelector(".vjs-play-control") as HTMLButtonElement).click();
-    //     }, 100);
-    //   }, 100);
-    // }, 1000);
     window['player'] = player;
   }
-
-  
-
 }
