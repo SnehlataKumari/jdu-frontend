@@ -61,8 +61,8 @@ export class LiveStreamService {
     )
   }
 
-  isStreamLive() {
-    const url = `https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8`;
+  isStreamLive(url = `https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8`) {
+    // const url = `https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8`;
     const withAuthToken = this.getAuthHeaders();
 
     return interval(5 * 1000).pipe(

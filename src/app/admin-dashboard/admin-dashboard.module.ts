@@ -24,6 +24,8 @@ import { SubjectsPageComponent } from './components/subjects-page/subjects-page.
 import { CreateSubjectFormComponent } from './components/create-subject-form/create-subject-form.component';
 import { CreateClassFormComponent } from './components/create-class-form/create-class-form.component';
 import { LiveStreamComponent } from './components/live-stream/live-stream.component';
+import { PrivateRoomComponent } from './components/private-room/private-room.component';
+import { PublicRoomComponent } from './components/public-room/public-room.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { LiveStreamComponent } from './components/live-stream/live-stream.compon
     SubjectsPageComponent,
     CreateSubjectFormComponent,
     CreateClassFormComponent,
-    LiveStreamComponent
+    LiveStreamComponent,
+    PrivateRoomComponent,
+    PublicRoomComponent
   ],
   imports: [
     CommonModule,

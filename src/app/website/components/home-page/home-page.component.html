@@ -2,26 +2,8 @@
 
 
 <!-- start video  section -->
-<app-live-stream-player *ngIf="liveRailyStatus === 'started'"></app-live-stream-player>
-<section class="parallax wow fadeIn margin-100px-top" *ngIf="liveRailyStatus !== 'started'"
-  data-stellar-background-ratio="0.1" style="background-image:url('/assets/img/live_video_bg.jpg');">
-  <div class="opacity-extra-medium bg-black"></div>
-
-  <div class="container position-relative">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 text-center center-col">
-        <a target="_blank" [class.disabled]="liveRailyStatus !== 'started'"
-          [href]="liveRailyStatus == 'started' ? 'https://player.cloud.wowza.com/hosted/bdp9kfmj/player.html' : ''"
-          class="pop up-vimeo">
-          <img src="/assets/img/icon-play.png" class="width-30" alt="" />
-        </a>
-        <h5 class="alt-font text-white">
-          {{liveRailyStatus == 'started' ? 'Raily is live, Click button view Rally' : 'The Rally Starting Soon'}}
-        </h5>
-      </div>
-    </div>
-  </div>
-</section>
+<app-live-stream-player [streamUrl]="streamUrl" *ngIf="liveRailyStatus === 'started'"></app-live-stream-player>
+<app-banner *ngIf="liveRailyStatus !== 'started'"></app-banner>
 <!-- end video style  section -->
 
 <!-- start about agency -->

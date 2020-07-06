@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { LiveStreamService } from '../../services/live-stream.service';
 import { interval, Subscription } from 'rxjs';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
@@ -10,6 +10,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 })
 export class LiveStreamComponent implements OnInit, OnDestroy {
 
+  @Input() liveStreamId = 'kgjcfbhv';
   liveStreamStatus = '';
   errorMessage = '';
   liveStream;
@@ -26,7 +27,7 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     
     await this.setLiveStreamDetails();
-    this.$intervalRef = this._liveStream.getLiveRailyStatus().subscribe((state) => {
+    this.$intervalRef = this._liveStream.getLiveRailyStatus(this.liveStreamId).subscribe((state) => {
       this.liveStreamStatus = state;
       if(state === 'started') {
         if (!this.redirectedToStreamPage) {
@@ -44,7 +45,7 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
 
   async onStartLiveStream() {
     try {
-      const response: any = await this._liveStream.startLiveStream().toPromise();
+      const response: any = await this._liveStream.startLiveStream(this.liveStreamId).toPromise();
       const { live_stream: { state } } = response;
       this.liveStreamStatus = state;  
     } catch (error) {
@@ -53,17 +54,17 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
       if (status === 422) {
         this.errorMessage = 'Stream is in start mode';
       }
-    } 
+    }
   }
 
   async setLiveStreamDetails() {
-    const liveStream: any = await this._liveStream.getLiveStream().toPromise();
+    const liveStream: any = await this._liveStream.getLiveStream(this.liveStreamId).toPromise();
     this.liveStream = liveStream.live_stream;
     console.log(liveStream); 
   }
   
   async setLiveStreamStatus() {
-    const liveStreamStatus: any = await this._liveStream.getLiveStreamStatus().toPromise();
+    const liveStreamStatus: any = await this._liveStream.getLiveStreamStatus(this.liveStreamId).toPromise();
     const {transcoder: {state}} = liveStreamStatus;
     this.liveStreamStatus = state;
   }
@@ -75,12 +76,10 @@ export class LiveStreamComponent implements OnInit, OnDestroy {
     const hostedPageURL = this.liveStream.hosted_page_url;
     const url = `https://www.wowza.com/webrtc/publish?applicationName=${connInfo.application_name}&hostedPageURL=${hostedPageURL}&sdpURL=${connInfo.sdp_url}&streamName=${connInfo.stream_name}&transcoderState=started`;
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-
-    // window.open(url, "_blank");
   }
 
   async onStopLiveStream() {
-    await this._liveStream.stopLiveStream().toPromise();
+    await this._liveStream.stopLiveStream(this.liveStreamId).toPromise();
     await this.setLiveStreamStatus();
 
     this.urlSafe = undefined;

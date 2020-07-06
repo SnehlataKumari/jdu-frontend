@@ -20,8 +20,13 @@ export class SideMenuComponent implements OnInit {
       icon: 'supervised_user_circle'
     },
     {
-      link: '/dashboard/live-stream',
+      link: '/dashboard/public-room',
       title: 'Live Stream',
+      icon: 'supervised_user_circle'
+    },
+    {
+      link: '/dashboard/private-room',
+      title: 'Private Room',
       icon: 'supervised_user_circle'
     },
   ];
