@@ -47,8 +47,10 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
 
     let navigateTo = ['private-room'];
-    if (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN') {
+    if (user.role === 'ADMIN') {
       navigateTo = ['dashboard'];
+    } else if (user.role === 'SUPER_ADMIN') {
+      navigateTo = ['admin']
     }
 
     this.router.navigate(navigateTo);
@@ -75,6 +77,10 @@ export class AuthService {
   isLoggedIn() {
     const accessToken = localStorage.getItem('access_token');
     return !!accessToken;
+  }
+
+  getLogginedUserRole() {
+    this.user.role;
   }
 }
 

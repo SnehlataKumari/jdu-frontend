@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CreateResourceComponent } from '../create-resource/create-resource.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

@@ -10,7 +10,7 @@ declare var THEOplayer: any;
 export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
   
   @ViewChild('streaming', { static: false }) streamingcanvas: ElementRef; 
-  @Input() streamUrl = 'https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8';
+  @Input() streamUrl = '';
   constructor() { }
   
   ngOnInit(): void {

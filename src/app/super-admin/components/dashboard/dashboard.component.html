@@ -2,7 +2,9 @@
   <mat-toolbar-row>
     <a routerLink="/dashboard">Admin Panel</a>
     <span class="example-spacer"></span>
-    <a class="btn logout-button" (click)="onLogout()">Logout</a>
+    <a
+      class="btn logout-button"
+    >Logout</a>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -12,7 +14,6 @@
   </mat-drawer>
 
   <div class="dashboard-container">
-
     <router-outlet></router-outlet>
   </div>
 

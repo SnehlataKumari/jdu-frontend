@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { ResourceService } from '../../services/resource.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { filter } from 'lodash';
 import { CreateUserFormComponent } from '../create-user-form/create-user-form.component';
+import { ResourceService } from '../../services/resource.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-users-page',
@@ -18,6 +20,7 @@ export class UsersPageComponent implements OnInit {
 
   constructor(
     private resourceService: ResourceService,
+    private authService: AuthService,
     public dialog: MatDialog
   ) { }
 
@@ -27,19 +30,27 @@ export class UsersPageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   async ngOnInit() {
-    const classesResponse = await this.resourceService.fetchAll('/classes').toPromise();
-    this.classList = classesResponse['data'];
-    this.classMap = new Map(classesResponse['data'].map((clas) => [clas._id, clas.name]));
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['name', 'mobileNumber', 'role', 'createdAt', 'updatedAt', 'action'];
-    this.dataSource = new MatTableDataSource(list['data']);
-    this.dataSource.paginator = this.paginator;
+    this.displayedColumns = ['name', 'userName', 'role', 'createdAt', 'updatedAt', 'action'];
+    this.resetList(list['data']);
   }
 
   async reFetchResourceList() {
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
-    this.dataSource = new MatTableDataSource(list['data']);
+    this.resetList(list['data']);
+  }
+
+  resetList(users) {
+    const filteredUsers = this.filterBasedOnRole(users);
+    this.dataSource = new MatTableDataSource(filteredUsers);
+    this.dataSource.paginator = this.paginator;
+  }
+
+  filterBasedOnRole(users) {
+    const logginedUserRole = this.authService.getLogginedUserRole();
+    // return filter(users, { 'role': 'ADMIN' });
+    return filter(users, (user) => !(user.role == 'ADMIN' || user.role == 'SUPER_ADMIN'));
   }
 
   getClassName(classId) {

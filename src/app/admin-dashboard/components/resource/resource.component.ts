@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ResourceService } from '../../services/resource.service';
+import { ResourceService } from '../../../shared/services/resource.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CreateResourceComponent } from '../create-resource/create-resource.component';
 

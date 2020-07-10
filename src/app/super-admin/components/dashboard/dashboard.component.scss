@@ -1,0 +1,41 @@
+.example-container {
+  width: 100%;
+  height: calc(100% - 64px);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-container {
+  height: calc(100% - 64px);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  width: 223px;
+}
+
+.dashboard-container {
+  padding: 16px;  
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+} 
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logout-button {
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  color: #2B78FE;
+}

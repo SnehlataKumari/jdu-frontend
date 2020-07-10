@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ResourceService } from '../../services/resource.service';
+import { ResourceService } from '../../../shared/services/resource.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateResourceDialogComponent } from '../update-resource-dialog/update-resource-dialog.component';
 

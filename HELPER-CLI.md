@@ -14,3 +14,4 @@ admin-dashboard/components
 admin-dashboard/services
 
 website/components
+super-admin/components

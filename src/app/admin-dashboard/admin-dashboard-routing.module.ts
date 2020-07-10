@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminDashboardComponent } from './admin-dashboard.component';
-import { UsersPageComponent } from './components/users-page/users-page.component';
 import { ClassesPageComponent } from './components/classes-page/classes-page.component';
 import { VideosPageComponent } from './components/videos-page/videos-page.component';
 import { ChaptersPageComponent } from './components/chapters-page/chapters-page.component';
 import { SubjectsPageComponent } from './components/subjects-page/subjects-page.component';
-import { LiveStreamComponent } from './components/live-stream/live-stream.component';
 import { PublicRoomComponent } from './components/public-room/public-room.component';
 import { PrivateRoomComponent } from './components/private-room/private-room.component';
+import { UsersPageComponent } from '../shared/components/users-page/users-page.component';
 
 const routes: Routes = [
   { 

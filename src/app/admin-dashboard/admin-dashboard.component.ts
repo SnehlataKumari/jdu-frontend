@@ -7,6 +7,26 @@ import { AuthService } from '../auth/services/auth.service';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
+
+  menuList =[
+    {
+      link: '/dashboard/users',
+      title: 'Manage Users',
+      icon: 'supervised_user_circle'
+    },
+    {
+      link: '/dashboard/public-room',
+      title: 'Live Stream',
+      icon: 'supervised_user_circle'
+    },
+    {
+      link: '/dashboard/private-room',
+      title: 'Private Room',
+      icon: 'supervised_user_circle'
+    },
+  ];
+
+
   showFiller = false;
   constructor(
     private authService: AuthService
