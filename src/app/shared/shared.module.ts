@@ -7,6 +7,8 @@ import { UsersPageComponent } from './components/users-page/users-page.component
 import { CreateUserFormComponent } from './components/create-user-form/create-user-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RolePipe } from './pipes/role.pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const routes: Routes = [];
 
@@ -21,12 +23,16 @@ const routes: Routes = [];
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes),
     MaterialImportModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    RouterModule.forChild(routes),
   ],
   exports: [
     CommonModule,
     MaterialImportModule,
+    MatSelectModule,
+    MatFormFieldModule,
     SideMenuComponent,
     UsersPageComponent,
     RolePipe

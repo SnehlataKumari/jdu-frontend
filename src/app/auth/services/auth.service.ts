@@ -79,8 +79,8 @@ export class AuthService {
     return !!accessToken;
   }
 
-  getLogginedUserRole() {
-    this.user.role;
+  getLogginedUserRole(): string {
+    return this.user.role;
   }
 }
 

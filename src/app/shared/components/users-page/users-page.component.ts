@@ -49,8 +49,11 @@ export class UsersPageComponent implements OnInit {
 
   filterBasedOnRole(users) {
     const logginedUserRole = this.authService.getLogginedUserRole();
-    // return filter(users, { 'role': 'ADMIN' });
-    return filter(users, (user) => !(user.role == 'ADMIN' || user.role == 'SUPER_ADMIN'));
+    const filterOption = logginedUserRole === 'SUPER_ADMIN'
+      ? { 'role': 'ADMIN' }
+      : (user) => !(user.role == 'ADMIN' || user.role == 'SUPER_ADMIN');
+    // return filter(users, );
+    return filter(users, filterOption);
   }
 
   getClassName(classId) {

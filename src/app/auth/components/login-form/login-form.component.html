@@ -2,6 +2,18 @@
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
+      
+      <p *ngIf="!isSuperAdminRoute">
+        <mat-form-field>
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option [value]="roleKey" *ngFor="let roleKey of keys ">
+              {{displayRoles[roleKey].label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      
       <p>
         <mat-form-field>
           <input type="text" matInput placeholder="Username" formControlName="username">

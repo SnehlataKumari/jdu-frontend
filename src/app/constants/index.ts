@@ -1,7 +1,7 @@
 export const getKeys = (constant) => Reflect.ownKeys(constant).map(constantKey => constant[constantKey].key);
 
 export const USER_ROLES = {
-  USER: { key: 'USER', label: 'User' },
+  // USER: { key: 'USER', label: 'User' },
   SUPER_ADMIN: { key: 'SUPER_ADMIN', label: 'Super Admin' },
   ADMIN: { key: 'ADMIN', label: 'Admin' },
   STATE_LEVEL_USER: { key: 'STATE_LEVEL_USER', label: 'State Level User' },

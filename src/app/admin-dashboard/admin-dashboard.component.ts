@@ -36,7 +36,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onLogout() {
-    this.authService.afterLogout();
+    this.authService.logout();
   }
   
 

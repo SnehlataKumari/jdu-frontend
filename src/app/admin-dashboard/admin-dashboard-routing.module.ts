@@ -9,6 +9,7 @@ import { SubjectsPageComponent } from './components/subjects-page/subjects-page.
 import { PublicRoomComponent } from './components/public-room/public-room.component';
 import { PrivateRoomComponent } from './components/private-room/private-room.component';
 import { UsersPageComponent } from '../shared/components/users-page/users-page.component';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { 
@@ -26,7 +27,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    SharedModule,
+    RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AdminDashboardRoutingModule { }

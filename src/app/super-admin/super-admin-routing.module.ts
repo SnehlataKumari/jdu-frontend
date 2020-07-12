@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SuperAdminComponent } from './super-admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersPageComponent } from '../shared/components/users-page/users-page.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 const routes: Routes = [
@@ -29,7 +30,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    SharedModule,
+    RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class SuperAdminRoutingModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,9 +15,15 @@ export class DashboardComponent implements OnInit {
       icon: 'supervised_user_circle'
     }
   ]
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 }
