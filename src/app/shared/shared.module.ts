@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BootstrapImportModule } from '../bootstrap-import.module';
 import { ConstantComponent } from './components/constant/constant.component';
+import { UploadComponent } from './components/upload/upload.component';
 
 const routes: Routes = [];
 
@@ -21,6 +22,7 @@ const routes: Routes = [];
     UsersPageComponent,
     RolePipe,
     ConstantComponent,
+    UploadComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ const routes: Routes = [];
     SideMenuComponent,
     UsersPageComponent,
     RolePipe,
+    UploadComponent,
     ConstantComponent,
   ]
 })

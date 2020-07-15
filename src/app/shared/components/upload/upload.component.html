@@ -1,0 +1,12 @@
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFile" (change)="onFileChange($event)">
+  <label class="custom-file-label" for="customFile">Choose file</label>
+</div>
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" [style.width]="(documentsService.progress | async) + '%'" [attr.aria-valuenow]="documentsService.progress | async" aria-valuemin="0" aria-valuemax="100">
+    {{documentsService.progress | async}}%
+  </div>
+</div>
+
+<button class="btn btn-primary" type="button" (click)="upload()">Click to upload</button>
