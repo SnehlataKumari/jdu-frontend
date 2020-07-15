@@ -52,6 +52,10 @@ export class DocumentsService {
       )
   }
 
+  getUsersDocuments() {
+    return this.apiService.get('/documents/role-wise');
+  }
+
   create(obj) {
     return this.apiService.post('/documents', obj);
   }

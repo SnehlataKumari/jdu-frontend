@@ -1,13 +1,13 @@
-<p>
-  Click to <a type="button" routerLink="/dashboard/upload-document">Upload a new document</a>
-</p>
+
+<h1>
+  Here is the list of documents available for you.
+</h1>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Filename</th>
-      <th scope="col">For</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -18,11 +18,9 @@
         {{ document.originalname }}
       </td>
       <td>
-        <app-constant *ngFor="let role of document.roles" [constant]="ROLES" [code]="role"></app-constant></td>
-      <td>
         <a [href]="'http://'+document.fullPath" [attr.download]="document.originalname">download</a>
-        <button type="button" class="btn btn-primary ml-2" (click)="onDelete(document)">Delete</button>
       </td>
+
     </tr>
   </tbody>
 </table>

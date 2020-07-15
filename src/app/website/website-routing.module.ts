@@ -8,6 +8,7 @@ import { SuggestionPageComponent } from './components/suggestion-page/suggestion
 import { YatrayenPageComponent } from './components/yatrayen-page/yatrayen-page.component';
 import { ImpactsPageComponent } from './components/impacts-page/impacts-page.component';
 import { BrandBiharPageComponent } from './components/brand-bihar-page/brand-bihar-page.component';
+import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,12 @@ const routes: Routes = [
         path: 'brand-bihar',
         pathMatch: 'full',
         component: BrandBiharPageComponent
+      },
+      {
+        path: 'documents',
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+        component: DocumentsPageComponent
       },
     ]
   }

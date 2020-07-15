@@ -15,10 +15,11 @@ import { ImpactsPageComponent } from './components/impacts-page/impacts-page.com
 import { BrandBiharPageComponent } from './components/brand-bihar-page/brand-bihar-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 
 
 @NgModule({
-  declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent],
+  declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent, DocumentsPageComponent],
   imports: [
     CommonModule,
     FormsModule,
