@@ -13,9 +13,13 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLogin(loginFormValues) {
-    console.log(loginFormValues);
-    this.authService.login(loginFormValues);
+  async onLogin(loginFormValues) {
+    // console.log(loginFormValues);
+    try {
+      await this.authService.login(loginFormValues);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
 }

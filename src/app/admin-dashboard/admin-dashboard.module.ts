@@ -24,6 +24,8 @@ import { PrivateRoomComponent } from './components/private-room/private-room.com
 import { PublicRoomComponent } from './components/public-room/public-room.component';
 import { LiveStreamerComponent } from './components/live-streamer/live-streamer.component';
 import { SharedModule } from '../shared/shared.module';
+import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
+import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { SharedModule } from '../shared/shared.module';
     LiveStreamComponent,
     PrivateRoomComponent,
     PublicRoomComponent,
-    LiveStreamerComponent
+    LiveStreamerComponent,
+    DocumentsPageComponent,
+    UploadDocumentComponent
   ],
   imports: [
     CommonModule,

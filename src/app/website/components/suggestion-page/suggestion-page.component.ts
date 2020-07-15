@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { groupBy } from 'lodash';
+import { SuggestionsService } from 'src/app/services/suggestions.service';
 declare var window: any;
 
 
@@ -42,9 +44,31 @@ export class SuggestionPageComponent implements OnInit {
   ];
 
   loadedScript = [];
-  constructor() { }
+  suggestions;
+  categoryWiseQuestions;
+  constructor(
+    private suggestionService: SuggestionsService  
+  ) { }
 
   ngOnInit(): void {
+    this.loadAllSuggestions();
+  }
+
+  onSubmit(sugForm) {
+    console.log(sugForm);
+    const suggestionValues = sugForm.value;
+    this.suggestionService.submitResponse(suggestionValues).subscribe((response) => {
+      console.log(response);
+    });
+
+  }
+ 
+  loadAllSuggestions() {
+    this.suggestionService.getAllQuestions().subscribe(suggestions => {
+      this.suggestions = suggestions['data'];
+      this.categoryWiseQuestions = groupBy(suggestions['data'], 'category');
+      console.log(this.categoryWiseQuestions);
+    });
   }
 
   ngAfterViewInit() {

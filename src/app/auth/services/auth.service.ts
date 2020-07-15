@@ -25,7 +25,7 @@ export class AuthService {
     this.token = accessToken;
    }
 
-  async login({username, password}) {
+  async login({username, password, role}) {
     const url = `/auth/login-with-username`;
     const response: any = await this.api.post(url, {
       username, password
@@ -35,13 +35,16 @@ export class AuthService {
       throw error;
     });
 
-    this.afterLogin(response);
+    this.afterLogin(response, role);
   }
 
-  afterLogin(response) {
+  afterLogin(response, role) {
     const {data: {access_token, user}} = response;
     this.user = user;
     this.token = access_token;
+    if(role !== this.user.role) {
+      throw new Error('Invalid user type!');
+    }
 
     localStorage.setItem('access_token', access_token);
     localStorage.setItem('user', JSON.stringify(user));

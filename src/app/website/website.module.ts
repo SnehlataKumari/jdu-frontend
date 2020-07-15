@@ -13,13 +13,17 @@ import { SuggestionPageComponent } from './components/suggestion-page/suggestion
 import { YatrayenPageComponent } from './components/yatrayen-page/yatrayen-page.component';
 import { ImpactsPageComponent } from './components/impacts-page/impacts-page.component';
 import { BrandBiharPageComponent } from './components/brand-bihar-page/brand-bihar-page.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent],
   imports: [
     CommonModule,
-    WebsiteRoutingModule
+    FormsModule,
+    WebsiteRoutingModule,
+    SharedModule
   ]
 })
 export class WebsiteModule { }

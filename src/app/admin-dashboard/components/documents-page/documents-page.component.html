@@ -1,0 +1,28 @@
+<p>
+  Upload a new document <a type="button" class="btn btn-primary ml-2" routerLink="/dashboard/upload-document">Upload a new document</a>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Filename</th>
+      <th scope="col">For</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let document of documents; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ document.originalname }}
+      </td>
+      <td>
+        <app-constant *ngFor="let role of document.roles" [constant]="ROLES" [code]="role"></app-constant></td>
+      <td>
+        <a [href]="'http://'+document.fullPath" [download]="document.originalname">download</a>
+        <button type="button" class="btn btn-primary ml-2" (click)="onDelete(document)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

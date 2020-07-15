@@ -22,6 +22,10 @@ const routes: Routes = [
           {
             path: 'users',
             component: UsersPageComponent
+          },
+          {
+            path: 'suggestions',
+            component: UsersPageComponent
           }
         ]
       }

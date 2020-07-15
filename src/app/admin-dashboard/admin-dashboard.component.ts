@@ -24,6 +24,11 @@ export class AdminDashboardComponent implements OnInit {
       title: 'Private Room',
       icon: 'supervised_user_circle'
     },
+    {
+      link: '/dashboard/documents',
+      title: 'Upload Documents',
+      icon: 'supervised_user_circle'
+    },
   ];
 
 

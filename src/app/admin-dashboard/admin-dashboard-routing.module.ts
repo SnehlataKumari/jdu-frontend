@@ -10,6 +10,8 @@ import { PublicRoomComponent } from './components/public-room/public-room.compon
 import { PrivateRoomComponent } from './components/private-room/private-room.component';
 import { UsersPageComponent } from '../shared/components/users-page/users-page.component';
 import { SharedModule } from '../shared/shared.module';
+import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
+import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
 
 const routes: Routes = [
   { 
@@ -23,6 +25,8 @@ const routes: Routes = [
       { path: 'videos', component: VideosPageComponent },
       { path: 'public-room', component: PublicRoomComponent },
       { path: 'private-room', component: PrivateRoomComponent },
+      { path: 'documents', component: DocumentsPageComponent },
+      { path: 'upload-document', component: UploadDocumentComponent },
   ]},
 ];
 

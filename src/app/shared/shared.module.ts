@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RolePipe } from './pipes/role.pipe';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { BootstrapImportModule } from '../bootstrap-import.module';
+import { ConstantComponent } from './components/constant/constant.component';
 
 const routes: Routes = [];
 
@@ -18,12 +20,14 @@ const routes: Routes = [];
     CreateUserFormComponent,
     UsersPageComponent,
     RolePipe,
+    ConstantComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialImportModule,
+    BootstrapImportModule,
     MatSelectModule,
     MatFormFieldModule,
     RouterModule.forChild(routes),
@@ -31,11 +35,15 @@ const routes: Routes = [];
   exports: [
     CommonModule,
     MaterialImportModule,
+    BootstrapImportModule,
     MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     SideMenuComponent,
     UsersPageComponent,
-    RolePipe
+    RolePipe,
+    ConstantComponent,
   ]
 })
 export class SharedModule { }
