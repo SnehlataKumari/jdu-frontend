@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BootstrapImportModule } from '../bootstrap-import.module';
 import { ConstantComponent } from './components/constant/constant.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { ChartsModule } from 'ng2-charts';
 
 const routes: Routes = [];
 
@@ -32,6 +33,7 @@ const routes: Routes = [];
     BootstrapImportModule,
     MatSelectModule,
     MatFormFieldModule,
+    ChartsModule,
     RouterModule.forChild(routes),
   ],
   exports: [
@@ -47,6 +49,7 @@ const routes: Routes = [];
     RolePipe,
     UploadComponent,
     ConstantComponent,
+    ChartsModule,
   ]
 })
 export class SharedModule { }

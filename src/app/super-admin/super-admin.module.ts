@@ -6,10 +6,11 @@ import { SuperAdminComponent } from './super-admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { SuggestionQuestionsComponent } from './components/suggestion-questions/suggestion-questions.component';
+import { AnswersComponent } from './components/answers/answers.component';
 
 
 @NgModule({
-  declarations: [SuperAdminComponent, DashboardComponent, SuggestionQuestionsComponent],
+  declarations: [SuperAdminComponent, DashboardComponent, SuggestionQuestionsComponent, AnswersComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -4,6 +4,8 @@ import { SuperAdminComponent } from './super-admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersPageComponent } from '../shared/components/users-page/users-page.component';
 import { SharedModule } from '../shared/shared.module';
+import { SuggestionQuestionsComponent } from './components/suggestion-questions/suggestion-questions.component';
+import { AnswersComponent } from './components/answers/answers.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,11 @@ const routes: Routes = [
           },
           {
             path: 'suggestions',
-            component: UsersPageComponent
+            component: SuggestionQuestionsComponent
+          },
+          {
+            path: 'questions/:questionId/answers',
+            component: AnswersComponent
           }
         ]
       }

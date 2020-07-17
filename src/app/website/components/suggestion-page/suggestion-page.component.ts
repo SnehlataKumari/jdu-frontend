@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { groupBy } from 'lodash';
 import { SuggestionsService } from 'src/app/services/suggestions.service';
+import Swal from 'sweetalert2';
 declare var window: any;
 
 
@@ -60,7 +61,7 @@ export class SuggestionPageComponent implements OnInit {
     this.suggestionService.submitResponse(suggestionValues).subscribe((response) => {
       console.log(response);
       sugForm.reset();
-      alert('Your suggestion submiited successfully!');
+      Swal.fire('', 'Your suggestion submiited successfully!', 'success');
     });
 
   }

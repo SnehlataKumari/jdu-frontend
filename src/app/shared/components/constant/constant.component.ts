@@ -9,6 +9,7 @@ export class ConstantComponent implements OnInit {
 
   @Input() constant;
   @Input() code;
+  @Input() isBadge = true;
   label;
   constructor() { }
 

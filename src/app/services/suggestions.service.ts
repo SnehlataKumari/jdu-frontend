@@ -21,4 +21,16 @@ export class SuggestionsService {
   getAllQuestionsWithAnswers() {
     return this.apiService.get('/questions/with-answers');
   }
+
+  createQuestion(values) {
+    return this.apiService.post('/questions', values);
+  }
+
+  deleteQuestion(question) {
+    return this.apiService.delete(`/questions/${question._id}`);
+  }
+
+  getQuestionWithAnswer(questionId) {
+    return this.apiService.get(`/questions/${questionId}/answers`);
+  }
 }

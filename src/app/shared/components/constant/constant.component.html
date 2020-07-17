@@ -1,3 +1,7 @@
-<span class="badge badge-secondary">
+<span *ngIf="isBadge" class="badge badge-secondary">
   {{label}}
 </span>
+
+<ng-container *ngIf="!isBadge">
+  {{label}}
+</ng-container>

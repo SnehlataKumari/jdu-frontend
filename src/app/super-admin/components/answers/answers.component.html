@@ -1,0 +1,52 @@
+
+<ng-container *ngIf="loading">Loading...</ng-container>
+<ng-container *ngIf="!loading">
+
+  <div class="row">
+    <div class="col-md-6">
+      {{question.title}}
+      <ol>
+        <li *ngFor="let option of question.options; let i=index;">
+          {{option}}
+        </li>
+      </ol>
+    </div>
+    <div class="col-md-6">
+      <div style="display: block; height: 200px; width: 500px;">
+        <canvas baseChart [data]="barChartData" [labels]="labels" [chartType]="barChartType"
+          [options]="barChartOptions"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 100px;">
+    <div class="col-12">
+      <div style="display: block;">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Answer</th>
+              <th scope="col">Name</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">District</th>
+              <th scope="col">Vidhan Sabha</th>
+              <th scope="col">Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let answer of answers; let i = index;">
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{ answer.answer }}</td>
+              <td>{{ answer.name }}</td>
+              <td>{{ answer.mobileNumber }}</td>
+              <td>{{ answer.destrict }}</td>
+              <td>{{ answer.vidhanSabha }}</td>
+              <td>{{ answer.comment }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
