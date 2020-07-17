@@ -28,10 +28,13 @@ export class LoginFormComponent implements OnInit {
     this.keys = Reflect.ownKeys(this.displayRoles);
 
     this.form = this.fb.group({
-      role: [this.isSuperAdminRoute ? 'ADMIN' : '', Validators.required],
+      role: [this.isSuperAdminRoute ? 'SUPER_ADMIN' : '', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    console.log(this.form.value);
+    
   }
 
   submit() {

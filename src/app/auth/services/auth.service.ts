@@ -42,6 +42,8 @@ export class AuthService {
     const {data: {access_token, user}} = response;
     this.user = user;
     this.token = access_token;
+    console.log(role, this.user.role);
+    
     if(role !== this.user.role) {
       throw new Error('Invalid user type!');
     }
