@@ -59,6 +59,8 @@ export class SuggestionPageComponent implements OnInit {
     const suggestionValues = sugForm.value;
     this.suggestionService.submitResponse(suggestionValues).subscribe((response) => {
       console.log(response);
+      sugForm.reset();
+      alert('Your suggestion submiited successfully!');
     });
 
   }
