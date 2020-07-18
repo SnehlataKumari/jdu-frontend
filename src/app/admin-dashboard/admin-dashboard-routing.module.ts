@@ -12,12 +12,14 @@ import { UsersPageComponent } from '../shared/components/users-page/users-page.c
 import { SharedModule } from '../shared/shared.module';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { 
     path: '',
     component: AdminDashboardComponent,
     children: [
+      { path: '', pathMatch: 'full', component: DashboardComponent },
       { path: 'subject', component: SubjectsPageComponent },
       { path: 'classes', component: ClassesPageComponent },
       { path: 'chapter', component: ChaptersPageComponent },

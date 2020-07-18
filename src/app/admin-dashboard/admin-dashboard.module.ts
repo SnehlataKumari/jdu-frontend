@@ -26,6 +26,7 @@ import { LiveStreamerComponent } from './components/live-streamer/live-streamer.
 import { SharedModule } from '../shared/shared.module';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { UploadDocumentComponent } from './components/upload-document/upload-doc
     PublicRoomComponent,
     LiveStreamerComponent,
     DocumentsPageComponent,
-    UploadDocumentComponent
+    UploadDocumentComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

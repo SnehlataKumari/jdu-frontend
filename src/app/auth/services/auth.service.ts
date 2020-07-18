@@ -87,5 +87,9 @@ export class AuthService {
   getLogginedUserRole(): string {
     return this.user.role;
   }
+
+  getAllUsers() {
+    return this.api.get('/users');
+  }
 }
 
