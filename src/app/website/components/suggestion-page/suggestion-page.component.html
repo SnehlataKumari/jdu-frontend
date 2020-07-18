@@ -365,10 +365,16 @@
                             <textarea name="comment" ngModel id="comment" placeholder="Comment" rows="5"
                                 class="medium-textarea width-100"></textarea>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div></div>
+                        </div>
+                        <div class="col-md-4">
                             <ngx-recaptcha2 #captchaElem required siteKey="6Les47IZAAAAAOKYQRJie45Y4KI_vobyaflG5sWV" (success)="handleSuccess($event)"
                                 [size]="size" [hl]="lang" [theme]="theme" [type]="type" ngModel name="reCaptcha">
                             </ngx-recaptcha2>
+                        </div>
+                        <div class="col-md-4">
+                            <div></div>
                         </div>
 
                         <div class="col-md-12 text-center">

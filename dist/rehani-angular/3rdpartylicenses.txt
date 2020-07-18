@@ -623,6 +623,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 ng2-charts
 ISC
 
+ngx-captcha
+MIT
+
 punycode
 MIT
 Copyright Mathias Bynens <https://mathiasbynens.be/>

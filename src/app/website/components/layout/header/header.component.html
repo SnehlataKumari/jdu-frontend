@@ -26,14 +26,6 @@
           <div
             class="separator-line-verticle-extra-small bg-black display-inline-block margin-two-lr hidden-xs position-relative vertical-align-middle">
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 hidden-xs xs-no-padding-lr">
-            <div class="icon-social-very-small xs-width-100 xs-text-center display-inline-block">
-              <a href="javascript:void(0)" routerLink="/documents" class="downloadDocuments">Download documents</a>
-            </div>
-          </div>
-          <div
-            class="separator-line-verticle-extra-small bg-black display-inline-block margin-two-lr hidden-xs position-relative vertical-align-middle">
-          </div>
           <div
             class="btn-group dropdown-style-1 xs-width-100 xs-text-center xs-margin-three-bottom display-inline-block">
             <select name="cars" id="cars"
@@ -68,12 +60,7 @@
             <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn"
               data-out="fadeOut">
               <!-- start menu item -->
-              <li> <a routerLink="/">Home</a></li>
-              <li> <a routerLink="/suggestions">Suggestion</a></li>
-              <li> <a routerLink="/yatrayen">Yatrayen</a></li>
-              <li> <a routerLink="/impacts">Impacts</a></li>
-              <li> <a routerLink="/private-room">Private Room</a></li>
-              <li> <a routerLink="/brand-bihar">Brand Bihar TV</a></li>
+              <li *ngFor="let route of navigationMenus"> <a [routerLink]="route.routePath">{{route.title}}</a></li>
               <li *ngIf="!authService.isLoggedIn()"> <a routerLink="auth">Login</a></li>
               <li *ngIf="authService.isLoggedIn()"> <a href="javascript:void(0)" (click)="authService.logout()">Logout</a></li>
             </ul>
