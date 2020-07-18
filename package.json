@@ -28,6 +28,7 @@
     "chart.js": "^2.9.3",
     "express": "^4.17.1",
     "ng2-charts": "^2.3.2",
+    "ngx-captcha": "^8.0.1",
     "rxjs": "~6.5.4",
     "sweetalert2": "^9.17.0",
     "tslib": "^1.10.0",

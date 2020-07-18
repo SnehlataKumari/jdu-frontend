@@ -346,13 +346,18 @@
                                 class="medium-input width-100">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" ngModel name="destrict" id="email" placeholder="District"
-                                class="medium-input width-100">
+                                <input class="medium-input width-100" ngModel placeholder="District" list="districts" name="destrict" id="district">
+                                <datalist id="districts">
+                                    <option [value]="district" *ngFor="let district of districts"> {{district}}</option>
+                                </datalist>
                         </div>
 
                         <div class="col-md-6">
-                            <input type="text" ngModel name="vidhanSabha" id="email" placeholder="Vidhan Sabha Constituency"
+                            <input type="text" list="vidhanSabha" ngModel name="vidhanSabha" id="email" placeholder="Vidhan Sabha Constituency"
                                 class="medium-input width-100">
+                            <datalist id="vidhanSabha">
+                                <option [value]="vidhanSabha" *ngFor="let vidhanSabha of vidhanSabhas"> {{district}}</option>
+                            </datalist>
                         </div>
 
 
@@ -360,9 +365,15 @@
                             <textarea name="comment" ngModel id="comment" placeholder="Comment" rows="5"
                                 class="medium-textarea width-100"></textarea>
                         </div>
+                        <div class="col-md-12">
+                            <ngx-recaptcha2 #captchaElem required siteKey="6Les47IZAAAAAOKYQRJie45Y4KI_vobyaflG5sWV" (success)="handleSuccess($event)"
+                                [size]="size" [hl]="lang" [theme]="theme" [type]="type" ngModel name="reCaptcha">
+                            </ngx-recaptcha2>
+                        </div>
+
                         <div class="col-md-12 text-center">
                             <div class="margin-15px-top margin-10px-bottom text-center">
-                                <button type="submit" class="btn btn-medium btn-success btn-rounded md-margin-15px-bottom margin-10px-bottom sm-display-table sm-margin-lr-auto"
+                                <button type="submit" [disabled]="suggestionsForm.invalid" class="btn btn-medium btn-success btn-rounded md-margin-15px-bottom margin-10px-bottom sm-display-table sm-margin-lr-auto"
                                     href="#">Submit</button></div>
                         </div>
                     </div>

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { groupBy } from 'lodash';
 import { SuggestionsService } from 'src/app/services/suggestions.service';
 import Swal from 'sweetalert2';
+import { ReCaptcha2Component } from 'ngx-captcha';
+import { DISTRICT, VIDHANSABHA } from 'src/app/constants';
 declare var window: any;
 
 
@@ -11,6 +13,19 @@ declare var window: any;
   styleUrls: ['./suggestion-page.component.scss']
 })
 export class SuggestionPageComponent implements OnInit {
+
+  @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
+  @ViewChild('langInput') langInput: ElementRef;
+
+  public captchaIsLoaded = false;
+  public captchaSuccess = false;
+  public captchaIsExpired = false;
+  public captchaResponse?: string;
+
+  public theme: 'light' | 'dark' = 'light';
+  public size: 'compact' | 'normal' = 'normal';
+  public lang = 'en';
+  public type: 'image' | 'audio';
 
   dynamicScripts = [
     'js/jquery.js',
@@ -55,8 +70,33 @@ export class SuggestionPageComponent implements OnInit {
     this.loadAllSuggestions();
   }
 
+  districts = [...DISTRICT];
+  vidhanSabhas = [...VIDHANSABHA];
+  
+  // filterDistrict
+  // items = [...DISTRICT];
+  // origItems = [...DISTRICT];
+  // @ViewChild('selectList', { static: false }) selectList: ElementRef;
+
+  // onChangeofDistrict(newGov) {
+  //   console.log(newGov);
+  // }
+
+  // filterDistrict(event) {
+  //   if (!event) {
+  //     this.items = this.origItems;
+  //   } // when nothing has typed*/   
+  //   if (typeof event === 'string') {
+  //     console.log(event);
+  //     this.items = this.origItems.filter(a => a.toLowerCase()
+  //       .startsWith(event.toLowerCase()));
+  //   }
+  //   console.log(this.items.length);
+  //   this.selectList.nativeElement.size = this.items.length + 1;
+  // }      
+
+
   onSubmit(sugForm) {
-    console.log(sugForm);
     const suggestionValues = sugForm.value;
     this.suggestionService.submitResponse(suggestionValues).subscribe((response) => {
       console.log(response);
@@ -161,6 +201,14 @@ export class SuggestionPageComponent implements OnInit {
       // this.loadedScript.push(app);
     }
   }
+
+
+  
+
+  handleSuccess(data) {
+    console.log(data);
+  }
+  
 
   ngOnDestroy() {
     // for (const app of this.dynamicScripts) {

@@ -16,7 +16,7 @@ import { BrandBiharPageComponent } from './components/brand-bihar-page/brand-bih
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
-
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent, DocumentsPageComponent],
@@ -24,7 +24,8 @@ import { DocumentsPageComponent } from './components/documents-page/documents-pa
     CommonModule,
     FormsModule,
     WebsiteRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxCaptchaModule
   ]
 })
 export class WebsiteModule { }
