@@ -10,6 +10,11 @@ export class AdminDashboardComponent implements OnInit {
 
   menuList =[
     {
+      link: '/dashboard',
+      title: 'Dashboard',
+      icon: 'supervised_user_circle'
+    },
+    {
       link: '/dashboard/users',
       title: 'Manage Users',
       icon: 'supervised_user_circle'
@@ -27,6 +32,11 @@ export class AdminDashboardComponent implements OnInit {
     {
       link: '/dashboard/documents',
       title: 'Upload Documents',
+      icon: 'supervised_user_circle'
+    },
+    {
+      link: '/dashboard/suggestions',
+      title: ' Manage Suggestions',
       icon: 'supervised_user_circle'
     },
   ];

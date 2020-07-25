@@ -8,6 +8,18 @@
   height: calc(100% - 64px);
 }
 
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 64px;
+    background: #4CAF50;
+    text-align: center;
+    color: #fff;
+}
+
+.mat-list-item-content.active {
+    background: #4caf50;
+    color: #fff;
+}
+
 .example-sidenav-content {
   display: flex;
   height: 100%;

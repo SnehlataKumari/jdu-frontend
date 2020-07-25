@@ -1,7 +1,7 @@
 :host {
-  display: flex;
-  justify-content: center;
-  margin: 100px 0px;
+  // display: flex;
+  // justify-content: center;
+  // margin: 100px 0px;
 }
 
 .mat-form-field {
@@ -35,3 +35,8 @@ mat-card-content {
   font-style: italic;
   line-height: 36px;
 }
+
+
+@import url('./utils.css');
+@import url('./main.css');
+

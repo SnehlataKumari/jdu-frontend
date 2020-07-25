@@ -5,7 +5,7 @@ import { groupBy } from 'lodash';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-suggestion-questions',
@@ -27,7 +27,8 @@ export class SuggestionQuestionsComponent implements OnInit {
     private suggestionsService: SuggestionsService,
     private modalService: NgbModal,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -112,6 +113,6 @@ export class SuggestionQuestionsComponent implements OnInit {
 
   showAnswers(question) {
     //question/:questionId/answers
-    this.router.navigate(['admin', 'questions', question._id, 'answers']);
+    this.router.navigate([question._id, 'answers'], { relativeTo: this.activatedRoute});
   }
 }

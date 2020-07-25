@@ -61,7 +61,7 @@
               data-out="fadeOut">
               <!-- start menu item -->
               <li *ngFor="let route of navigationMenus"> <a [routerLink]="route.routePath">{{route.title}}</a></li>
-              <li *ngIf="!authService.isLoggedIn()"> <a routerLink="auth">Login</a></li>
+              <li *ngIf="!authService.isLoggedIn()"> <a routerLink="/auth">Login</a></li>
               <li *ngIf="authService.isLoggedIn()"> <a href="javascript:void(0)" (click)="authService.logout()">Logout</a></li>
             </ul>
           </div>

@@ -126,64 +126,16 @@
       </div>
     </div>
     <div class="row equalize xs-equalize-auto">
-
       <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/upcoming_events/001.jpg" alt=""></a>
-          <div class="padding-35px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Economic
-              Solution, Force on Youth</span>
-            <p class="text-justify">Self-help allowance of Rs 1000 per month for all youth between 20 and 25 years and
-              student loans up to Rs 4 lakh for all 12th grade passing students through credit cards and for which the
-              state guarantor is like five Ambitious schemes are running under this determination.</p><br />
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- end feature box item -->
-      <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp"
-        data-wow-delay="0.2s">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/upcoming_events/002.jpg" alt=""></a>
-          <div class="padding-35px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Reserved
-              Employment, Women Rights</span>
-            <p class="text-justify">The Bihar government has ensured that there will be a 35 percent horizontal
-              reservation for women for direct appointments at all levels and in all types of posts of all government
-              services-cadres. Bihar is the first state to do so.</p><br />
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- end feature box item -->
-      <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-no-margin-bottom wow fadeInUp"
-        data-wow-delay="0.4s">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/upcoming_events/003.jpg" alt=""></a>
-          <div class="padding-35px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Opportunities
-              Increased, Read Further</span>
-            <p class="text-justify">The Government is committed to establish five new Medical Colleges, Nursing
-              Colleges, ANM Schools, GNM Schools, Para-Medical Institutes, Polytechnics, Industrial Training Institutes,
-              Engineering Universities etc., so that all kinds of opportunities are available within the state.</p>
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Detail<i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
+      <app-information-card
+        *ngFor="let event of upComingEvents;"
+        [imgUrl]="event.imgUrl"
+        [description]="event.description"
+        [title]="event.title"></app-information-card>
       <!-- end feature box item -->
     </div>
   </div>
 </section>
-
 
 <!-- start Historical Events Start -->
 <section class="wow fadeIn bg-light-gray" style="padding:30px 0;">
@@ -191,60 +143,17 @@
     <div class="row">
       <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-40px-bottom xs-margin-40px-bottom">
         <div class="position-relative overflow-hidden width-100">
-          <span class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">Our
-            Achievements</span>
+          <span class="text-large text-outside-line-full alt-font font-weight-600 text-uppercase text-dark-gray">Our Achievements</span>
         </div>
       </div>
     </div>
     <div class="row equalize xs-equalize-auto">
-
       <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/achievements/01.jpg" alt=""></a>
-          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Bicycle and
-              Dress Plan</span>
-            <p>It sounds small to hear a bicycle, but it gave girls in Bihar a new perspective to see the world and
-              touch their targets.</p>
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- end feature box item -->
-      <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-margin-30px-bottom wow fadeInUp"
-        data-wow-delay="0.2s">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/achievements/02.jpg" alt=""></a>
-          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Public
-              Grievances Redressal Act</span>
-            <p>Shri Nitish Kumar has empowered 11 crore people of Bihar as Public Grievances Redressal Rights Act.</p>
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Details <i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-      <!-- end feature box item -->
-      <!-- start features box item -->
-      <div class="col-md-4 col-sm-4 col-xs-12 sm-margin-four-bottom xs-no-margin-bottom wow fadeInUp"
-        data-wow-delay="0.4s">
-        <div class="text-center text-black" style="background: rgb(105,255,104);
-        background: linear-gradient(0deg, rgba(105,255,104,1) 0%, rgba(185,255,185,1) 47%);">
-          <a href="javascript:void(0)"><img src="/assets/img/achievements/03.jpg" alt=""></a>
-          <div class="padding-45px-all sm-padding-15px-all inner-match-height">
-            <span class="text-extra-dark-gray font-weight-600 display-block alt-font margin-10px-bottom">Agricultural
-              Roadmap</span>
-            <p>The agricultural roadmap has given a new shape and dimension to the rural economy of Bihar.</p>
-            <a href="javascript:void(0)" class="btn btn-small btn-rounded btn-success">View Detail<i
-                class="ti-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
+      <app-information-card
+        *ngFor="let event of ourAchievements;"
+        [imgUrl]="event.imgUrl"
+        [description]="event.description"
+        [title]="event.title"></app-information-card>
       <!-- end feature box item -->
     </div>
   </div>

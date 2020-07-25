@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SuggestionQuestionsComponent } from '../shared/components/suggestion-questions/suggestion-questions.component';
+import { AnswersComponent } from '../shared/components/answers/answers.component';
 
 const routes: Routes = [
   { 
@@ -29,6 +31,14 @@ const routes: Routes = [
       { path: 'private-room', component: PrivateRoomComponent },
       { path: 'documents', component: DocumentsPageComponent },
       { path: 'upload-document', component: UploadDocumentComponent },
+      {
+        path: 'suggestions',
+        component: SuggestionQuestionsComponent
+      },
+      {
+        path: 'suggestions/:questionId/answers',
+        component: AnswersComponent
+      }
   ]},
 ];
 

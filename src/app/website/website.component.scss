@@ -31,3 +31,14 @@
 .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
 
 
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 64px;
+    background: #4CAF50;
+    text-align: center;
+    color: #fff;
+}
+
+.mat-list-item-content.active {
+    background: #4caf50;
+    color: #fff;
+}
