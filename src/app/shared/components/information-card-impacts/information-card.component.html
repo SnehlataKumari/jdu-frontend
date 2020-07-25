@@ -1,0 +1,25 @@
+<div
+  class="equalize sm-equalize-auto blog-post-content  display-inline-block border-bottom border-color-extra-light-gray sm-margin-30px-bottom sm-padding-30px-bottom xs-text-center sm-no-border"
+  style="background: #b2f7b2;">
+  <div
+  [ngClass]="{'pull-right': (index+1)%2 == 0}"
+  class="blog-image col-md-5 no-padding sm-margin-30px-bottom xs-margin-20px-bottom margin-45px-right sm-no-margin-right display-table">
+    <div class="display-table-cell vertical-align-middle">
+      <a href="javascript:void(0)"><img [src]="imgUrl" alt=""></a>
+    </div>
+  </div>
+  <div class="blog-text col-md-6 display-table no-padding">
+    <div class="display-table-cell vertical-align-middle">
+      <div class="content margin-20px-bottom sm-padding-20px-left ">
+        <a href="javascript:void(0)"
+          class="text-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 display-inline-block">{{title}}</a>
+        <!-- <div class="text-black text-extra-small margin-15px-bottom text-uppercase alt-font"><span>JDU NATIONAL EXECUTIVE
+            MEETING</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span> BY - JDU MEDIA CELL
+          </span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>07/08/2018</span></div> -->
+        <p class="no-margin width-95 text-black text-justify ">{{description}}</p>
+      </div>
+      <button class="btn btn-small btn-rounded btn-success" (click)="openDetails()">Continue Reading <i
+          class="ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div>

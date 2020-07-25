@@ -16,6 +16,7 @@ import { ChartsModule } from 'ng2-charts';
 import { AnswersComponent } from './components/answers/answers.component';
 import { SuggestionQuestionsComponent } from './components/suggestion-questions/suggestion-questions.component';
 import { InformationCardComponent } from './components/information-card/information-card.component';
+import { InformationCardImpactsComponent } from './components/information-card-impacts/information-card-impacts.component';
 
 const routes: Routes = [];
 
@@ -30,6 +31,7 @@ const routes: Routes = [];
     SuggestionQuestionsComponent,
     AnswersComponent,
     InformationCardComponent,
+    InformationCardImpactsComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ const routes: Routes = [];
     SuggestionQuestionsComponent,
     AnswersComponent,
     ChartsModule,
-    InformationCardComponent
+    InformationCardComponent,
+    InformationCardImpactsComponent
   ]
 })
 export class SharedModule { }

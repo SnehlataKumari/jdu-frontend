@@ -40,7 +40,7 @@
         <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="questionKey"></app-constant>
       </a>
       <ng-template ngbNavContent>
-        <button (click)="addNewQuestion(questionKey)">Add new question</button>
+        <button class="btn btn-small btn-rounded btn-success" (click)="addNewQuestion(questionKey)">Add new question</button>
         <ngb-accordion #acc="ngbAccordion" *ngIf="catogoryWiseQuestions && catogoryWiseQuestions[questionKey]"
           activeIds="ngb-panel-0">
           <ngb-panel *ngFor="let question of catogoryWiseQuestions[questionKey]; let i2 = index;">
@@ -48,8 +48,8 @@
               <div><b>Question {{i2+1}}: </b> {{question.title}}</div>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button (click)="deleteQuestion(question)">Delete</button>
-              <button (click)="showAnswers(question)">View Answers</button>
+              <button class="btn btn-small btn-rounded btn-danger margin-10px-bottom margin-10px-lr" (click)="deleteQuestion(question)">Delete</button>
+              <button class="btn btn-small btn-rounded btn-primary margin-10px-bottom margin-5px-lr" (click)="showAnswers(question)">View Answers</button>
   
               <!-- <h3>Options: </h3> -->
               <ol>

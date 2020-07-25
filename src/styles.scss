@@ -12,6 +12,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: green;
 }
 
+.tab-content > .active {
+    display: block;
+    border: 1px solid #217922;
+    padding: 15px;
+}
+
+.ng-star-inserted.header {
+    background: #158e15;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    border: 1px solid #004200;
+}
+
+.card-body.Question-body-panel {
+    border: 1px solid #217922;
+    padding: 10px;
+}
+
+
+
 /* Importing Bootstrap SCSS file. */
 // @import '~bootstrap/scss/bootstrap';
 
