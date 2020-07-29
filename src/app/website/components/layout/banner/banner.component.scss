@@ -9,3 +9,9 @@ h5.alt-font {
   font-weight: 500;
 }
 
+@media (max-width: 767px) { 
+  h5 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
