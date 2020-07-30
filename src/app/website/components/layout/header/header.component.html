@@ -1,4 +1,4 @@
-<header class="header-with-topbar">
+<header class="header-with-topbar" [ngClass]="{'sticky' : sticky, 'header-appear': headerAppear}" >
   <!-- topbar -->
   <div class="top-header-area bg-white padding-5px-tb">
     <div class="container">
@@ -50,13 +50,13 @@
               data-at2x="/assets/img/logo.png" alt="jdu" class="logo-light"></a> </div>
         <!-- end logo -->
         <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">
-          <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse"
-            data-target="#navbar-collapse-toggle-1">
+          <button type="button" class="navbar-toggle pull-right" data-toggle="collapse"
+            data-target="#navbar-collapse-toggle-1" (click)="toggle()" id="navbar-toggle1">
             <span class="sr-only">toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span> </button>
-          <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
+          <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1" [ngClass]="{'in': menuOpen}">
             <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn"
               data-out="fadeOut">
               <!-- start menu item -->
