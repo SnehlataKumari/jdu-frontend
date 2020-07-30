@@ -3,14 +3,16 @@
     <h3 class="table-heading">
       Users
     </h3>
-    <button mat-raised-button color="primary" (click)="onAddResource()">
-      <mat-icon>add</mat-icon>
-      Add
-    </button>
-    <button mat-raised-button color="primary" (click)="onUploadCSV()">
-      <mat-icon>publish</mat-icon>
-      Upload CSV
-    </button>
+    <div>
+      <button mat-raised-button color="primary" (click)="onAddResource()">
+        <mat-icon>add</mat-icon>
+        Add
+      </button>
+      <button mat-raised-button color="primary" class="ml10" (click)="onUploadCSV()" >
+        <mat-icon>publish</mat-icon>
+        Upload CSV
+      </button>
+    </div>
   </div>
   <table mat-table [dataSource]="dataSource">
 
