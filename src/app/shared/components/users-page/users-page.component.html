@@ -3,10 +3,17 @@
     <h3 class="table-heading">
       Users
     </h3>
-    <button mat-icon-button color="warn" mat-mini-fab aria-label="Example icon button with a home icon"
-      (click)="onAddResource()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div>
+      <button mat-icon-button color="warn" mat-mini-fab aria-label="Example icon button with a home icon"
+        (click)="onAddResource()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" mat-mini-fab aria-label="Example icon button with a home icon"
+        (click)="onUploadCSV()">
+        <mat-icon>publish</mat-icon>
+      </button>
+    </div>
+    
   </div>
   <table mat-table [dataSource]="dataSource">
 

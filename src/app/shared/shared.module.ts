@@ -17,6 +17,7 @@ import { AnswersComponent } from './components/answers/answers.component';
 import { SuggestionQuestionsComponent } from './components/suggestion-questions/suggestion-questions.component';
 import { InformationCardComponent } from './components/information-card/information-card.component';
 import { InformationCardImpactsComponent } from './components/information-card-impacts/information-card-impacts.component';
+import { UploadUsersCsvFormComponent } from './components/upload-users-csv-form/upload-users-csv-form.component';
 
 const routes: Routes = [];
 
@@ -32,6 +33,7 @@ const routes: Routes = [];
     AnswersComponent,
     InformationCardComponent,
     InformationCardImpactsComponent,
+    UploadUsersCsvFormComponent,
   ],
   imports: [
     CommonModule,
