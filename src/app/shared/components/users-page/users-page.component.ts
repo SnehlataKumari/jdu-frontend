@@ -6,6 +6,7 @@ import { filter } from 'lodash';
 import { CreateUserFormComponent } from '../create-user-form/create-user-form.component';
 import { ResourceService } from '../../services/resource.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { UploadUsersCsvFormComponent } from '../upload-users-csv-form/upload-users-csv-form.component';
 
 @Component({
   selector: 'app-users-page',
@@ -59,6 +60,19 @@ export class UsersPageComponent implements OnInit {
   getClassName(classId) {
     console.log(this.classMap[classId]);
     return this.classMap.get(classId) || 'Class has been deleted';
+  }
+
+  onUploadCSV() {
+
+    const dialogRef = this.dialog.open(UploadUsersCsvFormComponent, {
+      width: '600px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.reFetchResourceList();
+    });
+
   }
 
   openDialogue(user) {

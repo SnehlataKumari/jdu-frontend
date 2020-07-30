@@ -1,0 +1,6 @@
+<div class="form-group">
+  <label for="exampleFormControlFile1">Select CSV</label>
+  <input type="file" (change)="onFileChange($event)" accept=".csv"  class="form-control-file" id="exampleFormControlFile1">
+</div>
+
+<button type="button" class="btn btn-primary" (click)="uploadFile()">Create users</button>
