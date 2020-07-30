@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "rehani-angular"
+  "defaultProject": "rehani-angular",
+  "cli": {
+    "analytics": false
+  }
 }

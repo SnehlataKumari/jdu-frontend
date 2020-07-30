@@ -1,0 +1,20 @@
+<table class="bg-success" class="table table-sm table-dark">
+  <thead class="bg-success">
+    <tr class="bg-success"  >
+      <th class="bg-success" scope="col">Schemes</th>
+      <th class="bg-success" scope="col" >Edit</th>
+      <th class="bg-success" scope="col">       
+       <button class="btn btn-success" (click)="onAdd()">Add Scheme</button>
+    </th>
+    </tr>    
+  </thead>
+  <tbody class="bg-success">
+    <tr class="bg-success" *ngFor="let scheme of schemes">
+      <td class="bg-success">{{scheme.title}}</td>
+      <td class="bg-success"><button class="btn btn-danger" (click)="delete(scheme)">Delete</button></td>
+      <td class="bg-success"></td>
+    </tr>
+  </tbody>
+</table>
+
+

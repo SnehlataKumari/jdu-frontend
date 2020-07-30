@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { SuggestionQuestionsComponent } from '../shared/components/suggestion-questions/suggestion-questions.component';
 import { AnswersComponent } from '../shared/components/answers/answers.component';
 import { AuthGuard } from '../services/auth-guard.service';
+import { AddSuggestionsComponent } from '../shared/components/add-suggestions/add-suggestions.component';
+import { AddSuggestionsFormComponent } from '../shared/components/add-suggestions-form/add-suggestions-form.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,14 @@ const routes: Routes = [
           {
             path: 'suggestions/:questionId/answers',
             component: AnswersComponent
+          },
+          {
+            path: 'schemes',
+            component: AddSuggestionsComponent
+          },
+          {
+            path: 'add-scheme',
+            component: AddSuggestionsFormComponent
           }
         ]
       }

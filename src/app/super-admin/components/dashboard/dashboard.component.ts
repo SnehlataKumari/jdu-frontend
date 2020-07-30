@@ -18,6 +18,11 @@ export class DashboardComponent implements OnInit {
       link: '/admin/suggestions',
       title: 'Manage suggestion questions',
       icon: 'supervised_user_circle'
+    },
+    {
+      link: '/admin/schemes',
+      title: 'Add scheme',
+      icon: 'supervised_user_circle'
     }
   ]
   constructor(
