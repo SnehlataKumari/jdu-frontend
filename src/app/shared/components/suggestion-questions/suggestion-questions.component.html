@@ -36,8 +36,8 @@
 <ng-container *ngIf="!createMode">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     <li [ngbNavItem]="i+1" *ngFor="let questionKey of questionKeys; let i = index;">
-      <a ngbNavLink>
-        <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="questionKey"></app-constant>
+      <a ngbNavLink class="tab-links" [ngClass]="{'active-tab' : i+1===active }">
+        <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="questionKey" ></app-constant>
       </a>
       <ng-template ngbNavContent>
         <button class="btn btn-small btn-rounded btn-success" (click)="addNewQuestion(questionKey)">Add new question</button>

@@ -1,6 +1,19 @@
-<p>
+<!-- <p>
   Click to <a type="button" routerLink="/dashboard/upload-document">Upload a new document</a>
-</p>
+</p> -->
+<div class="resource-actions-panel">
+  <h3 class="table-heading">
+    Document
+  </h3>
+  <button mat-raised-button color="primary" routerLink="/dashboard/upload-document">
+    <mat-icon>add</mat-icon>
+    Upload a new document
+  </button>
+  <!-- <button mat-raised-button color="primary" (click)="onAddResource()">
+    <mat-icon>add</mat-icon>
+    Add
+  </button> -->
+</div>
 
 <table class="table table-striped">
   <thead>
@@ -8,7 +21,7 @@
       <th scope="col">#</th>
       <th scope="col">Filename</th>
       <th scope="col">For</th>
-      <th scope="col">Action</th>
+      <th scope="col"><div class="ml20">Action</div></th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +33,8 @@
       <td>
         <app-constant *ngFor="let role of document.roles" [constant]="ROLES" [code]="role"></app-constant></td>
       <td>
-        <a [href]="'http://'+document.fullPath" [attr.download]="document.originalname">download</a>
-        <button type="button" class="btn btn-primary ml-2" (click)="onDelete(document)">Delete</button>
+        <a [href]="'http://'+document.fullPath" mat-button color="primary" [attr.download]="document.originalname">Download</a>
+        <button mat-button color="warn" (click)="onDelete(document)">Delete</button>
       </td>
     </tr>
   </tbody>

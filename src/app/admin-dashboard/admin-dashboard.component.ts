@@ -12,7 +12,7 @@ export class AdminDashboardComponent implements OnInit {
     {
       link: '/dashboard',
       title: 'Dashboard',
-      icon: 'supervised_user_circle'
+      icon: 'dashboard'
     },
     {
       link: '/dashboard/users',
@@ -22,22 +22,22 @@ export class AdminDashboardComponent implements OnInit {
     {
       link: '/dashboard/public-room',
       title: 'Live Stream',
-      icon: 'supervised_user_circle'
+      icon: 'live_tv'
     },
     {
       link: '/dashboard/private-room',
       title: 'Private Room',
-      icon: 'supervised_user_circle'
+      icon: 'video_call'
     },
     {
       link: '/dashboard/documents',
       title: 'Upload Documents',
-      icon: 'supervised_user_circle'
+      icon: 'attach_file'
     },
     {
       link: '/dashboard/suggestions',
       title: ' Manage Suggestions',
-      icon: 'supervised_user_circle'
+      icon: 'question_answer'
     },
   ];
 

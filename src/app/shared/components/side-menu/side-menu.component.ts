@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 export interface MenuList {
   link: string;
@@ -14,8 +15,13 @@ export interface MenuList {
 export class SideMenuComponent implements OnInit {
 
   @Input() menuList: MenuList[];
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+  onLogout() {
+    this.authService.logout();
   }
 }
