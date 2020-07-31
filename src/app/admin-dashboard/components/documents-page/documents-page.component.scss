@@ -2,3 +2,11 @@ a, a:active, a:focus {
     color: #337ab7;
     text-decoration: none;
 }
+.resource-actions-panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+.ml20 {
+    margin-left: 20px;
+}

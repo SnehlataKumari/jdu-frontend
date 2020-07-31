@@ -1,43 +1,37 @@
 
 
-<ng-container *ngIf="createMode">
+<div class="col-lg-4 col-md-6 question-container" *ngIf="createMode">
     <form [formGroup]="questionForm">
-      <div class="col-md-12">
-        <select formControlName="category" class="medium-input width-100" id="exampleFormControlSelect1">
-          <option [value]="categoryKey" *ngFor="let categoryKey of questionKeys">
-            <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="categoryKey"></app-constant>
-          </option>
-        </select>
-      </div>
+      <select formControlName="category" class="medium-input width-100" id="exampleFormControlSelect1">
+        <option [value]="categoryKey" *ngFor="let categoryKey of questionKeys">
+          <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="categoryKey"></app-constant>
+        </option>
+      </select>
+      <input type="text" formControlName="title" id="title" placeholder="Question Title" class="medium-input width-100">
 
-      <div class="col-md-12">
-        <input type="text" formControlName="title" id="title" placeholder="Question Title" class="medium-input width-100">
-      </div>
-
-      <div formArrayName="options">
-        <h3>Options</h3>
+      <div formArrayName="options" class="mb10">
+        <h3 class="add-options">Options<button mat-raised-button (click)="addOption()"><mat-icon>add</mat-icon><span>Add Options</span></button></h3>
         <div *ngFor="let option of options.controls; let i=index">
           <!-- The repeated alias template -->
           <label>
             Option:
-            <input type="text" [formControlName]="i">
-            <button (click)="removeOption(i)">Remove</button>
+            <input type="text" [formControlName]="i"/>
+            <button mat-stroked-button color="warn" (click)="removeOption(i)" class="ml10">Remove</button>
 
           </label>
         </div>
-        <button (click)="addOption()">Add Option</button>
       </div>
-      <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
-      <button type="button" class="btn btn-outline-dark" (click)="dismiss('Save click')">Cancel</button>
+      <button mat-raised-button color="primary" ((click)="save()">Save</button>
+      <button mat-raised-button color="warn" (click)="dismiss('Save click')" class="ml10">Cancel</button>
     </form>
     
-</ng-container>
+  </div>
 
 <ng-container *ngIf="!createMode">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     <li [ngbNavItem]="i+1" *ngFor="let questionKey of questionKeys; let i = index;">
-      <a ngbNavLink>
-        <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="questionKey"></app-constant>
+      <a ngbNavLink class="tab-links" [ngClass]="{'active-tab' : i+1===active }">
+        <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="questionKey" ></app-constant>
       </a>
       <ng-template ngbNavContent>
         <button class="btn btn-small btn-rounded btn-success" (click)="addNewQuestion(questionKey)">Add new question</button>

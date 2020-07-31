@@ -6,3 +6,26 @@ a {
   border: black solid 2px;
 }
 
+.tab-links {
+  &:hover, &:focus {
+    color: #217922;
+    border-color: #398439;
+    border-bottom-width:0 
+  }
+}
+.active-tab {
+  color: #217922;
+  background-color: #eee;
+  border-color: #398439;
+  border-bottom-width:0 
+}
+.ml10{
+  margin-left: 10px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.add-options {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,26 +1,27 @@
+<div class="doc-panel">
+  <h1>
+    Here is the list of documents available for you.
+  </h1>
 
-<h1>
-  Here is the list of documents available for you.
-</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Filename</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documents; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ document.originalname }}
+        </td>
+        <td>
+          <a [href]="'http://'+document.fullPath" [attr.download]="document.originalname">download</a>
+        </td>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Filename</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let document of documents; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>
-        {{ document.originalname }}
-      </td>
-      <td>
-        <a [href]="'http://'+document.fullPath" [attr.download]="document.originalname">download</a>
-      </td>
-
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
+</div>
