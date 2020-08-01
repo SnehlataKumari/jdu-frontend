@@ -6021,7 +6021,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    hostUrl: 'http://localhost:3000',
+    hostUrl: 'http://3.6.178.94:3000',
     AWSAccessKeyId: '',
     AWSSecretKey: '',
     AWSregion: '',

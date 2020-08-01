@@ -4,14 +4,17 @@
     <app-upload (onUploadSuccess)="onUploadSuccess($event)"></app-upload>
   </mat-card>
 
-  <mat-card *ngIf="!!uploadedInfo">
-    <div class="heading-doc mb20" >Select who can see this document</div>
-    <div>
-      <div class="form-check form-check-inline" *ngFor="let roleCode of roles; let i = index;">
-        <input class="form-check-input" ngModel [name]="roleCode" type="checkbox" [id]="'inlineCheckbox' + i">&nbsp;
-        <label class="form-check-label" [for]="'inlineCheckbox'+i">{{roleCode | role}}</label>
+  <div *ngIf="!!uploadedInfo">
+    <mat-card>
+      <div class="heading-doc mb20" >Select who can see this document</div>
+      <div>
+        <div class="form-check form-check-inline" *ngFor="let roleCode of roles; let i = index;">
+          <input class="form-check-input" ngModel [name]="roleCode" type="checkbox" [id]="'inlineCheckbox' + i">&nbsp;
+          <label class="form-check-label" [for]="'inlineCheckbox'+i">{{roleCode | role}}</label>
+        </div>
       </div>
-      <button  mat-raised-button color="primary" type="submit" class="mt10" >Share document</button>
-    </div>
-  </mat-card>
+    </mat-card>
+    <button  mat-raised-button color="primary" type="submit" class="mt10" >Share document</button>
+  </div>
+
 </form>
