@@ -39,6 +39,11 @@ export class AdminDashboardComponent implements OnInit {
       title: ' Manage Suggestions',
       icon: 'question_answer'
     },
+    {
+      link: '/dashboard/messages',
+      title: 'Send messages',
+      icon: 'supervised_user_circle'
+    },
   ];
 
 

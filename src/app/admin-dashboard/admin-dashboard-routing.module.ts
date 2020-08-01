@@ -15,6 +15,7 @@ import { UploadDocumentComponent } from './components/upload-document/upload-doc
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SuggestionQuestionsComponent } from '../shared/components/suggestion-questions/suggestion-questions.component';
 import { AnswersComponent } from '../shared/components/answers/answers.component';
+import { SendMessagesComponent } from './components/send-messages/send-messages.component';
 
 const routes: Routes = [
   { 
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'private-room', component: PrivateRoomComponent },
       { path: 'documents', component: DocumentsPageComponent },
       { path: 'upload-document', component: UploadDocumentComponent },
+      { path: 'messages', component: SendMessagesComponent },
       {
         path: 'suggestions',
         component: SuggestionQuestionsComponent

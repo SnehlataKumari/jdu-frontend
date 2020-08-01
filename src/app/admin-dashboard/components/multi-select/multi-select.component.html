@@ -1,0 +1,17 @@
+<angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedUsers" [settings]="dropdownSettings"
+  (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)"
+  (onDeSelectAll)="onDeSelectAll($event)">
+
+  <c-item>
+    <ng-template let-user="item">
+      <label style="color: #333;min-width: 150px;">{{user.name}} | {{user.role | role}}</label>
+    </ng-template>
+  </c-item>
+
+  <c-badge>
+    <ng-template let-user="item">
+      <label style="margin: 0px;">{{user.name}} | {{user.role | role}}</label>
+    </ng-template>
+  </c-badge>
+
+</angular2-multiselect>

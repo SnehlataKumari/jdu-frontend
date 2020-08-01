@@ -10,7 +10,6 @@ import { AuthGuard } from '../services/auth-guard.service';
 import { AddSuggestionsComponent } from '../shared/components/add-suggestions/add-suggestions.component';
 import { AddSuggestionsFormComponent } from '../shared/components/add-suggestions-form/add-suggestions-form.component';
 
-
 const routes: Routes = [
   {
     path: '',

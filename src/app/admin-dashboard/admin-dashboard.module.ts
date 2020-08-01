@@ -27,6 +27,8 @@ import { SharedModule } from '../shared/shared.module';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SendMessagesComponent } from './components/send-messages/send-messages.component';
+import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LiveStreamerComponent,
     DocumentsPageComponent,
     UploadDocumentComponent,
-    DashboardComponent
+    DashboardComponent,
+    SendMessagesComponent,
+    MultiSelectComponent
   ],
   imports: [
     CommonModule,
