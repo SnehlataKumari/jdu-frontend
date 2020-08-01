@@ -20,6 +20,8 @@ import { InformationCardImpactsComponent } from './components/information-card-i
 import { UploadUsersCsvFormComponent } from './components/upload-users-csv-form/upload-users-csv-form.component';
 import { AddSuggestionsComponent } from './components/add-suggestions/add-suggestions.component';
 import { AddSuggestionsFormComponent } from './components/add-suggestions-form/add-suggestions-form.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 const routes: Routes = [];
 
@@ -49,6 +51,8 @@ const routes: Routes = [];
     MatFormFieldModule,
     ChartsModule,
     RouterModule.forChild(routes),
+    NgMultiSelectDropDownModule.forRoot(),
+    AngularMultiSelectModule,
   ],
   exports: [
     CommonModule,
@@ -68,7 +72,9 @@ const routes: Routes = [];
     ChartsModule,
     InformationCardComponent,
     InformationCardImpactsComponent,
-    AddSuggestionsComponent
+    NgMultiSelectDropDownModule,
+    AddSuggestionsComponent,
+    AngularMultiSelectModule,
   ]
 })
 export class SharedModule { }

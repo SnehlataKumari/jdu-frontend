@@ -1,7 +1,20 @@
-<form [formGroup]="messageForm">
-  <div class="form-group">
-    <label for="formGroupExampleInput">Enter message</label>
-    <input type="text" class="form-control" formControlName="message" id="formGroupExampleInput" placeholder="">
-    <button type="button" class = "btn btn-success" (click) = "onSend()">Send</button>
+
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="messageForm">
+      <div class="form-group">
+        <!-- <label for="formGroupExampleInput">Enter message</label> -->
+        <textarea type="text" class="form-control" placeholder="Enter Message" formControlName="message" id="formGroupExampleInput"
+          placeholder=""></textarea>
+        <button type="button" class="btn btn-success" (click)="onSend()">Send</button>
+      </div>
+    </form>
   </div>
-</form>
+  <div class="col-md-6">
+    <div class="form-group form-check">
+      <input type="checkbox" [(ngModel)]="sendToAll" (change)="toggleSendToAll()" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1"> Send to all</label>
+    </div>
+    <app-multi-select *ngIf="!sendToAll" [(selectedUsers)]="selectedUsers"></app-multi-select>
+  </div>
+</div>
