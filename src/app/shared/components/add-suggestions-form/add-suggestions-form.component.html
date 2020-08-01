@@ -1,10 +1,9 @@
-<form>
+<form [formGroup]="form">
   <div class="form-group">
     <label for="formGroupExampleInput">Add Scheme</label>
-    <input type="text" class="form-control" id="formGroupExampleInput">
+    <input formControlName="scheme" type="text" class="form-control" id="formGroupExampleInput">
   </div>
   <div class="form-group">
-    <button class = "btn btn-success">Submit</button>
-    
+    <button class = "btn btn-success" type="button" (click)="onSubmit()">Submit</button>
   </div>
 </form>

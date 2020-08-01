@@ -4,6 +4,7 @@ import { SuggestionsService } from 'src/app/services/suggestions.service';
 import Swal from 'sweetalert2';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import { DISTRICT, VIDHANSABHA } from 'src/app/constants';
+import { environment } from 'src/environments/environment';
 declare var window: any;
 
 
@@ -22,11 +23,14 @@ export class SuggestionPageComponent implements OnInit {
   public captchaIsExpired = false;
   public captchaResponse?: string;
 
+  reCaptchaSiteKey = environment.reCaptchaSiteKey;
+
   public theme: 'light' | 'dark' = 'light';
   public size: 'compact' | 'normal' = 'normal';
   public lang = 'en';
   public type: 'image' | 'audio';
-
+  active = 1;
+  
   dynamicScripts = [
     'js/jquery.js',
     'js/modernizr.js',
@@ -60,6 +64,7 @@ export class SuggestionPageComponent implements OnInit {
   ];
 
   loadedScript = [];
+  schemes;
   suggestions;
   categoryWiseQuestions;
   constructor(
@@ -68,6 +73,13 @@ export class SuggestionPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAllSuggestions();
+    this.loadAllSchemes();
+  }
+
+  async loadAllSchemes() {
+    const schemes = await this.suggestionService.getAllScheme().toPromise();
+    this.schemes = schemes['data'].map(scheme => scheme.title); 
+    console.log(schemes);
   }
 
   districts = [...DISTRICT];

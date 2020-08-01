@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ResourceService } from '../../services/resource.service';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-add-suggestions-form',
@@ -11,23 +13,28 @@ import { ApiService } from 'src/app/services/api.service';
 export class AddSuggestionsFormComponent implements OnInit {
   resourceUrl = '/scheme';
   schemes = [];
+  form: FormGroup;
+
   constructor(
     private resourceService: ResourceService,
     private api: ApiService,
+    private fb: FormBuilder,
+    private alert: AlertService
+
   ) { }
 
 
   ngOnInit(): void {
-    this.resetList();
-  }
-  async resetList() {
-    const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
-    this.schemes = list['data'];
+    this.form = this.fb.group({
+      scheme: ['', Validators.required]
+    });
+
   }
 
-  async onSubmit(scheme) {
-    await this.api.post('/schemes', {title: scheme})
-    this.resetList();
+  async onSubmit() {
+    const value = this.form.value;
+    await this.api.post('/scheme', {title: value.scheme}).toPromise();
+    this.alert.success('Scheme Created Successfully!');
   }
 
 }

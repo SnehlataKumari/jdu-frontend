@@ -8,7 +8,8 @@ export const environment = {
   AWSAccessKeyId: '',
   AWSSecretKey: '',
   AWSregion: '',
-  S3Bucket: ''
+  S3Bucket: '',
+  reCaptchaSiteKey: '6Les47IZAAAAAOKYQRJie45Y4KI_vobyaflG5sWV'
 };
 
 /*

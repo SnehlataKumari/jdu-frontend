@@ -20,6 +20,7 @@ export class SuggestionQuestionsComponent implements OnInit {
   closeResult = '';
 
   createMode = false;
+  schemes;
 
   questionForm: FormGroup; 
 
@@ -33,15 +34,27 @@ export class SuggestionQuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionKeys = getKeys(QUESTION_CATEGORY);
+    console.log(this.questionKeys);
+    
+
+    this.getAllSchemes();
     
     this.fetchQuestions();
 
     this.questionForm = this.fb.group({
-      title: ['', Validators.required],
+    title: ['', Validators.required],
       description: [''],
       category: ['', Validators.required],
       options: this.fb.array([])
     })
+  }
+
+  async getAllSchemes() {
+    const schemes = await this.suggestionsService.getAllScheme().toPromise();
+    this.schemes = schemes['data'];
+    this.questionKeys = this.schemes.map(scheme => scheme.title);
+    console.log(this.schemes);
+    
   }
 
   fetchQuestions() {
