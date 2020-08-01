@@ -1,12 +1,20 @@
-<form #uploadForm="ngForm" (submit)="onSubmit(uploadForm)">
-  
-  <app-upload (onUploadSuccess)="onUploadSuccess($event)"></app-upload>
+<form #uploadForm="ngForm" class="mw" (submit)="onSubmit(uploadForm)">
+  <mat-card class="mb20">
+    <div class="heading-doc mb20" >Add document</div>
+    <app-upload (onUploadSuccess)="onUploadSuccess($event)"></app-upload>
+  </mat-card>
 
-  <div class="form-check form-check-inline" *ngFor="let roleCode of roles; let i = index;">
-    <input class="form-check-input" ngModel [name]="roleCode" type="checkbox" [id]="'inlineCheckbox' + i">
-    <label class="form-check-label" [for]="'inlineCheckbox'+i">{{roleCode | role}}</label>
+  <div *ngIf="!!uploadedInfo">
+    <mat-card>
+      <div class="heading-doc mb20" >Select who can see this document</div>
+      <div>
+        <div class="form-check form-check-inline" *ngFor="let roleCode of roles; let i = index;">
+          <input class="form-check-input" ngModel [name]="roleCode" type="checkbox" [id]="'inlineCheckbox' + i">&nbsp;
+          <label class="form-check-label" [for]="'inlineCheckbox'+i">{{roleCode | role}}</label>
+        </div>
+      </div>
+    </mat-card>
+    <button  mat-raised-button color="primary" type="submit" class="mt10" >Share document</button>
   </div>
-
-  <button type="submit" class="btn btn-success">Share document</button>
 
 </form>

@@ -31,8 +31,7 @@ export class AnswersComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
-  public barChartData: ChartData[] = [
-  ];
+  public barChartData: ChartDataSets[] = [];
   public labels;
   
   questionId;
@@ -54,7 +53,7 @@ export class AnswersComponent implements OnInit {
       this.question = data['question'];
       this.answers= data['answers'];
       const answersCount = countBy(this.answers, 'answer');
-      this.barChartData = this.question.options.map(option => answersCount[option] || 0);
+      this.barChartData = [{ data: this.question.options.map(option => answersCount[option] || 0), label: 'Number of Answers'}];
       this.labels = this.question.options;
       
       this.loading = false;

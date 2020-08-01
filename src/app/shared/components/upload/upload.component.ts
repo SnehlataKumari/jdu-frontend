@@ -9,6 +9,7 @@ import { DocumentsService } from 'src/app/services/documents.service';
 export class UploadComponent implements OnInit {
 
   file;
+  done=false;
   @Output() onUploadSuccess = new EventEmitter();
   constructor(
     public documentsService: DocumentsService
@@ -27,8 +28,9 @@ export class UploadComponent implements OnInit {
 
     this.documentsService.uploadFile(formData).subscribe((response) => {
       this.file = null;
-      console.log(response);
-      
+      if(response) {
+        this.done = true;
+      }
       this.onUploadSuccess.emit(response);
     })
   }
