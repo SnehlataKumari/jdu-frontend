@@ -5,6 +5,7 @@ import { Router, NavigationEnd } from '@angular/router';
 const loggedInRoutes = [
   { routePath: '/private-room', title: 'Private Room' },
   { routePath: '/documents', title: 'Download Documents' },
+  { routePath: '/messages', title: 'View Private messages' },
 ];
 const routes = [
   { routePath: '/', title: 'Home' },
