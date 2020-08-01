@@ -18,6 +18,8 @@ import { SuggestionQuestionsComponent } from './components/suggestion-questions/
 import { InformationCardComponent } from './components/information-card/information-card.component';
 import { InformationCardImpactsComponent } from './components/information-card-impacts/information-card-impacts.component';
 import { UploadUsersCsvFormComponent } from './components/upload-users-csv-form/upload-users-csv-form.component';
+import { AddSuggestionsComponent } from './components/add-suggestions/add-suggestions.component';
+import { AddSuggestionsFormComponent } from './components/add-suggestions-form/add-suggestions-form.component';
 
 const routes: Routes = [];
 
@@ -34,6 +36,8 @@ const routes: Routes = [];
     InformationCardComponent,
     InformationCardImpactsComponent,
     UploadUsersCsvFormComponent,
+    AddSuggestionsComponent,
+    AddSuggestionsFormComponent,
   ],
   imports: [
     CommonModule,
@@ -63,7 +67,8 @@ const routes: Routes = [];
     AnswersComponent,
     ChartsModule,
     InformationCardComponent,
-    InformationCardImpactsComponent
+    InformationCardImpactsComponent,
+    AddSuggestionsComponent
   ]
 })
 export class SharedModule { }

@@ -33,4 +33,8 @@ export class SuggestionsService {
   getQuestionWithAnswer(questionId) {
     return this.apiService.get(`/questions/${questionId}/answers`);
   }
+
+  getAllScheme() {
+    return this.apiService.get('/scheme');
+  }
 }

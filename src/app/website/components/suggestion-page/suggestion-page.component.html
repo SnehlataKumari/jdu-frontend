@@ -85,240 +85,61 @@
 
     <form #suggestionsForm="ngForm" (submit)="onSubmit(suggestionsForm)">
         <div class="container tab-style2">
-
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <!-- start tab navigation -->
-                    <ul
-                        class="nav nav-tabs alt-font text-uppercase text-small display-inherit text-center font-weight-600">
-                        <li class="active"><a href="#tab_sec1" data-toggle="tab">Cycle Scheme</a></li>
-                        <li><a href="#tab_sec2" data-toggle="tab">Mahila Jeevika</a></li>
-                        <li><a href="#tab_sec3" data-toggle="tab">Health Department</a></li>
-                        <li><a href="#tab_sec4" data-toggle="tab">Education Department</a></li>
-                        <li><a href="#tab_sec5" data-toggle="tab">Student</a></li>
-                    </ul>
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                    <li [ngbNavItem]="i+1" class="tab-style2" *ngFor="let scheme of schemes; let i = index;">
+                        <a ngbNavLink class="tab-style2">{{scheme}}</a>
+                        <ng-template ngbNavContent>
+                
+                            <div class="row equalize">
+                
+                                <div class="col-md-8 col-sm-12 center-col"
+                                    *ngIf="categoryWiseQuestions && categoryWiseQuestions[scheme]">
+                                    <!-- start accordion -->
+                                    <div class="panel-group accordion-style3" [id]="'accordion-3'+i">
+                                        <!-- start tab content -->
+                                        <div class="panel panel-default"
+                                            *ngFor="let question of categoryWiseQuestions[scheme]; let i = index;">
+                                            <div class="panel-heading">
+                                                <a class="accordion-toggle" data-toggle="collapse" [attr.data-parent]="'#accordion-3'+i"
+                                                    [href]="'#accordion-3-'+i">
+                                                    <div class="panel-title">
+                                                        <span class="alt-font font-weight-600 text-light-green tab-tag">Q{{i+1}}</span>
+                                                        <span
+                                                            class="text-white xs-width-80 display-inline-block">{{question.title}}</span>
+                                                        <i class="fa fa-angle-up pull-right text-extra-dark-gray "></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div [id]="'accordion-3-'+i" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <span
+                                                        class="text-black xs-width-80 font-weight-700 display-inline-block">Answer</span>
+                                                    <div class="radio" *ngFor="let ansOption of question.options">
+                                                        <label><input type="radio" [name]="question._id" [value]="ansOption" ngModel
+                                                                checked>{{ansOption}}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end tab content -->
+                                    </div>
+                                </div>
+                
+                
+                            </div>
+                
+                        </ng-template>
+                    </li>
+                </ul>
                     <!-- end tab navigation -->
                 </div>
             </div>
-            <div class="tab-content">
-                <!-- start tab content -->
-                <div class="tab-pane med-text fade in active" id="tab_sec1">
-                    <div class="row equalize">
-
-                        <div class="col-md-8 col-sm-12 center-col"
-                            *ngIf="categoryWiseQuestions && categoryWiseQuestions['CYCLE_SCHEM']">
-                            <!-- start accordion -->
-                            <div class="panel-group accordion-style3" id="accordion-3">
-                                <!-- start tab content -->
-                                <div class="panel panel-default"
-                                    *ngFor="let question of categoryWiseQuestions['CYCLE_SCHEM']; let i = index;">
-                                    <div class="panel-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-3"
-                                            href="#accordion-3-One">
-                                            <div class="panel-title">
-                                                <span
-                                                    class="alt-font font-weight-600 text-light-green tab-tag">Q{{i+1}}</span>
-                                                <span
-                                                    class="text-white xs-width-80 display-inline-block">{{question.title}}</span>
-                                                <i class="fa fa-angle-up pull-right text-extra-dark-gray "></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div id="accordion-3-One" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <span
-                                                class="text-black xs-width-80 font-weight-700 display-inline-block">Answer</span>
-                                            <div class="radio" *ngFor="let ansOption of question.options">
-                                                <label><input type="radio" [name]="question._id" [value]="ansOption"
-                                                        ngModel checked>{{ansOption}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end tab content -->
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- end tab content -->
-                <!-- start tab content -->
-                <div class="tab-pane fade in" id="tab_sec2">
-                    <div class="row equalize">
-
-                        <div class="col-md-8 col-sm-12 center-col"
-                            *ngIf="categoryWiseQuestions && categoryWiseQuestions['MAHILA_JEEVIKA']">
-                            <!-- start accordion -->
-                            <div class="panel-group accordion-style3" id="accordion-4">
-                                <!-- start tab content -->
-                                <div class="panel panel-default"
-                                    *ngFor="let question of categoryWiseQuestions['MAHILA_JEEVIKA']; let i = index;">
-                                    <div class="panel-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-4"
-                                            href="#accordion-4-One">
-                                            <div class="panel-title">
-                                                <span
-                                                    class="alt-font font-weight-600 text-light-green tab-tag">Q{{i+1}}</span>
-                                                <span
-                                                    class="text-white xs-width-80 display-inline-block">{{question.title}}</span>
-                                                <i class="fa fa-angle-up pull-right text-extra-dark-gray "></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div id="accordion-4-One" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-
-                                            <span
-                                                class="text-black xs-width-80 font-weight-700 display-inline-block">Answer</span>
-                                            <div class="radio" *ngFor="let ansOption of question.options">
-                                                <label><input [name]="question._id" [value]="ansOption" ngModel
-                                                        type="radio" name="optradio" checked>{{ansOption}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end tab content -->
-                            </div>
-                            <!-- end accordion -->
-                        </div>
-                    </div>
-                </div>
-                <!-- end tab content -->
-                <!-- start tab content -->
-                <div class="tab-pane fade in" id="tab_sec3">
-                    <div class="row equalize">
-
-                        <div class="col-md-8 col-sm-12 center-col"
-                            *ngIf="categoryWiseQuestions && categoryWiseQuestions['HEALTH_DEPARTMENT']">
-                            <!-- start accordion -->
-                            <div class="panel-group accordion-style3" id="accordion-4">
-                                <!-- start tab content -->
-                                <div class="panel panel-default"
-                                    *ngFor="let question of categoryWiseQuestions['HEALTH_DEPARTMENT']; let i = index;">
-                                    <div class="panel-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-4"
-                                            href="#accordion-4-One">
-                                            <div class="panel-title">
-                                                <span
-                                                    class="alt-font font-weight-600 text-light-green tab-tag">Q{{i+1}}</span>
-                                                <span
-                                                    class="text-white xs-width-80 display-inline-block">{{question.title}}</span>
-                                                <i class="fa fa-angle-up pull-right text-extra-dark-gray "></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div id="accordion-4-One" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-
-                                            <span
-                                                class="text-black xs-width-80 font-weight-700 display-inline-block">Answer</span>
-                                            <div class="radio" *ngFor="let ansOption of question.options">
-                                                <label><input [name]="question._id" [value]="ansOption" ngModel
-                                                        type="radio" name="optradio" checked>{{ansOption}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end tab content -->
-                            </div>
-                            <!-- end accordion -->
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- end tab content -->
-                <!-- start tab content -->
-                <div class="tab-pane fade in" id="tab_sec4">
-                    <div class="row equalize">
-
-                        <div class="col-md-8 col-sm-12 center-col"
-                            *ngIf="categoryWiseQuestions && categoryWiseQuestions['EDUCATION_DEPARTMENT']">
-                            <!-- start accordion -->
-                            <div class="panel-group accordion-style3" id="accordion-4">
-                                <!-- start tab content -->
-                                <div class="panel panel-default"
-                                    *ngFor="let question of categoryWiseQuestions['EDUCATION_DEPARTMENT']; let i = index;">
-                                    <div class="panel-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-4"
-                                            href="#accordion-4-One">
-                                            <div class="panel-title">
-                                                <span
-                                                    class="alt-font font-weight-600 text-light-green tab-tag">Q{{i+1}}</span>
-                                                <span
-                                                    class="text-white xs-width-80 display-inline-block">{{question.title}}</span>
-                                                <i class="fa fa-angle-up pull-right text-extra-dark-gray "></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div id="accordion-4-One" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-
-                                            <span
-                                                class="text-black xs-width-80 font-weight-700 display-inline-block">Answer</span>
-                                            <div class="radio" *ngFor="let ansOption of question.options">
-                                                <label><input [name]="question._id" [value]="ansOption" ngModel
-                                                        type="radio" name="optradio" checked>{{ansOption}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end tab content -->
-                            </div>
-                            <!-- end accordion -->
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- end tab content -->
-
-                <!-- start tab content -->
-                <div class="tab-pane fade in" id="tab_sec5">
-                    <div class="row equalize">
-
-                        <div class="col-md-8 col-sm-12 center-col"
-                            *ngIf="categoryWiseQuestions && categoryWiseQuestions['STUDENT']">
-                            <!-- start accordion -->
-                            <div class="panel-group accordion-style3" id="accordion-4">
-                                <!-- start tab content -->
-                                <div class="panel panel-default"
-                                    *ngFor="let question of categoryWiseQuestions['STUDENT']; let i = index;">
-                                    <div class="panel-heading">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-4"
-                                            href="#accordion-4-One">
-                                            <div class="panel-title">
-                                                <span
-                                                    class="alt-font font-weight-600 text-light-green tab-tag">Q{{i+1}}</span>
-                                                <span
-                                                    class="text-white xs-width-80 display-inline-block">{{question.title}}</span>
-                                                <i class="fa fa-angle-up pull-right text-extra-dark-gray "></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div id="accordion-4-One" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-
-                                            <span
-                                                class="text-black xs-width-80 font-weight-700 display-inline-block">Answer</span>
-                                            <div class="radio" *ngFor="let ansOption of question.options">
-                                                <label><input [name]="question._id" [value]="ansOption" ngModel
-                                                        type="radio" name="optradio" checked>{{ansOption}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end tab content -->
-                            </div>
-                            <!-- end accordion -->
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- end tab content -->
-            </div>
+            <!-- start tab content -->
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+            <!-- end tab content -->
         </div>
 
         <section class="wow fadeIn" id="start-your-project" style="padding: 30px 0;">
@@ -369,7 +190,7 @@
                             <div></div>
                         </div>
                         <div class="col-md-4">
-                            <ngx-recaptcha2 #captchaElem required siteKey="6Ld4qLMZAAAAAPjwlqFIcw852Krf4jLDA5DBLs90" (success)="handleSuccess($event)"
+                            <ngx-recaptcha2 #captchaElem required [siteKey]="reCaptchaSiteKey" (success)="handleSuccess($event)"
                                 [size]="size" [hl]="lang" [theme]="theme" [type]="type" ngModel name="reCaptcha">
                             </ngx-recaptcha2>
                         </div>
