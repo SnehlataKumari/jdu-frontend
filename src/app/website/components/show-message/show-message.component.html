@@ -1,0 +1,5 @@
+<ul class="list-group list-group-flush">
+  <li class="list-group-item list-group-item-success" *ngFor="let message of messages;">
+    {{message.message}} | {{message.createdAt | date}}
+  </li>
+</ul>

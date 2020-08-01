@@ -9,6 +9,7 @@ import { YatrayenPageComponent } from './components/yatrayen-page/yatrayen-page.
 import { ImpactsPageComponent } from './components/impacts-page/impacts-page.component';
 import { BrandBiharPageComponent } from './components/brand-bihar-page/brand-bihar-page.component';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
+import { ShowMessageComponent } from './components/show-message/show-message.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,12 @@ const routes: Routes = [
         pathMatch: 'full',
         canActivate: [AuthGuard],
         component: DocumentsPageComponent
+      },
+      {
+        path: 'messages',
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+        component: ShowMessageComponent
       },
     ]
   }
