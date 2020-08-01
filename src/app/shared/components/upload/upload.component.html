@@ -3,9 +3,13 @@
 </div>
 
 <div class="progress">
-  <div class="progress-bar" role="progressbar" [style.width]="(documentsService.progress | async) + '%'" [attr.aria-valuenow]="documentsService.progress | async" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar" 
+    [ngClass]="{'color-change' : done }"
+    role="progressbar" 
+    [style.width]="(documentsService.progress | async) + '%'" 
+    [attr.aria-valuenow]="documentsService.progress | async" 
+    aria-valuemin="0" aria-valuemax="100">
     {{documentsService.progress | async}}%
   </div>
 </div>
-
-<button class="btn btn-primary" type="button" (click)="upload()">Click to upload</button>
+<button mat-raised-button type="button" (click)="upload()"><mat-icon>publish</mat-icon>Click to upload</button>

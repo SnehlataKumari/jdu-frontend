@@ -2,30 +2,31 @@
 
 <div class="col-lg-4 col-md-6 question-container" *ngIf="createMode">
     <form [formGroup]="questionForm">
-      <select formControlName="category" class="medium-input width-100" id="exampleFormControlSelect1">
-        <option [value]="categoryKey" *ngFor="let categoryKey of questionKeys">
-          <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="categoryKey"></app-constant>
-        </option>
-      </select>
-      <input type="text" formControlName="title" id="title" placeholder="Question Title" class="medium-input width-100">
+      <mat-card class="mb10">
+        <select formControlName="category" class="medium-input width-100" id="exampleFormControlSelect1">
+          <option [value]="categoryKey" *ngFor="let categoryKey of questionKeys">
+            <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="categoryKey"></app-constant>
+          </option>
+        </select>
+        <input type="text" formControlName="title" id="title" placeholder="Question Title" class="medium-input width-100">
 
-      <div formArrayName="options" class="mb10">
-        <h3 class="add-options">Options<button mat-raised-button (click)="addOption()"><mat-icon>add</mat-icon><span>Add Options</span></button></h3>
-        <div *ngFor="let option of options.controls; let i=index">
-          <!-- The repeated alias template -->
-          <label>
-            Option:
-            <input type="text" [formControlName]="i"/>
-            <button mat-stroked-button color="warn" (click)="removeOption(i)" class="ml10">Remove</button>
+        <div formArrayName="options" class="mb10">
+          <h3 class="add-options">Options<button mat-raised-button (click)="addOption()"><mat-icon>add</mat-icon><span>Add Options</span></button></h3>
+          <div *ngFor="let option of options.controls; let i=index">
+            <!-- The repeated alias template -->
+            <label>
+              Option:
+              <input type="text" [formControlName]="i"/>
+              <button mat-stroked-button color="warn" (click)="removeOption(i)" class="ml10">Remove</button>
 
-          </label>
+            </label>
+          </div>
         </div>
-      </div>
+      </mat-card>
       <button mat-raised-button color="primary" ((click)="save()">Save</button>
       <button mat-raised-button color="warn" (click)="dismiss('Save click')" class="ml10">Cancel</button>
     </form>
-    
-  </div>
+</div>
 
 <ng-container *ngIf="!createMode">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
@@ -34,7 +35,7 @@
         <app-constant [constant]="QUESTION_CATEGORY" [isBadge]="false" [code]="questionKey" ></app-constant>
       </a>
       <ng-template ngbNavContent>
-        <button class="btn btn-small btn-rounded btn-success" (click)="addNewQuestion(questionKey)">Add new question</button>
+        <button mat-raised-button class="mb10" (click)="addNewQuestion(questionKey)"><mat-icon>add</mat-icon>Add new question</button>
         <ngb-accordion #acc="ngbAccordion" *ngIf="catogoryWiseQuestions && catogoryWiseQuestions[questionKey]"
           activeIds="ngb-panel-0">
           <ngb-panel *ngFor="let question of catogoryWiseQuestions[questionKey]; let i2 = index;">
@@ -42,15 +43,17 @@
               <div><b>Question {{i2+1}}: </b> {{question.title}}</div>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button class="btn btn-small btn-rounded btn-danger margin-10px-bottom margin-10px-lr" (click)="deleteQuestion(question)">Delete</button>
-              <button class="btn btn-small btn-rounded btn-primary margin-10px-bottom margin-5px-lr" (click)="showAnswers(question)">View Answers</button>
-  
-              <!-- <h3>Options: </h3> -->
-              <ol>
-                <li *ngFor="let option of question.options; let i=index;">
-                  {{option}}
-                </li>
-              </ol>
+              <mat-card class="max-w">
+                <ol>
+                  <li *ngFor="let option of question.options; let i=index;">
+                    {{option}}
+                  </li>
+                </ol>
+                <div class="mb10 ml20">
+                  <button mat-raised-button color="primary"  (click)="showAnswers(question)">View Answers</button>
+                  <button mat-raised-button color="warn" class="ml10" (click)="deleteQuestion(question)">Delete</button>
+                </div>
+              </mat-card>
             </ng-template>
           </ngb-panel>
         </ngb-accordion>
