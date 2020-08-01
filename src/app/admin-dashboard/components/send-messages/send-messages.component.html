@@ -1,0 +1,7 @@
+<form [formGroup]="messageForm">
+  <div class="form-group">
+    <label for="formGroupExampleInput">Enter message</label>
+    <input type="text" class="form-control" formControlName="message" id="formGroupExampleInput" placeholder="">
+    <button type="button" class = "btn btn-success" (click) = "onSend()">Send</button>
+  </div>
+</form>
