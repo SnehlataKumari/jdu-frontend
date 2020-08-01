@@ -19,6 +19,11 @@ export class DashboardComponent implements OnInit {
       title: 'Manage suggestion questions',
       icon: 'supervised_user_circle'
     },
+    {
+      link: '/admin/schemes',
+      title: 'Manage Schemes',
+      icon: 'supervised_user_circle'
+    },
   ]
   constructor(
     private authService: AuthService
