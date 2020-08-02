@@ -42,7 +42,7 @@ export class AdminDashboardComponent implements OnInit {
     {
       link: '/dashboard/messages',
       title: 'Send messages',
-      icon: 'supervised_user_circle'
+      icon: 'message'
     },
   ];
 

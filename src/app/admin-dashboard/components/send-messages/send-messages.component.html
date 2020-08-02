@@ -1,20 +1,22 @@
-
-<div class="row">
-  <div class="col-md-6">
-    <form [formGroup]="messageForm">
-      <div class="form-group">
-        <!-- <label for="formGroupExampleInput">Enter message</label> -->
-        <textarea type="text" class="form-control" placeholder="Enter Message" formControlName="message" id="formGroupExampleInput"
-          placeholder=""></textarea>
-        <button type="button" class="btn btn-success" (click)="onSend()">Send</button>
+<form [formGroup]="messageForm">
+  <mat-card class="message-panel">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="form-group">
+          <!-- <label for="formGroupExampleInput">Enter message</label> -->
+          <textarea type="text" class="form-control" placeholder="Enter Message" formControlName="message" id="formGroupExampleInput"
+            placeholder=""></textarea>
+        </div>
       </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <div class="form-group form-check">
-      <input type="checkbox" [(ngModel)]="sendToAll" (change)="toggleSendToAll()" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1"> Send to all</label>
+      <div class="col-md-12">
+        <div class="form-group form-check">
+          <mat-checkbox type="checkbox" [(ngModel)]="sendToAll"  [ngModelOptions]="{standalone: true}" id="exampleCheck1" color="primary"></mat-checkbox>&nbsp;
+          <span  for="exampleCheck1">Send to all</span>
+        </div>
+        <app-multi-select *ngIf="!sendToAll" [(selectedUsers)]="selectedUsers"></app-multi-select>
+      </div>
     </div>
-    <app-multi-select *ngIf="!sendToAll" [(selectedUsers)]="selectedUsers"></app-multi-select>
-  </div>
-</div>
+  </mat-card>
+  <button type="button" mat-raised-button color="primary" class="mt10" (click)="onSend()">Send</button>
+</form>
+
