@@ -1,4 +1,12 @@
-<span *ngIf="isBadge" class="badge badge-secondary">
+<span *ngIf="isBadge" class="badge"
+[ngClass]="{
+  'badge-primary': label==='State Level User',
+  'badge-secondary': label==='Admin',
+  'badge-success': label==='Block level user',
+  'badge-danger': label==='Super Admin',
+  'badge-info': label==='District level user'
+}"
+>
   {{label}}
 </span>
 

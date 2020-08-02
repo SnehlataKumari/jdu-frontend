@@ -7,7 +7,32 @@ a, a:active, a:focus {
   display: block;
   margin-top: 130px;
 }
+.panel-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .mat-card-content {
+    min-height:30px;
+  }
+  .card {
+    max-width: 400px;
+    background-color: #dff0d8;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    .date {
+      font-size: 10px;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: row-reverse;
+      padding-bottom: 5px;
+      span {
+        color: grey
+      }
+    }
+  }
 
+}
 .doc-panel {
   padding: 20px;
   display: flex;
