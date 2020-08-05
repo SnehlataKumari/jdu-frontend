@@ -13,7 +13,10 @@ export class SendMessagesComponent implements OnInit {
 
   messageForm: FormGroup;
   users;
-
+  submitted:boolean = false;
+  select1medium:boolean = false;
+  select1send:boolean = false;
+  selectUser:boolean = false;
   selectedUsers = [];
   sendToAll = false;
 
@@ -28,19 +31,42 @@ export class SendMessagesComponent implements OnInit {
     this.messageForm = this.fb.group({
       message: ['', Validators.required],
       mediumType: this.fb.group({
-        SMS: [true, Validators.required],
-        EMAIL: [true, Validators.required],
-        PRIVATE: [true, Validators.required],
+        SMS: [false, Validators.required],
+        EMAIL: [false, Validators.required],
+        PRIVATE: [false, Validators.required],
       }),
       sendToType: this.fb.group({
-        ALL: [true, Validators.required],
-        CUSTOM: [true, Validators.required],
-        STATE_LEVEL_USER: [true, Validators.required],
-        BLOCK_LEVEL_USER: [true, Validators.required],
-        DISTRICT_LEVEL_USER: [true, Validators.required],
+        ALL: [false, Validators.required],
+        CUSTOM: [false, Validators.required],
+        STATE_LEVEL_USER: [false, Validators.required],
+        BLOCK_LEVEL_USER: [false, Validators.required],
+        DISTRICT_LEVEL_USER: [false, Validators.required],
       })
     });
+    this.validate();
+    this.messageForm.valueChanges.subscribe(this.validate);
     this.fetchUsers();
+  }
+  validate= () =>{
+    const { ALL, BLOCK_LEVEL_USER, CUSTOM, DISTRICT_LEVEL_USER, STATE_LEVEL_USER} = this.messageForm.controls.sendToType.value;
+    if(ALL) {
+      this.select1medium = false;
+      this.selectUser = false;
+    } else if(!BLOCK_LEVEL_USER && !CUSTOM && !DISTRICT_LEVEL_USER && !STATE_LEVEL_USER) {
+      this.select1medium = true;
+    } else if(CUSTOM && this.selectedUsers.length===0) {
+      this.selectUser = true;
+      this.select1medium = false;
+    } else {
+      this.select1medium = false;
+      this.selectUser = false;
+    }
+    const { SMS, EMAIL, PRIVATE } = this.messageForm.controls.mediumType.value;
+    if(!SMS && !EMAIL && !PRIVATE) {
+      this.select1send = true;
+    } else {
+      this.select1send = false;
+    }
   }
 
   async fetchUsers() {
@@ -53,9 +79,11 @@ export class SendMessagesComponent implements OnInit {
   }
 
   async onSend() {
+    this.submitted=true;
     const message = this.messageForm.value;
-
-    console.log(this.messageForm.value);
+    if(this.select1medium || this.select1send || this.selectUser) {
+      return
+    }
     
     const response = await this.api.post('/messages', {
       ...message,
@@ -63,5 +91,7 @@ export class SendMessagesComponent implements OnInit {
     }).toPromise();
 
     this.alert.success('Message Sent!!');
+    this.submitted=false;
+
   }
 }

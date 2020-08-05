@@ -1,37 +1,42 @@
 
 
     
-<form [formGroup]="messageForm">
-  <div class="row">
-    <div class="col-md-6">
-
+<form [formGroup]="messageForm" (ngSubmit)="onSend()">
+  <div class="message-panel">
+    <mat-card class="mt10">
       <div class="form-group">
-        <!-- <label for="formGroupExampleInput">Enter message</label> -->
-        <textarea type="text" class="form-control" placeholder="Enter Message" formControlName="message" id="formGroupExampleInput"
-          placeholder=""></textarea>
-        
+        <textarea type="text" class="form-control" placeholder="Enter Message" 
+        formControlName="message" id="formGroupExampleInput"
+        placeholder="Enter message"></textarea>
       </div>
+    </mat-card>
+    <mat-card class="mt10">
       <div formGroupName="mediumType">
-        <mat-checkbox class="example-margin" formControlName="SMS">Sms</mat-checkbox>
-        <mat-checkbox class="example-margin" formControlName="EMAIL">Email</mat-checkbox>
-        <mat-checkbox class="example-margin" formControlName="PRIVATE">Private</mat-checkbox>
+        <div class="heading">Medium to use</div>
+        <div><mat-checkbox class="example-margin" formControlName="SMS">Sms</mat-checkbox></div>
+        <div><mat-checkbox class="example-margin" formControlName="EMAIL">Email</mat-checkbox></div>
+        <div><mat-checkbox class="example-margin" formControlName="PRIVATE">Private</mat-checkbox></div>
       </div>
-      <button type="button" class="btn btn-success" (click)="onSend()">Send</button>
-    </div>
+      <div class="alert alert-danger mt10" role="alert" *ngIf="select1send && submitted">Select at least one</div>
+    </mat-card>
 
-    <div class="col-md-6">
+    <mat-card class="mt10">
       <div formGroupName="sendToType">
-        <mat-checkbox class="example-margin" formControlName="ALL">All</mat-checkbox>
-        <div *ngIf="!messageForm.value.sendToType.ALL">
-          <mat-checkbox class="example-margin" formControlName="CUSTOM">Custom</mat-checkbox>
-          <mat-checkbox class="example-margin" formControlName="STATE_LEVEL_USER">State Level User</mat-checkbox>
-          <mat-checkbox class="example-margin" formControlName="BLOCK_LEVEL_USER">Block Level User</mat-checkbox>
-          <mat-checkbox class="example-margin" formControlName="DISTRICT_LEVEL_USER">District Level User</mat-checkbox>
-        </div>
+        <div class="heading">Send to</div>
+        <div><mat-checkbox class="example-margin" formControlName="ALL">All</mat-checkbox></div>
+        <span *ngIf="!messageForm.value.sendToType.ALL">
+          <div><mat-checkbox class="example-margin" formControlName="STATE_LEVEL_USER">State Level User</mat-checkbox></div>
+          <div><mat-checkbox class="example-margin" formControlName="BLOCK_LEVEL_USER">Block Level User</mat-checkbox></div>
+          <div><mat-checkbox class="example-margin" formControlName="DISTRICT_LEVEL_USER">District Level User</mat-checkbox></div>
+          <div><mat-checkbox class="example-margin" formControlName="CUSTOM">Custom</mat-checkbox></div>
+        </span>
       </div>
-      
-      <app-multi-select *ngIf="!messageForm.value.sendToType.ALL && messageForm.value.sendToType.CUSTOM" [(selectedUsers)]="selectedUsers"></app-multi-select>
-    </div>
+      <app-multi-select *ngIf="!messageForm.value.sendToType.ALL && messageForm.value.sendToType.CUSTOM" 
+      [(selectedUsers)]="selectedUsers" (change) = "validate()"></app-multi-select>
+      <div class="alert alert-danger mt10" role="alert" *ngIf="select1medium && submitted">Select at least one</div>
+      <div class="alert alert-danger mt10" role="alert" *ngIf="selectUser && submitted">Select at least one user</div>
+    </mat-card>
   </div>
+  <button type="submit" mat-raised-button color="primary" class="btn btn-success" (click)="onSend()">Send</button>
 </form>
 
