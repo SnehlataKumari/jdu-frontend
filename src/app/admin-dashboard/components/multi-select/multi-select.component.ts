@@ -53,7 +53,7 @@ export class MultiSelectComponent {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       enableSearchFilter: true,
-      classes: "myclass custom-class"
+      classes: "custom-class"
     };
   }
 

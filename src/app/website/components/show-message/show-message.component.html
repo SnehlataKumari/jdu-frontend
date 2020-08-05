@@ -1,0 +1,7 @@
+<div class="panel-card">
+  <mat-card *ngFor="let message of messages;" class="card">
+    <mat-card-content>{{message.message}}</mat-card-content>
+    <mat-card-footer class="date"><span>{{message.createdAt | date}}</span></mat-card-footer>	
+  </mat-card>
+</div>
+
