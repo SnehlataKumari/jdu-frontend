@@ -33,7 +33,7 @@ export class UsersPageComponent implements OnInit {
   async ngOnInit() {
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['name', 'userName', 'role', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = ['name', 'userName', 'email', 'mobileNumber', 'role', 'createdAt', 'updatedAt', 'action'];
     this.resetList(list['data']);
   }
 

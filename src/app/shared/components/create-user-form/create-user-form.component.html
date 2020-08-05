@@ -13,6 +13,16 @@
             <input type="text" matInput placeholder="User Name" formControlName="username">
           </mat-form-field>
         </p>
+        <p>
+          <mat-form-field>
+            <input type="email" matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="text" max="10" min="10" matInput placeholder="Mobile Number" formControlName="mobileNumber">
+          </mat-form-field>
+        </p>
         <!-- <p>
           <mat-form-field>
             <input type="text" matInput placeholder="Role" formControlName="role">
@@ -42,7 +52,7 @@
   
         <div class="button">
           <button type="button" (click)="form.reset(initialValues)" [disabled]="!form.touched" mat-button>Reset</button>
-          <button type="submit" [disabled]="form.invalid" mat-button>{{form.value._id == '' ? 'Create' : 'Update'}}</button>
+          <button type="submit" [disabled]="!form.valid" mat-button>{{form.value._id == '' ? 'Create' : 'Update'}}</button>
         </div>
   
       </form>
