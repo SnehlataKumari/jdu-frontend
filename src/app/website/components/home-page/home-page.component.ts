@@ -70,7 +70,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ourAchievements = upComingEvents;
 
   constructor(
-    private _liveStream: LiveStreamService
+    private _liveStream: LiveStreamService,
   ) { }
 
   ngOnInit(): void {

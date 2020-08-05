@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent, DocumentsPageComponent, ShowMessageComponent],
@@ -26,7 +27,8 @@ import { ShowMessageComponent } from './components/show-message/show-message.com
     FormsModule,
     WebsiteRoutingModule,
     SharedModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    TranslateModule
   ]
 })
 export class WebsiteModule { }

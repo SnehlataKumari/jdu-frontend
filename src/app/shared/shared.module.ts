@@ -22,6 +22,8 @@ import { AddSuggestionsComponent } from './components/add-suggestions/add-sugges
 import { AddSuggestionsFormComponent } from './components/add-suggestions-form/add-suggestions-form.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { LangSelectionComponent } from './components/lang-selection/lang-selection.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [];
 
@@ -40,6 +42,7 @@ const routes: Routes = [];
     UploadUsersCsvFormComponent,
     AddSuggestionsComponent,
     AddSuggestionsFormComponent,
+    LangSelectionComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +56,7 @@ const routes: Routes = [];
     RouterModule.forChild(routes),
     NgMultiSelectDropDownModule.forRoot(),
     AngularMultiSelectModule,
+    TranslateModule
   ],
   exports: [
     CommonModule,
@@ -75,6 +79,7 @@ const routes: Routes = [];
     NgMultiSelectDropDownModule,
     AddSuggestionsComponent,
     AngularMultiSelectModule,
+    LangSelectionComponent
   ]
 })
 export class SharedModule { }
