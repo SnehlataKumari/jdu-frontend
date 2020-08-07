@@ -12,10 +12,10 @@ import { UsersPageComponent } from '../shared/components/users-page/users-page.c
 import { SharedModule } from '../shared/shared.module';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SuggestionQuestionsComponent } from '../shared/components/suggestion-questions/suggestion-questions.component';
 import { AnswersComponent } from '../shared/components/answers/answers.component';
 import { SendMessagesComponent } from './components/send-messages/send-messages.component';
+import { DashboardComponent } from '../shared/components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { 

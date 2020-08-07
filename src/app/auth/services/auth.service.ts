@@ -51,7 +51,7 @@ export class AuthService {
     localStorage.setItem('access_token', access_token);
     localStorage.setItem('user', JSON.stringify(user));
 
-    let navigateTo = ['private-room'];
+    let navigateTo = ['users-dashboard'];
     if (user.role === 'ADMIN') {
       navigateTo = ['dashboard'];
     } else if (user.role === 'SUPER_ADMIN') {

@@ -19,9 +19,10 @@ import { DocumentsPageComponent } from './components/documents-page/documents-pa
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { UsersDashboardComponent } from './components/users-dashboard/users-dashboard.component';
 
 @NgModule({
-  declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent, DocumentsPageComponent, ShowMessageComponent],
+  declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent, DocumentsPageComponent, ShowMessageComponent, UsersDashboardComponent],
   imports: [
     CommonModule,
     FormsModule,

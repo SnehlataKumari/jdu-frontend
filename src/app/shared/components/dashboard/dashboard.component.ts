@@ -10,11 +10,14 @@ import { groupBy } from 'lodash';
 export class DashboardComponent implements OnInit {
 
   roleWiseUsers;
+  loggedInUsersRole;
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+
+    this.loggedInUsersRole = this.authService.getLogginedUserRole();
     this.authService.getAllUsers().subscribe((response) => {
       const users = response['data'];
       this.roleWiseUsers = groupBy(users, 'role');
