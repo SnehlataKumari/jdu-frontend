@@ -8,11 +8,11 @@ const loggedInRoutes = [
   { routePath: '/messages', title: 'View Private messages' },
 ];
 const routes = [
-  { routePath: '/', title: 'Home' },
-  { routePath: '/suggestions', title: 'Suggestion' },
+  { routePath: '/', title: 'HOME_MENU_TITLE' },
+  { routePath: '/suggestions', title: 'SUGGESTION_MENU_TITLE' },
   // { routePath: '/yatrayen', title: 'Yatrayen'},
-  { routePath: '/impacts', title: 'Impacts' },
-  { routePath: '/brand-bihar', title: 'Bihar Brand' },
+  { routePath: '/impacts', title: 'IMPACTS_MENU_TITLE' },
+  { routePath: '/brand-bihar', title: 'BIHAR_BRAND' },
 ];
 
 @Component({
