@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.navigationMenus = this.authService.isLoggedIn() ? loggedInRoutes : routes;
+    this.navigationMenus = this.authService.isLoggedIn() ? this.loggedInRoutes : routes;
     window.addEventListener('scroll', this.scroll, true); //third parameter
     var specifiedElement = document.getElementById('navbar-toggle1');
 
@@ -50,6 +50,13 @@ export class HeaderComponent implements OnInit {
     });
 
   }
+
+  get loggedInRoutes() {
+    return this.authService.getLogginedUserRole() === 'BLOCK_LEVEL_USER'
+      ? loggedInRoutes
+      : [...loggedInRoutes, { routePath: '/users-dashboard', title: 'Dashboard' }];
+  }
+
   outerHeight(el) {
     var height = el.offsetHeight;
     var style = window.getComputedStyle(el);

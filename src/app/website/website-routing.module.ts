@@ -19,7 +19,6 @@ const routes: Routes = [
     component: WebsiteComponent,
     children: [
       { path: '', pathMatch: 'full', component: HomePageComponent },
-      { path: 'users-dashboard', pathMatch: 'full', component: UsersDashboardComponent, canActivate: [AuthGuard] },
       {
         path: 'private-room',
         canActivate: [AuthGuard],
@@ -58,9 +57,9 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         component: ShowMessageComponent
       },
-    ]
-  }
-  
+    ],
+  },
+  { path: 'users-dashboard', pathMatch: 'full', component: UsersDashboardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
