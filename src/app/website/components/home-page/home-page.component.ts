@@ -12,24 +12,18 @@ export interface Information {
 const upComingEvents: Information[] = [
   {
     imgUrl: '/assets/img/upcoming_events/001.jpg',
-    title: 'Economic Solution, Force on Youth',
-    description: `Self-help allowance of Rs 1000 per month for all youth between 20 and 25 years and
-          student loans up to Rs 4 lakh for all 12th grade passing students through credit cards and for which the
-        state guarantor is like five Ambitious schemes are running under this determination.`,
+    title: 'TITLE_1_ECONOMIC_SOLUTION',
+    description: `DESCRIPTION_1_SELF_HELP`,
   },
   {
     imgUrl: '/assets/img/upcoming_events/002.jpg',
-    title: 'Reserved Employment, Women Rights',
-    description: `The Bihar government has ensured that there will be a 35 percent horizontal
-              reservation for women for direct appointments at all levels and in all types of posts of all government
-              services-cadres. Bihar is the first state to do so.`,
+    title: 'TITLE_2_RESERVED_EMPLOYMENT',
+    description: `DESCRIPTION_2_THE_BIHAR`,
   },
   {
     imgUrl: '/assets/img/upcoming_events/003.jpg',
-    title: 'Opportunities Increased, Read Further',
-    description: `The Government is committed to establish five new Medical Colleges, Nursing
-              Colleges, ANM Schools, GNM Schools, Para-Medical Institutes, Polytechnics, Industrial Training Institutes,
-              Engineering Universities etc., so that all kinds of opportunities are available within the state.`,
+    title: 'TITLE_3_OPPORTUNITIES_INCREASED',
+    description: `DESCRIPTION_3_THE_GOVERNMENT`,
   },
 ];
 
