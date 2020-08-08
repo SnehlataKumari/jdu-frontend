@@ -10,6 +10,8 @@ import { ImpactsPageComponent } from './components/impacts-page/impacts-page.com
 import { BrandBiharPageComponent } from './components/brand-bihar-page/brand-bihar-page.component';
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
+import { SharedModule } from '../shared/shared.module';
+import { UsersDashboardComponent } from './components/users-dashboard/users-dashboard.component';
 
 const routes: Routes = [
   {
@@ -55,13 +57,15 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         component: ShowMessageComponent
       },
-    ]
-  }
-  
+    ],
+  },
+  { path: 'users-dashboard', pathMatch: 'full', component: UsersDashboardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    SharedModule,
+    RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class WebsiteRoutingModule { }

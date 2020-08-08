@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subject, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
@@ -27,6 +27,7 @@ export class MultiSelectComponent {
 
   dropdownList = [];
   @Input() selectedUsers = [];
+  @Output() change = new EventEmitter();
   dropdownSettings = {};
   
   ngOnInit() {
@@ -60,6 +61,7 @@ export class MultiSelectComponent {
   onItemSelect(item: any) {
     console.log(item);
     console.log(this.selectedUsers);
+    this.change.emit(item);
   }
   OnItemDeSelect(item: any) {
     console.log(item);

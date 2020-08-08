@@ -4,6 +4,12 @@
       Users
     </h3>
     <div>
+
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+      
       <button mat-raised-button color="primary" (click)="onAddResource()">
         <mat-icon>add</mat-icon>
         Add
