@@ -18,24 +18,24 @@ export const QUESTION_CATEGORY = {
 };
 
 export const DISTRICT = [
-  "Araria",
-  "Arwal",
-  "Aurangabad",
-  "Banka",
-  "Begusarai",
-  "Bhabhua",
-  "Bhagalpur",
-  "Bhojpur",
-  "Buxar",
-  "Darbhanga",
-  "East Champaran",
-  "Gaya",
-  "Gopalganj",
-  "Jamui",
-  "Jehanabad",
-  "Katihar",
-  "Khagaria",
-  "Kishanganj"
+  "ARARIA",
+  "ARWAL",
+  "AURANGABAD",
+  "BANKA",
+  "BEGUSARAI",
+  "BHABHUA",
+  "BHAGALPUR",
+  "BHOJPUR",
+  "BUXAR",
+  "DARBHANGA",
+  "EAST CHAMPARAN",
+  "GAYA",
+  "GOPALGANJ",
+  "JAMUI",
+  "JEHANABAD",
+  "KATIHAR",
+  "KHAGARIA",
+  "KISHANGANJ"
 ];
 
 

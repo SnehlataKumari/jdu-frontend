@@ -150,8 +150,7 @@
                         class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-30px-bottom  margin-30px-top xs-margin-40px-bottom">
                         <div class="position-relative overflow-hidden width-100">
                             <span
-                                class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">Visitor
-                                Detail</span>
+                                class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">{{"VISITOR_DETAIL" | translate}}</span>
                         </div>
                     </div>
                 </div>
@@ -160,30 +159,30 @@
                             <div id="success-project-contact-form" class="no-margin-lr"></div>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" ngModel name="name" id="name" placeholder="Name" class="medium-input width-100">
+                            <input type="text" ngModel name="name" id="name" [placeholder]="'NAME' | translate" class="medium-input width-100">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" ngModel name="mobileNumber" id="phone" placeholder="Mobile Number"
+                            <input type="text" ngModel name="mobileNumber" id="phone" [placeholder]="'MOBILE_NUMBER' | translate"
                                 class="medium-input width-100">
                         </div>
                         <div class="col-md-6">
-                                <input class="medium-input width-100" ngModel placeholder="District" list="districts" name="destrict" id="district">
+                                <input class="medium-input width-100" ngModel [placeholder]="'DISTRICT' | translate" list="districts" name="destrict" id="district">
                                 <datalist id="districts">
-                                    <option [value]="district" *ngFor="let district of districts"> {{district}}</option>
+                                    <option [value]="district | translate" *ngFor="let district of districts"> {{district | translate}}</option>
                                 </datalist>
                         </div>
 
                         <div class="col-md-6">
-                            <input type="text" list="vidhanSabha" ngModel name="vidhanSabha" id="email" placeholder="Vidhan Sabha Constituency"
+                            <input type="text" list="vidhanSabha" ngModel name="vidhanSabha" id="email" [placeholder]="'VIDHAN_SABHA_CONSTITUENCY' | translate"
                                 class="medium-input width-100">
                             <datalist id="vidhanSabha">
-                                <option [value]="vidhanSabha" *ngFor="let vidhanSabha of vidhanSabhas"> {{vidhanSabha}}</option>
+                                <option [value]="vidhanSabha | translate" *ngFor="let vidhanSabha of vidhanSabhas"> {{vidhanSabha | translate}}</option>
                             </datalist>
                         </div>
 
 
                         <div class="col-md-12">
-                            <textarea name="comment" ngModel id="comment" placeholder="Comment" rows="5"
+                            <textarea name="comment" ngModel id="comment" [placeholder]="'COMMENT' | translate" rows="5"
                                 class="medium-textarea width-100"></textarea>
                         </div>
                         <div class="col-md-4">

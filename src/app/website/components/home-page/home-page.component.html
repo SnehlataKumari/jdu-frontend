@@ -3,7 +3,7 @@
 
 <!-- start video  section -->
 <app-live-stream-player [streamUrl]="streamUrl" *ngIf="liveRailyStatus === 'started'"></app-live-stream-player>
-<app-banner *ngIf="liveRailyStatus !== 'started'" [bannerMessage]="bannerMessage"></app-banner>
+<app-banner *ngIf="liveRailyStatus !== 'started'" [bannerMessage]="bannerMessage | translate"></app-banner>
 <!-- end video style  section -->
 
 <!-- start about agency -->

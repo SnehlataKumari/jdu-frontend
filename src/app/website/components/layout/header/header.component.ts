@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
   get loggedInRoutes() {
     return this.authService.getLogginedUserRole() === 'BLOCK_LEVEL_USER'
       ? loggedInRoutes
-      : [...loggedInRoutes, { routePath: '/users-dashboard', title: 'Dashboard' }];
+      : [{ routePath: '/users-dashboard', title: 'Dashboard' }, ...loggedInRoutes,];
   }
 
   outerHeight(el) {

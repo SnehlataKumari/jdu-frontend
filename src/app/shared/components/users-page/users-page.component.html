@@ -7,10 +7,10 @@
 
       <mat-form-field>
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        <input matInput (keyup)="applyFilter($event)" #input>
       </mat-form-field>
       
-      <button mat-raised-button color="primary" (click)="onAddResource()">
+      <button mat-raised-button color="primary"  class="ml20" (click)="onAddResource()">
         <mat-icon>add</mat-icon>
         Add
       </button>
