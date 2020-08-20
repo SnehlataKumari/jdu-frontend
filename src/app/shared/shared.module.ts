@@ -25,6 +25,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { LangSelectionComponent } from './components/lang-selection/lang-selection.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EditSuggestionComponent } from './components/edit-suggestion/edit-suggestion.component';
 
 const routes: Routes = [];
 
@@ -44,7 +45,8 @@ const routes: Routes = [];
     AddSuggestionsComponent,
     AddSuggestionsFormComponent,
     LangSelectionComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditSuggestionComponent
   ],
   imports: [
     CommonModule,

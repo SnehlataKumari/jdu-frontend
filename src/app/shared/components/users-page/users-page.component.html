@@ -27,6 +27,31 @@
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let element"> {{element.role | role}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="branch">
+      <th mat-header-cell *matHeaderCellDef> Branch </th>
+      <td mat-cell *matCellDef="let element"> {{element.branch}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="designation">
+      <th mat-header-cell *matHeaderCellDef> Designation </th>
+      <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="district">
+      <th mat-header-cell *matHeaderCellDef> District </th>
+      <td mat-cell *matCellDef="let element"> {{element.district}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="vidhansabha">
+      <th mat-header-cell *matHeaderCellDef> Vidhan Sabha </th>
+      <td mat-cell *matCellDef="let element"> {{element.vidhansabha}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="userName">
       <th mat-header-cell *matHeaderCellDef> Username </th>
       <td mat-cell *matCellDef="let element"> {{element.username}} </td>
@@ -40,16 +65,6 @@
       <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
       <td mat-cell *matCellDef="let element"> {{element?.mobileNumber}} </td>
     </ng-container>
-
-    <ng-container matColumnDef="role">
-      <th mat-header-cell *matHeaderCellDef> Role </th>
-      <td mat-cell *matCellDef="let element"> {{element.role | role}} </td>
-    </ng-container>
-<!-- 
-    <ng-container matColumnDef="isBlocked">
-      <th mat-header-cell *matHeaderCellDef> Block </th>
-      <td mat-cell *matCellDef="let element"> <app-boolean [isValue]="element.isBlocked"> </app-boolean></td>
-    </ng-container> -->
 
     <ng-container matColumnDef="createdAt">
       <th mat-header-cell *matHeaderCellDef> Created on </th>

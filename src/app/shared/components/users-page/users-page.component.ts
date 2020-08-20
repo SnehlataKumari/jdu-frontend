@@ -33,7 +33,20 @@ export class UsersPageComponent implements OnInit {
   async ngOnInit() {
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
 
-    this.displayedColumns = ['name', 'userName', 'email', 'mobileNumber', 'role', 'createdAt', 'updatedAt', 'action'];
+    this.displayedColumns = [
+      'name',
+      'branch',
+      'designation',
+      'district',
+      'vidhansabha',
+      'userName',
+      'email',
+      'mobileNumber',
+      'role',
+      'createdAt',
+      'updatedAt',
+      'action'
+    ];
     this.resetList(list['data']);
   }
 
@@ -96,6 +109,10 @@ export class UsersPageComponent implements OnInit {
       name: '',
       mobileNumber: '',
       class: '',
+      'branch': '',
+      'designation': '',
+      'district': '',
+      'vidhansabha': '',
       isSubscribed: ''
     };
     this.openDialogue(user);

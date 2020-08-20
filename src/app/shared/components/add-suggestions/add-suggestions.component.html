@@ -12,7 +12,7 @@
     <tr class="bg-success" *ngFor="let scheme of schemes">
       <td class="bg-success">{{scheme.title}}</td>
       <td class="bg-success"><button class="btn btn-danger" (click)="delete(scheme)">Delete</button></td>
-      <td class="bg-success"></td>
+      <td class="bg-success"><button class="btn btn-primary" (click)="edit(scheme)">Edit</button></td>
     </tr>
   </tbody>
 </table>

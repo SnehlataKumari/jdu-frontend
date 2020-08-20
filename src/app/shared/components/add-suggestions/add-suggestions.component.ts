@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ResourceService } from '../../services/resource.service';
 import { Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EditSuggestionComponent } from '../edit-suggestion/edit-suggestion.component';
 
 @Component({
   selector: 'app-add-suggestions',
@@ -11,13 +14,17 @@ export class AddSuggestionsComponent implements OnInit {
 
   resourceUrl = '/scheme';
   schemes = [];
-
+  
+  
   constructor(
     private resourceService: ResourceService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+    
+    
     this.resetList();
   }
 
@@ -34,4 +41,21 @@ export class AddSuggestionsComponent implements OnInit {
     this.resetList();
   }
 
+  edit(scheme) {
+    console.log(scheme);
+    
+
+    const dialogRef = this.dialog.open(EditSuggestionComponent, {
+      width: '600px',
+      data: {
+        scheme
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.resetList();
+    });
+  }
+
 }
+

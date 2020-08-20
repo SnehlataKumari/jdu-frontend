@@ -35,12 +35,52 @@
         </p>
   
         <p>
-
           <mat-form-field>
             <mat-label>Role</mat-label>
             <mat-select formControlName="role">
               <mat-option [value]="roleKey" *ngFor="let roleKey of keys ">
                 {{displayRoles[roleKey].label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        
+        <p>
+          <mat-form-field>
+            <mat-label>Branch</mat-label>
+            <mat-select formControlName="branch">
+              <mat-option [value]="branch" *ngFor="let branch of branchList ">
+                {{branch}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>Designation</mat-label>
+            <mat-select formControlName="designation">
+              <mat-option [value]="branch" *ngFor="let branch of designationList ">
+                {{branch}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>District</mat-label>
+            <mat-select formControlName="district">
+              <mat-option [value]="branch" *ngFor="let branch of districtList ">
+                {{branch}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-label>Vidhan Sabha</mat-label>
+            <mat-select formControlName="vidhansabha">
+              <mat-option [value]="branch" *ngFor="let branch of vidhanSabhaList ">
+                {{branch}}
               </mat-option>
             </mat-select>
           </mat-form-field>

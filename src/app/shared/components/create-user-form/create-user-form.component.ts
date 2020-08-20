@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { USER_ROLES } from 'src/app/constants';
+import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from 'src/app/constants';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { pick, filter } from 'lodash';
 
@@ -19,6 +19,11 @@ export class CreateUserFormComponent implements OnInit {
 
   keys;
   isCreateMode = true;
+  branchList = BRANCH_LIST;
+  designationList = DESIGNATION_LIST;
+  districtMap = DISTRICT_VIDHAN_MAP;
+  districtList = Reflect.ownKeys(DISTRICT_VIDHAN_MAP);
+  vidhanSabhaList = [];
 
   @Input() error: string | null;
 
@@ -48,8 +53,16 @@ export class CreateUserFormComponent implements OnInit {
       email: [this.initialValues.email, Validators.email],
       mobileNumber: [this.initialValues.mobileNumber, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       role: [this.initialValues.role || Reflect.ownKeys(this.displayRoles)[0], Validators.required],
+      branch: [this.initialValues.branch, Validators.required],
+      designation: [this.initialValues.designation, Validators.required],
+      district: [this.initialValues.district, Validators.required],
+      vidhansabha: [this.initialValues.vidhansabha, Validators.required],
       username: [this.initialValues.username, Validators.required],
       password: [this.initialValues.password, Validators.required],
+    });
+
+    this.form.controls.district.valueChanges.subscribe((value) => {
+      this.vidhanSabhaList = this.districtMap[value].map(i => i.Vidhansabha);
     });
   }
 

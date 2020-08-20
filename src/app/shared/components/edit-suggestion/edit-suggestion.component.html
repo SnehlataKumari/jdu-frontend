@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <p>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+  </p>
+
+  <button class="btn btn-success">Update</button>
+</form>
