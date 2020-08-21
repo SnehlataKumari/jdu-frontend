@@ -20,10 +20,14 @@ export const QUESTION_CATEGORY = {
   EDUCATION_DEPARTMENT: { key: 'EDUCATION_DEPARTMENT', label: 'Education Department' },
   STUDENT: { key: 'STUDENT', label: 'Student' },
 };
-
+// TODO: Update locales based on new "TITLES".
 export const DISTRICT = uniq(district.map((i) => i.District.toUpperCase()));
+// TODO: Update locales based on new "TITLES".
 export const VIDHANSABHA = uniq(district.map((i) => i.Vidhansabha.toLocaleUpperCase()));
 
+// TODO: Update locales based on new "TITLES".
 export const DISTRICT_VIDHAN_MAP = groupBy(district, 'District');
+// TODO: Update locales based on new "TITLES".
 export const BRANCH_LIST = ["Women", "Extremely Backward Class", "Dalit", "Mahadalit", "Vyavasayik", "Medicine", "Vidhi", "XYZ 8", "Sahkarita", "Panchayti Raj", "Education", "Technology", "Sewadal", "Cultural", "Adiwasi", "Sports", "Student", "Labour", "Urban Development", "Jal Shramik", "Bunkar", "Media", "Suraksha Sewa", "Samaj Sudhar", "Youth", "Minority Welfare", "Others"];
+// TODO: Update locales based on new "TITLES".
 export const DESIGNATION_LIST = ["President", "Deputy President", "Sangathan Mahamantri", "General Secretary", "Secretary", "Treasurer", "Executive Member", "Member", "Vidhansabha Prabhari", "Loksabha Prabhari", "Kshetriye Prabhari", "Others"];
