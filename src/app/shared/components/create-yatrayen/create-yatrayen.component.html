@@ -8,7 +8,7 @@
             <input type="text" matInput placeholder="Title" formControlName="title">
           </mat-form-field>
         </p>
-        <p>
+        <p hidden>
           <mat-form-field>
             <input type="text" matInput placeholder="Image URL" formControlName="imageUrl">
           </mat-form-field>
@@ -18,6 +18,8 @@
             <input type="text" matInput placeholder="Description" formControlName="description">
           </mat-form-field>
         </p>
+
+        <app-upload (onUploadSuccess)="onUploadSuccess($event)"></app-upload>
         <p *ngIf="error" class="error">
           {{ error }}
         </p>

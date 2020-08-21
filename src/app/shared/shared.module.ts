@@ -31,6 +31,7 @@ import { CreateBrandBiharComponent } from './components/create-brand-bihar/creat
 import { ManageYatrayenComponent } from './components/manage-yatrayen/manage-yatrayen.component';
 import { CreateYatrayenComponent } from './components/create-yatrayen/create-yatrayen.component';
 import { InformationCardVideoComponent } from './components/information-card-video/information-card-video.component';
+import { ShowYatraComponent } from './component/show-yatra/show-yatra.component';
 
 const routes: Routes = [];
 
@@ -56,7 +57,8 @@ const routes: Routes = [];
     CreateBrandBiharComponent,
     ManageYatrayenComponent,
     CreateYatrayenComponent,
-    InformationCardVideoComponent
+    InformationCardVideoComponent,
+    ShowYatraComponent
   ],
   imports: [
     CommonModule,
@@ -94,7 +96,8 @@ const routes: Routes = [];
     AddSuggestionsComponent,
     AngularMultiSelectModule,
     LangSelectionComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShowYatraComponent,
   ]
 })
 export class SharedModule { }

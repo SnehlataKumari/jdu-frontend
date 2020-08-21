@@ -16,7 +16,9 @@
         class="col-md-12 col-sm-12 col-xs-12 right-sidebar sm-margin-60px-bottom xs-margin-40px-bottom sm-padding-15px-lr">
 
         <app-information-card-impacts *ngFor="let impact of yatrayen; let i = index;" [imgUrl]="impact.imageUrl"
-          [title]="impact.title" [description]="impact.description" [index]="i"></app-information-card-impacts>
+          [title]="impact.title" [description]="impact.description"
+          [redirectUrl]="'/yatrayen/'+impact._id"
+          [index]="i"></app-information-card-impacts>
       </main>
 
     </div>

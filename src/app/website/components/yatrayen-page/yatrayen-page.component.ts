@@ -22,9 +22,7 @@ export class YatrayenPageComponent implements OnInit {
   async fetchYatrayenList() {
     const response = await this.apiService.get(this.resourceUrl).toPromise();
     const yatrayen = response['data'];
-    console.log(yatrayen);
     this.yatrayen = yatrayen;
-    
   }
 
 }

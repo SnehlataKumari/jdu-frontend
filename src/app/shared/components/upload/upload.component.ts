@@ -20,9 +20,14 @@ export class UploadComponent implements OnInit {
 
   onFileChange(event) {
     this.file = event.target.files[0];
+    this.documentsService.progress.next(0);
+    this.done = false;
   }
 
   upload() {
+    if (!this.file) {
+      return;
+    }
     const formData = new FormData();
     formData.append('file', this.file);
 

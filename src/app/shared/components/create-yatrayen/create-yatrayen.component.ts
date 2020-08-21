@@ -27,6 +27,9 @@ export class CreateYatrayenComponent implements OnInit {
     this.dialogRef.close();
   }
 
+
+  
+
   ngOnInit(): void {
     this.initialValues = this.data.user;
     this.isCreateMode = this.initialValues._id === '';
@@ -36,6 +39,12 @@ export class CreateYatrayenComponent implements OnInit {
       description: [this.initialValues.description, Validators.required],
       imageUrl: [this.initialValues.imageUrl, Validators.required],
     });
+  }
+
+  onUploadSuccess(response) {
+    if (response && response.fullPath) {
+      this.form.patchValue({ imageUrl: response.fullPath});
+    }
   }
 
   async submit() {
