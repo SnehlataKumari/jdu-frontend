@@ -21,7 +21,17 @@ export class DashboardComponent implements OnInit {
     },
     {
       link: '/admin/schemes',
-      title: 'Manage Schemes',
+      title: 'Manage schemes',
+      icon: 'supervised_user_circle'
+    },
+    {
+      link: '/admin/manage-brand-bihar',
+      title: 'Manage brand bihar',
+      icon: 'supervised_user_circle'
+    },
+    {
+      link: '/admin/manage-yatrayen',
+      title: 'Manage yatrayen',
       icon: 'supervised_user_circle'
     },
   ]

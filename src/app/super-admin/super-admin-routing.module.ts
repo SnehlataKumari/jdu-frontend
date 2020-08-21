@@ -9,6 +9,8 @@ import { AnswersComponent } from '../shared/components/answers/answers.component
 import { AuthGuard } from '../services/auth-guard.service';
 import { AddSuggestionsComponent } from '../shared/components/add-suggestions/add-suggestions.component';
 import { AddSuggestionsFormComponent } from '../shared/components/add-suggestions-form/add-suggestions-form.component';
+import { ManageBiharBrandComponent } from '../shared/components/manage-bihar-brand/manage-bihar-brand.component';
+import { ManageYatrayenComponent } from '../shared/components/manage-yatrayen/manage-yatrayen.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,14 @@ const routes: Routes = [
           {
             path: 'add-scheme',
             component: AddSuggestionsFormComponent
+          },
+          {
+            path: 'manage-brand-bihar',
+            component: ManageBiharBrandComponent
+          },
+          {
+            path: 'manage-yatrayen',
+            component: ManageYatrayenComponent
           }
         ]
       }

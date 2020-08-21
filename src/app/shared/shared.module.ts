@@ -26,6 +26,10 @@ import { LangSelectionComponent } from './components/lang-selection/lang-selecti
 import { TranslateModule } from '@ngx-translate/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditSuggestionComponent } from './components/edit-suggestion/edit-suggestion.component';
+import { ManageBiharBrandComponent } from './components/manage-bihar-brand/manage-bihar-brand.component';
+import { CreateBrandBiharComponent } from './components/create-brand-bihar/create-brand-bihar.component';
+import { ManageYatrayenComponent } from './components/manage-yatrayen/manage-yatrayen.component';
+import { CreateYatrayenComponent } from './components/create-yatrayen/create-yatrayen.component';
 
 const routes: Routes = [];
 
@@ -46,7 +50,11 @@ const routes: Routes = [];
     AddSuggestionsFormComponent,
     LangSelectionComponent,
     DashboardComponent,
-    EditSuggestionComponent
+    EditSuggestionComponent,
+    ManageBiharBrandComponent,
+    CreateBrandBiharComponent,
+    ManageYatrayenComponent,
+    CreateYatrayenComponent
   ],
   imports: [
     CommonModule,
