@@ -30,6 +30,7 @@ import { ManageBiharBrandComponent } from './components/manage-bihar-brand/manag
 import { CreateBrandBiharComponent } from './components/create-brand-bihar/create-brand-bihar.component';
 import { ManageYatrayenComponent } from './components/manage-yatrayen/manage-yatrayen.component';
 import { CreateYatrayenComponent } from './components/create-yatrayen/create-yatrayen.component';
+import { InformationCardVideoComponent } from './components/information-card-video/information-card-video.component';
 
 const routes: Routes = [];
 
@@ -54,7 +55,8 @@ const routes: Routes = [];
     ManageBiharBrandComponent,
     CreateBrandBiharComponent,
     ManageYatrayenComponent,
-    CreateYatrayenComponent
+    CreateYatrayenComponent,
+    InformationCardVideoComponent
   ],
   imports: [
     CommonModule,
