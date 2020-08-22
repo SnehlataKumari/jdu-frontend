@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-show-yatra',
@@ -17,7 +17,8 @@ export class ShowYatraComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
-      this.fetchYatra(paramMap.get('id'))
+      this.fetchYatra(paramMap.get('id')).then(()=>window.scrollTo(0,0))
+
     });
   }
 

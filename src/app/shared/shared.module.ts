@@ -31,7 +31,7 @@ import { CreateBrandBiharComponent } from './components/create-brand-bihar/creat
 import { ManageYatrayenComponent } from './components/manage-yatrayen/manage-yatrayen.component';
 import { CreateYatrayenComponent } from './components/create-yatrayen/create-yatrayen.component';
 import { InformationCardVideoComponent } from './components/information-card-video/information-card-video.component';
-import { ShowYatraComponent } from './component/show-yatra/show-yatra.component';
+import { ShowYatraComponent } from './components/show-yatra/show-yatra.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UsersListPopupComponent } from './components/users-list-popup/users-list-popup.component';
