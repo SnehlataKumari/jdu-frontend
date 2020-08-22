@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  margin-top: 130px;
+}
+
+.show-yatra {
+  min-height: 650px;
+  padding: 20px;
+}
+.show-yatra h1 {
+  margin-top: 20px;
+}
+.show-yatra img {
+  width: 400px;
+}
