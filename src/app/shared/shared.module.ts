@@ -33,6 +33,8 @@ import { CreateYatrayenComponent } from './components/create-yatrayen/create-yat
 import { InformationCardVideoComponent } from './components/information-card-video/information-card-video.component';
 import { ShowYatraComponent } from './components/show-yatra/show-yatra.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { UsersListPopupComponent } from './components/users-list-popup/users-list-popup.component';
 
 
 const routes: Routes = [];
@@ -60,7 +62,9 @@ const routes: Routes = [];
     ManageYatrayenComponent,
     CreateYatrayenComponent,
     InformationCardVideoComponent,
-    ShowYatraComponent
+    ShowYatraComponent,
+    UsersListComponent,
+    UsersListPopupComponent
   ],
   imports: [
     CommonModule,
@@ -102,6 +106,7 @@ const routes: Routes = [];
     DashboardComponent,
     ShowYatraComponent,
     AgGridModule,
+    UsersListComponent,
   ]
 })
 export class SharedModule { }
