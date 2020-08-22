@@ -11,7 +11,7 @@ const routes = [
   { routePath: '/', title: 'HOME_MENU_TITLE' },
   { routePath: '/suggestions', title: 'SUGGESTION_MENU_TITLE' },
   //TODO: Change as per locale conversion
-  { routePath: '/yatrayen', title: 'Yatrayen'},
+  { routePath: '/yatrayen', title: 'YATRAYEN'},
   // { routePath: '/impacts', title: 'IMPACTS_MENU_TITLE' },
   { routePath: '/brand-bihar', title: 'BIHAR_BRAND' },
 ];

@@ -12,7 +12,7 @@ import { DocumentsPageComponent } from './components/documents-page/documents-pa
 import { ShowMessageComponent } from './components/show-message/show-message.component';
 import { SharedModule } from '../shared/shared.module';
 import { UsersDashboardComponent } from './components/users-dashboard/users-dashboard.component';
-import { ShowYatraComponent } from '../shared/component/show-yatra/show-yatra.component';
+import { ShowYatraComponent } from '../shared/components/show-yatra/show-yatra.component';
 
 const routes: Routes = [
   {
