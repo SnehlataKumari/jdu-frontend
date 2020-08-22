@@ -152,6 +152,10 @@ export class ViewMessagesComponent implements OnInit {
   createFilter(): (data: any, filter: string) => boolean {
     let filterFunction = function (data, filter): boolean {
       let searchTerms = JSON.parse(filter);
+
+      console.log(searchTerms);
+      console.log(data);
+      
       
       if (searchTerms.message && data.message.toLowerCase().indexOf(searchTerms.message.toLowerCase()) === -1) {
         return false;
