@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DESIGNATION_LIST, BRANCH_LIST, DISTRICT_VIDHAN_MAP, USER_ROLES } from 'src/app/constants';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ResourceService } from 'src/app/shared/services/resource.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,9 +25,11 @@ export class ViewMessagesComponent implements OnInit {
   districtList = Reflect.ownKeys(DISTRICT_VIDHAN_MAP);
   vidhanSabhaList = [];
   resourceUrl = '/messages';
+  messageFormFilter: FormGroup;
 
 
   nameFilter = new FormControl('');
+  messageFilter = new FormControl('');
   roleFilter = new FormControl('');
   branchFilter = new FormControl('');
   designationFilter = new FormControl('');
@@ -36,17 +38,19 @@ export class ViewMessagesComponent implements OnInit {
 
   filterValues = {
     name: '',
+    message: '',
     role: '',
     branch: '',
     designation: '',
     district: '',
-    vidhanSabha: ''
+    vidhanSabha: '',
   };
 
   constructor(
     private resourceService: ResourceService,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder
   ) { }
 
   displayedColumns: string[];
@@ -74,9 +78,32 @@ export class ViewMessagesComponent implements OnInit {
     ];
     this.resetList(list['data']);
     this.dataSource.filterPredicate = this.createFilter();
+
+    this.messageFormFilter = this.fb.group({
+      message: ['', Validators.required],
+      mediumType: this.fb.group({
+        SMS: [false, Validators.required],
+        EMAIL: [false, Validators.required],
+        PRIVATE: [false, Validators.required],
+      }),
+      sendToType: this.fb.group({
+        ALL: [false, Validators.required],
+        CUSTOM: [false, Validators.required],
+        STATE_LEVEL_USER: [false, Validators.required],
+        BLOCK_LEVEL_USER: [false, Validators.required],
+        DISTRICT_LEVEL_USER: [false, Validators.required],
+      })
+    });
   }
 
   bindFilterListeners() {
+    this.messageFilter.valueChanges
+      .subscribe(
+        message => {
+          this.filterValues.message = message;
+          this.dataSource.filter = JSON.stringify(this.filterValues);
+        }
+      )
     this.nameFilter.valueChanges
       .subscribe(
         name => {
@@ -125,12 +152,19 @@ export class ViewMessagesComponent implements OnInit {
   createFilter(): (data: any, filter: string) => boolean {
     let filterFunction = function (data, filter): boolean {
       let searchTerms = JSON.parse(filter);
-      return data.name.toLowerCase().indexOf(searchTerms.name.toLowerCase()) !== -1
-        && data.role.toString().toLowerCase().indexOf(searchTerms.role.toLowerCase()) !== -1
-        && data.branch.toLowerCase().indexOf(searchTerms.branch.toLowerCase()) !== -1
-        && data.designation.toLowerCase().indexOf(searchTerms.designation.toLowerCase()) !== -1
-        && data.district.toLowerCase().indexOf(searchTerms.district.toLowerCase()) !== -1
-        && data.vidhansabha.toLowerCase().indexOf(searchTerms.vidhanSabha.toLowerCase()) !== -1
+      
+      if (searchTerms.message && data.message.toLowerCase().indexOf(searchTerms.message.toLowerCase()) === -1) {
+        return false;
+      }
+      if (data.sendToType.ALL) {
+        return true;
+      }
+
+      if (searchTerms.role && !data.sendToType[searchTerms.role]) {
+        return false;
+      }
+
+      return true;
     }
     return filterFunction;
   }
@@ -158,6 +192,11 @@ export class ViewMessagesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
