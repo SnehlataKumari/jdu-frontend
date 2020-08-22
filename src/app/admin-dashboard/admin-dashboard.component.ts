@@ -44,6 +44,11 @@ export class AdminDashboardComponent implements OnInit {
       title: 'Send messages',
       icon: 'message'
     },
+    {
+      link: '/dashboard/view-sent-messages',
+      title: 'View Sent messages',
+      icon: 'message'
+    },
   ];
 
 

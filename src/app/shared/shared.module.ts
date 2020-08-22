@@ -32,6 +32,8 @@ import { ManageYatrayenComponent } from './components/manage-yatrayen/manage-yat
 import { CreateYatrayenComponent } from './components/create-yatrayen/create-yatrayen.component';
 import { InformationCardVideoComponent } from './components/information-card-video/information-card-video.component';
 import { ShowYatraComponent } from './component/show-yatra/show-yatra.component';
+import { AgGridModule } from 'ag-grid-angular';
+
 
 const routes: Routes = [];
 
@@ -70,6 +72,7 @@ const routes: Routes = [];
     MatFormFieldModule,
     ChartsModule,
     RouterModule.forChild(routes),
+    AgGridModule.withComponents([]),
     NgMultiSelectDropDownModule.forRoot(),
     AngularMultiSelectModule,
     TranslateModule
@@ -98,6 +101,7 @@ const routes: Routes = [];
     LangSelectionComponent,
     DashboardComponent,
     ShowYatraComponent,
+    AgGridModule,
   ]
 })
 export class SharedModule { }

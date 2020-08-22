@@ -16,6 +16,7 @@ import { SuggestionQuestionsComponent } from '../shared/components/suggestion-qu
 import { AnswersComponent } from '../shared/components/answers/answers.component';
 import { SendMessagesComponent } from './components/send-messages/send-messages.component';
 import { DashboardComponent } from '../shared/components/dashboard/dashboard.component';
+import { ViewMessagesComponent } from './components/view-messages/view-messages.component';
 
 const routes: Routes = [
   { 
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'documents', component: DocumentsPageComponent },
       { path: 'upload-document', component: UploadDocumentComponent },
       { path: 'messages', component: SendMessagesComponent },
+      { path: 'view-sent-messages', component: ViewMessagesComponent },
       {
         path: 'suggestions',
         component: SuggestionQuestionsComponent

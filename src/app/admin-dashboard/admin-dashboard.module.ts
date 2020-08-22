@@ -28,6 +28,7 @@ import { DocumentsPageComponent } from './components/documents-page/documents-pa
 import { UploadDocumentComponent } from './components/upload-document/upload-document.component';
 import { SendMessagesComponent } from './components/send-messages/send-messages.component';
 import { MultiSelectComponent } from './components/multi-select/multi-select.component';
+import { ViewMessagesComponent } from './components/view-messages/view-messages.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MultiSelectComponent } from './components/multi-select/multi-select.com
     DocumentsPageComponent,
     UploadDocumentComponent,
     SendMessagesComponent,
-    MultiSelectComponent
+    MultiSelectComponent,
+    ViewMessagesComponent
   ],
   imports: [
     CommonModule,
