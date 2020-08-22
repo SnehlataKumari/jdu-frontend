@@ -1,21 +1,28 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DESIGNATION_LIST, BRANCH_LIST, DISTRICT_VIDHAN_MAP, USER_ROLES } from 'src/app/constants';
-import { FormControl } from '@angular/forms';
-import { ResourceService } from 'src/app/shared/services/resource.service';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { pick, filter } from 'lodash';
-import { UsersListPopupComponent } from 'src/app/shared/components/users-list-popup/users-list-popup.component';
-import { MatDialog } from '@angular/material/dialog';
+import { filter } from 'lodash';
+import { CreateUserFormComponent } from '../create-user-form/create-user-form.component';
+import { ResourceService } from '../../services/resource.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { UploadUsersCsvFormComponent } from '../upload-users-csv-form/upload-users-csv-form.component';
+import { FormControl } from '@angular/forms';
+import { pick } from 'lodash';
+import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from 'src/app/constants';
 
 @Component({
-  selector: 'app-view-messages',
-  templateUrl: './view-messages.component.html',
-  styleUrls: ['./view-messages.component.scss']
+  selector: 'app-users-list',
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss']
 })
-export class ViewMessagesComponent implements OnInit {
+export class UsersListComponent implements OnInit {
 
+  @Input() resourceUrl: string = '/users';
+  @Input() users;
+
+  classMap;
+  classList;
   displayRoles;
   keys;
 
@@ -24,7 +31,7 @@ export class ViewMessagesComponent implements OnInit {
   districtMap = DISTRICT_VIDHAN_MAP;
   districtList = Reflect.ownKeys(DISTRICT_VIDHAN_MAP);
   vidhanSabhaList = [];
-  resourceUrl = '/messages';
+  
 
 
   nameFilter = new FormControl('');
@@ -42,7 +49,7 @@ export class ViewMessagesComponent implements OnInit {
     district: '',
     vidhanSabha: ''
   };
-
+  
   constructor(
     private resourceService: ResourceService,
     private authService: AuthService,
@@ -60,19 +67,23 @@ export class ViewMessagesComponent implements OnInit {
     this.displayRoles = loggedInUserRole === 'SUPER_ADMIN' ? pick(USER_ROLES, ['ADMIN']) : pick(USER_ROLES, filter(Reflect.ownKeys(USER_ROLES), (role) => !(role === 'ADMIN' || role === 'SUPER_ADMIN')));
     this.keys = Reflect.ownKeys(this.displayRoles);
 
-    const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
-    console.log(list);
-    
+    this.resetList(this.users);
     this.bindFilterListeners();
 
     this.displayedColumns = [
-      'message',
-      'mediumType',
-      'sendToType',
-      'usersId',
-      'createdAt'
+      'name',
+      'branch',
+      'designation',
+      'district',
+      'vidhansabha',
+      'userName',
+      'email',
+      'mobileNumber',
+      'role',
+      'createdAt',
+      'updatedAt'
     ];
-    this.resetList(list['data']);
+    
     this.dataSource.filterPredicate = this.createFilter();
   }
 
@@ -140,24 +151,25 @@ export class ViewMessagesComponent implements OnInit {
     this.resetList(list['data']);
   }
 
-  resetList(messages) {
-    this.dataSource = new MatTableDataSource(messages);
+  resetList(users) {
+    const filteredUsers = this.filterBasedOnRole(users);
+    this.dataSource = new MatTableDataSource(filteredUsers);
     this.dataSource.paginator = this.paginator;
   }
 
-  openDialogue(users) {
-    console.log(users);
-    
-    const dialogRef = this.dialog.open(UsersListPopupComponent, {
-      width: '1000px',
-      data: {
-        resourceUrl: this.resourceUrl,
-        users
-      }
-    });
+  filterBasedOnRole(users) {
+    const logginedUserRole = this.authService.getLogginedUserRole();
+    const filterOption = logginedUserRole === 'SUPER_ADMIN'
+      ? { 'role': 'ADMIN' }
+      : (user) => !(user.role == 'ADMIN' || user.role == 'SUPER_ADMIN');
+    // return filter(users, );
+    return filter(users, filterOption);
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
+
