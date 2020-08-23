@@ -57,14 +57,31 @@
     </mat-form-field> -->
 
   </div>
+  <div class="filters">
+    Filters:&nbsp;&nbsp;
+    <mat-form-field class="filter" floatLabel="never">
+      <mat-label>Message</mat-label>
+      <input matInput [formControl]="messageFilter">
+    </mat-form-field>
+    <mat-form-field floatLabel="never">
+      <mat-label>Role</mat-label>
+      <mat-select [formControl]="roleFilter">
+        <mat-option [value]="roleKey" *ngFor="let roleKey of keys ">
+          {{displayRoles[roleKey].label}}
+        </mat-option>
+        <mat-option value="CUSTOM">
+          Custom
+        </mat-option>
+        <mat-option value="ALL">
+          All
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="message">
       <th mat-header-cell *matHeaderCellDef>
         Message
-        <mat-form-field class="filter" floatLabel="never">
-          <mat-label>Message</mat-label>
-          <input matInput [formControl]="messageFilter">
-        </mat-form-field>
       </th>
       <td mat-cell *matCellDef="let element"> {{element.message}} </td>
     </ng-container>
@@ -83,20 +100,6 @@
     <ng-container matColumnDef="sendToType">
       <th mat-header-cell *matHeaderCellDef>
         Sent to
-        <mat-form-field floatLabel="never">
-          <mat-label>Role</mat-label>
-          <mat-select [formControl]="roleFilter">
-            <mat-option [value]="roleKey" *ngFor="let roleKey of keys ">
-              {{displayRoles[roleKey].label}}
-            </mat-option>
-            <mat-option value="CUSTOM">
-              Custom
-            </mat-option>
-            <mat-option value="ALL">
-              All
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
       </th>
       <td mat-cell *matCellDef="let element">
         <span class="badge badge-primary" *ngIf="element.sendToType.ALL">All</span>

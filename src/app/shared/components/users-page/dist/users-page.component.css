@@ -7,15 +7,18 @@ table {
   justify-content: space-between;
   padding: 10px 20px;
 }
+
 .ml20 {
   margin-left: 20px;
 }
+
 .ml10 {
   margin-left: 10px;
 }
+
 .filters {
   margin-left: 10px;
-  mat-form-field {
-    margin-right: 10px;
-  }
+}
+.filters mat-form-field {
+  margin-right: 10px;
 }
