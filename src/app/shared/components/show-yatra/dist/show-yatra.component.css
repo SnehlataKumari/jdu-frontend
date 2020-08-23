@@ -5,11 +5,10 @@
 
 .show-yatra {
   min-height: 650px;
-  padding: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
 }
 .show-yatra h1 {
   margin-top: 20px;
-}
-.show-yatra img {
-  width: 400px;
 }

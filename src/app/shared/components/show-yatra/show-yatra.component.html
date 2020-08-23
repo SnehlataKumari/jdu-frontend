@@ -1,5 +1,7 @@
 <div class="show-yatra">
-  <a href="javascript:void(0)" *ngIf="yatra" ><img [src]="yatra.imageUrl" alt=""></a>
-	<h1>{{yatra.title}}</h1>
-	<p *ngIf="yatra">{{yatra.description}}</p>
+	<a href="javascript:void(0)" *ngIf="yatra" ><img [src]="yatra.imageUrl" alt=""></a>
+	<div>
+		<h1>{{yatra.title}}</h1>
+		<p *ngIf="yatra">{{yatra.description}}</p>
+	</div>
 </div>

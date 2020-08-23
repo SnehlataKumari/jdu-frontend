@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // hostUrl: 'http://13.234.160.222:3000',
-  hostUrl: 'http://localhost:3000',
+  hostUrl: 'http://13.234.160.222:3000',
+  //hostUrl: 'http://localhost:3000',
   AWSAccessKeyId: '',
   AWSSecretKey: '',
   AWSregion: '',
