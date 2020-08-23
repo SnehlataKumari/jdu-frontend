@@ -90,35 +90,35 @@ export class UsersPageComponent implements OnInit {
     this.nameFilter.valueChanges
       .subscribe(
         name => {
-          this.filterValues.name = name;
+          this.filterValues.name = name || '';
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
       )
     this.roleFilter.valueChanges
       .subscribe(
         id => {
-          this.filterValues.role = id;
+          this.filterValues.role = id || '';
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
       )
     this.branchFilter.valueChanges
       .subscribe(
         branch => {
-          this.filterValues.branch = branch;
+          this.filterValues.branch = branch || '';
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
       )
     this.designationFilter.valueChanges
       .subscribe(
         designation => {
-          this.filterValues.designation = designation;
+          this.filterValues.designation = designation || '';
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
       )
     this.districtFilter.valueChanges
       .subscribe(
         district => {
-          this.filterValues.district = district;
+          this.filterValues.district = district || '';
           this.vidhanSabhaList = this.districtMap[district].map(i => i.Vidhansabha);
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
@@ -126,7 +126,7 @@ export class UsersPageComponent implements OnInit {
     this.vidhanSabhaFilter.valueChanges
       .subscribe(
         vidhanSabha => {
-          this.filterValues.vidhanSabha = vidhanSabha;
+          this.filterValues.vidhanSabha = vidhanSabha || '';
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
       )

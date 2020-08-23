@@ -22,29 +22,32 @@
   </div>
   <div class="filters">
     Filters:&nbsp;&nbsp;
-    <mat-form-field class="filter" floatLabel="never">
-      <mat-label>Search</mat-label>
+    <mat-form-field class="filter">
+      <mat-label>Search name</mat-label>
       <input matInput [formControl]="nameFilter">
     </mat-form-field>
-    <mat-form-field floatLabel="never">
+    <mat-form-field>
       <mat-label>Role</mat-label>
       <mat-select [formControl]="roleFilter">
+        <mat-option>None</mat-option>
         <mat-option [value]="roleKey" *ngFor="let roleKey of keys ">
           {{displayRoles[roleKey].label}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field floatLabel="never">
+    <mat-form-field>
       <mat-label>Branch</mat-label>
       <mat-select [formControl]="branchFilter">
+        <mat-option>None</mat-option>
         <mat-option [value]="branch" *ngFor="let branch of branchList ">
           {{branch}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field floatLabel="never">
+    <mat-form-field>
       <mat-label>Designation</mat-label>
       <mat-select [formControl]="designationFilter">
+        <mat-option>None</mat-option>
         <mat-option [value]="branch" *ngFor="let branch of designationList ">
           {{branch}}
         </mat-option>
@@ -53,14 +56,16 @@
     <mat-form-field>
       <mat-label>District</mat-label>
       <mat-select [formControl]="districtFilter">
+        <mat-option>None</mat-option>
         <mat-option [value]="branch" *ngFor="let branch of districtList ">
           {{branch}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field *ngIf="vidhanSabhaList.length>0">
       <mat-label>Vidhan Sabha</mat-label>
       <mat-select [formControl]="vidhanSabhaFilter">
+        <mat-option>None</mat-option>
         <mat-option [value]="branch" *ngFor="let branch of vidhanSabhaList ">
           {{branch}}
         </mat-option>
