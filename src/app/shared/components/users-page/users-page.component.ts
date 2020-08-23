@@ -19,10 +19,15 @@ import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from '
 export class UsersPageComponent implements OnInit {
 
   @Input() resourceUrl: string = '/users';
+  @Input() type: 'user-management' | 'messages' = 'user-management';
+  @Input() selection;
+
   classMap;
   classList;
   displayRoles;
   keys;
+
+  isMessage =false;
 
   branchList = BRANCH_LIST;
   designationList = DESIGNATION_LIST;
@@ -60,7 +65,7 @@ export class UsersPageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   async ngOnInit() {
-
+    this.isMessage = this.type == "messages"? true : false;
     const loggedInUserRole = this.authService.getLogginedUserRole();
     this.displayRoles = loggedInUserRole === 'SUPER_ADMIN' ? pick(USER_ROLES, ['ADMIN']) : pick(USER_ROLES, filter(Reflect.ownKeys(USER_ROLES), (role) => !(role === 'ADMIN' || role === 'SUPER_ADMIN')));
     this.keys = Reflect.ownKeys(this.displayRoles);
@@ -69,6 +74,7 @@ export class UsersPageComponent implements OnInit {
     this.bindFilterListeners();
 
     this.displayedColumns = [
+      ...(this.isMessage? ['select'] : []),
       'name',
       'branch',
       'designation',
@@ -78,9 +84,9 @@ export class UsersPageComponent implements OnInit {
       'email',
       'mobileNumber',
       'role',
-      'createdAt',
-      'updatedAt',
-      'action'
+      ...(!this.isMessage? ['createdAt'] : []),
+      ...(!this.isMessage? ['updatedAt'] : []),
+      ...(!this.isMessage? ['action'] : []),
     ];
     this.resetList(list['data']);
     this.dataSource.filterPredicate = this.createFilter();
@@ -119,7 +125,7 @@ export class UsersPageComponent implements OnInit {
       .subscribe(
         district => {
           this.filterValues.district = district || '';
-          this.vidhanSabhaList = this.districtMap[district].map(i => i.Vidhansabha);
+          this.vidhanSabhaList = this.districtMap[district]? this.districtMap[district].map(i => i.Vidhansabha) : [];
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
       )
@@ -231,6 +237,20 @@ export class UsersPageComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
 }

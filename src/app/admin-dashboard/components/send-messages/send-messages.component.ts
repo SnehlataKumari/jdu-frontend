@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert.service';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-send-messages',
@@ -14,11 +15,8 @@ export class SendMessagesComponent implements OnInit {
   messageForm: FormGroup;
   users;
   submitted:boolean = false;
-  select1medium:boolean = false;
   select1send:boolean = false;
-  selectUser:boolean = false;
-  selectedUsers = [];
-  sendToAll = false;
+  selection = new SelectionModel(true, []);
 
   constructor(
     private fb: FormBuilder,
@@ -34,13 +32,6 @@ export class SendMessagesComponent implements OnInit {
         SMS: [false, Validators.required],
         EMAIL: [false, Validators.required],
         PRIVATE: [false, Validators.required],
-      }),
-      sendToType: this.fb.group({
-        ALL: [false, Validators.required],
-        CUSTOM: [false, Validators.required],
-        STATE_LEVEL_USER: [false, Validators.required],
-        BLOCK_LEVEL_USER: [false, Validators.required],
-        DISTRICT_LEVEL_USER: [false, Validators.required],
       })
     });
     this.validate();
@@ -48,19 +39,6 @@ export class SendMessagesComponent implements OnInit {
     this.fetchUsers();
   }
   validate= () =>{
-    const { ALL, BLOCK_LEVEL_USER, CUSTOM, DISTRICT_LEVEL_USER, STATE_LEVEL_USER} = this.messageForm.controls.sendToType.value;
-    if(ALL) {
-      this.select1medium = false;
-      this.selectUser = false;
-    } else if(!BLOCK_LEVEL_USER && !CUSTOM && !DISTRICT_LEVEL_USER && !STATE_LEVEL_USER) {
-      this.select1medium = true;
-    } else if(CUSTOM && this.selectedUsers.length===0) {
-      this.selectUser = true;
-      this.select1medium = false;
-    } else {
-      this.select1medium = false;
-      this.selectUser = false;
-    }
     const { SMS, EMAIL, PRIVATE } = this.messageForm.controls.mediumType.value;
     if(!SMS && !EMAIL && !PRIVATE) {
       this.select1send = true;
@@ -74,24 +52,21 @@ export class SendMessagesComponent implements OnInit {
     this.users = response['data'];
   }
 
-  toggleSendToAll() {
-
-  }
-
   async onSend() {
+    const selectedUsers = this.selection.selected;
     this.submitted=true;
     const message = this.messageForm.value;
-    if(this.select1medium || this.select1send || this.selectUser) {
+    if(this.select1send || this.selection.selected.length==0) {
       return
     }
-    
     const response = await this.api.post('/messages', {
       ...message,
-      usersId: this.selectedUsers.map(u => u._id)
+      sendToType: { ALL:false, CUSTOM:true, STATE_LEVEL_USER:false, BLOCK_LEVEL_USER:false,DISTRICT_LEVEL_USER:false},
+      usersId: selectedUsers.map(u => u._id)
     }).toPromise();
 
     this.alert.success('Message Sent!!');
     this.submitted=false;
-
+    this.selection.clear();
   }
 }
