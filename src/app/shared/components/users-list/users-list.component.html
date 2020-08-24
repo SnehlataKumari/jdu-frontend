@@ -3,10 +3,10 @@
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>
       Name
-      <mat-form-field class="filter" floatLabel="never">
+      <!-- <mat-form-field class="filter" floatLabel="never">
         <mat-label>Search</mat-label>
         <input matInput [formControl]="nameFilter">
-      </mat-form-field>
+      </mat-form-field> -->
     </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
@@ -14,14 +14,14 @@
   <ng-container matColumnDef="role">
     <th mat-header-cell *matHeaderCellDef>
       Role
-      <mat-form-field floatLabel="never">
+      <!-- <mat-form-field floatLabel="never">
         <mat-label>Role</mat-label>
         <mat-select [formControl]="roleFilter">
           <mat-option [value]="roleKey" *ngFor="let roleKey of keys ">
             {{displayRoles[roleKey].label}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </th>
     <td mat-cell *matCellDef="let element"> {{element.role | role}} </td>
   </ng-container>
@@ -29,14 +29,14 @@
   <ng-container matColumnDef="branch">
     <th mat-header-cell *matHeaderCellDef>
       Branch
-      <mat-form-field floatLabel="never">
+      <!-- <mat-form-field floatLabel="never">
         <mat-label>Branch</mat-label>
         <mat-select [formControl]="branchFilter">
           <mat-option [value]="branch" *ngFor="let branch of branchList ">
             {{branch}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </th>
     <td mat-cell *matCellDef="let element"> {{element.branch}} </td>
   </ng-container>
@@ -44,14 +44,14 @@
   <ng-container matColumnDef="designation">
     <th mat-header-cell *matHeaderCellDef>
       Designation
-      <mat-form-field floatLabel="never">
+      <!-- <mat-form-field floatLabel="never">
         <mat-label>Designation</mat-label>
         <mat-select [formControl]="designationFilter">
           <mat-option [value]="branch" *ngFor="let branch of designationList ">
             {{branch}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </th>
     <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
   </ng-container>
@@ -59,14 +59,14 @@
   <ng-container matColumnDef="district">
     <th mat-header-cell *matHeaderCellDef>
       District
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>District</mat-label>
         <mat-select [formControl]="districtFilter">
           <mat-option [value]="branch" *ngFor="let branch of districtList ">
             {{branch}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </th>
     <td mat-cell *matCellDef="let element"> {{element.district}} </td>
   </ng-container>
@@ -74,14 +74,14 @@
   <ng-container matColumnDef="vidhansabha">
     <th mat-header-cell *matHeaderCellDef>
       Vidhan Sabha
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>Vidhan Sabha</mat-label>
         <mat-select [formControl]="vidhanSabhaFilter">
           <mat-option [value]="branch" *ngFor="let branch of vidhanSabhaList ">
             {{branch}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </th>
     <td mat-cell *matCellDef="let element"> {{element.vidhansabha}} </td>
   </ng-container>
@@ -98,16 +98,6 @@
   <ng-container matColumnDef="mobileNumber">
     <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
     <td mat-cell *matCellDef="let element"> {{element?.mobileNumber}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="createdAt">
-    <th mat-header-cell *matHeaderCellDef> Created on </th>
-    <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="updatedAt">
-    <th mat-header-cell *matHeaderCellDef> Update on </th>
-    <td mat-cell *matCellDef="let element"> {{element.updatedAt | date}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

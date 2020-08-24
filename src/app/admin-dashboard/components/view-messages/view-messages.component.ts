@@ -65,7 +65,6 @@ export class ViewMessagesComponent implements OnInit {
     this.keys = Reflect.ownKeys(this.displayRoles);
 
     const list = await this.resourceService.fetchAll(this.resourceUrl).toPromise();
-    console.log(list);
     
     this.bindFilterListeners();
 
@@ -152,22 +151,15 @@ export class ViewMessagesComponent implements OnInit {
   createFilter(): (data: any, filter: string) => boolean {
     let filterFunction = function (data, filter): boolean {
       let searchTerms = JSON.parse(filter);
-
-      console.log(searchTerms);
-      console.log(data);
-      
-      
       if (searchTerms.message && data.message.toLowerCase().indexOf(searchTerms.message.toLowerCase()) === -1) {
         return false;
       }
-      if (data.sendToType.ALL) {
+      if (data.sendToType && data.sendToType.ALL) {
         return true;
       }
-
-      if (searchTerms.role && !data.sendToType[searchTerms.role]) {
+      if (searchTerms.role && (!data.sendToType || !data.sendToType[searchTerms.role])) {
         return false;
       }
-
       return true;
     }
     return filterFunction;
@@ -184,7 +176,6 @@ export class ViewMessagesComponent implements OnInit {
   }
 
   openDialogue(users) {
-    console.log(users);
     
     const dialogRef = this.dialog.open(UsersListPopupComponent, {
       width: '1000px',

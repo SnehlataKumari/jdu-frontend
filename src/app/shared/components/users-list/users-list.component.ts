@@ -80,8 +80,6 @@ export class UsersListComponent implements OnInit {
       'email',
       'mobileNumber',
       'role',
-      'createdAt',
-      'updatedAt'
     ];
     
     this.dataSource.filterPredicate = this.createFilter();

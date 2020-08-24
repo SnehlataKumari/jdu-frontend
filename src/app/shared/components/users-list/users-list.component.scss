@@ -1,15 +1,18 @@
 table {
   width: 100%;
+  td {
+    padding-right: 24px;
+  }
 }
 
-.resource-actions-panel {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
-.ml20 {
-  margin-left: 20px;
-}
-.ml10 {
-  margin-left: 10px;
-}
+// .resource-actions-panel {
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 10px 20px;
+// }
+// .ml20 {
+//   margin-left: 20px;
+// }
+// .ml10 {
+//   margin-left: 10px;
+// }
