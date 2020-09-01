@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { groupBy } from 'lodash';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { DocumentsService } from 'src/app/services/documents.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,10 @@ export class DashboardComponent implements OnInit {
   loggedInUsersRole;
   constructor(
     private authService: AuthService,
+    private apiService: ApiService,
     private router: Router,
+    private documentsService: DocumentsService
+
   ) { }
 
   ngOnInit(): void {
@@ -27,5 +32,25 @@ export class DashboardComponent implements OnInit {
       const users = response['data'];
       this.roleWiseUsers = groupBy(users, 'role');
     });
+    this.getCount()
+  }
+  brandCount = 0;
+  speechesCount=0;
+  documentCount=0;
+  yatrayenCount=0;
+  async getCount() {
+    this.apiService.get('/brand-bihar').toPromise().then((response)=> {
+      this.brandCount = response['data']? response['data'].length : 0 ;
+    });
+    this.apiService.get('/speeches').toPromise().then((response)=> {
+      this.speechesCount = response['data']? response['data'].length : 0 ;
+    });
+    this.documentsService.getUsersDocuments().toPromise().then((response)=> {
+      this.documentCount = response['data']? response['data'].length : 0 ;
+    });
+    this.apiService.get('/yatrayen').toPromise().then((response)=> {
+      this.yatrayenCount = response['data']? response['data'].length : 0 ;
+    });
+    
   }
 }
