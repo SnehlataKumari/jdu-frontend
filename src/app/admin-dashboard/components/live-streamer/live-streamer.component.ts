@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import AvMenu from '../../../lib/AvMenu';
-import Settings from '../../../lib/settings';
+import Settings from '../../../lib/Settings';
 import WowzaWebRTCPublish from '../../../lib/WowzaWebRTCPublish';
 declare var window;
 declare var $;
