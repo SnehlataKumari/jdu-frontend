@@ -4,7 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 const loggedInRoutes = [
   { routePath: '/private-room', title: 'Private Room' },
-  { routePath: '/documents', title: 'Download Documents' },
+  { routePath: '/documents', title: 'Download Materials' },
   { routePath: '/messages', title: 'View Private messages' },
 ];
 const routes = [
@@ -14,6 +14,7 @@ const routes = [
   { routePath: '/yatrayen', title: 'YATRAYEN'},
   // { routePath: '/impacts', title: 'IMPACTS_MENU_TITLE' },
   { routePath: '/brand-bihar', title: 'BIHAR_BRAND' },
+  { routePath: '/speeches', title: 'SPEECHES' },
 ];
 
 @Component({

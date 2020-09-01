@@ -31,7 +31,7 @@ export class AdminDashboardComponent implements OnInit {
     },
     {
       link: '/dashboard/documents',
-      title: 'Upload Documents',
+      title: 'Upload Materials',
       icon: 'attach_file'
     },
     {

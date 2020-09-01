@@ -42,10 +42,15 @@ const routes: Routes = [
         component: ShowYatraComponent
       },
       {
-        path: 'impacts',
+        path: 'speeches',
         pathMatch: 'full',
-        component: ImpactsPageComponent
+        component: BrandBiharPageComponent
       },
+      // {
+      //   path: 'impacts',
+      //   pathMatch: 'full',
+      //   component: ImpactsPageComponent
+      // },
       {
         path: 'brand-bihar',
         pathMatch: 'full',
