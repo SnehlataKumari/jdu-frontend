@@ -5,5 +5,5 @@ export const environment = {
   AWSSecretKey: '',
   AWSregion: 'ap-south-1',
   S3Bucket: '',
-  reCaptchaSiteKey: '6LdcAcMZAAAAAJ2e4leDLmmp0w_x2Zi_URxHor6K'
+  reCaptchaSiteKey: '6LdkYsYZAAAAAGBLoRqj_7ckUaznNCABL-9wIm8o'
 };
