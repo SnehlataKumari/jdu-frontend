@@ -13,6 +13,7 @@ import { ShowMessageComponent } from './components/show-message/show-message.com
 import { SharedModule } from '../shared/shared.module';
 import { UsersDashboardComponent } from './components/users-dashboard/users-dashboard.component';
 import { ShowYatraComponent } from '../shared/components/show-yatra/show-yatra.component';
+import { SpeechesPageComponent } from './components/speeches-page/speeches-page.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,7 @@ const routes: Routes = [
       {
         path: 'speeches',
         pathMatch: 'full',
-        component: BrandBiharPageComponent
+        component: SpeechesPageComponent
       },
       // {
       //   path: 'impacts',

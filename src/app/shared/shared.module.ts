@@ -35,6 +35,7 @@ import { ShowYatraComponent } from './components/show-yatra/show-yatra.component
 import { AgGridModule } from 'ag-grid-angular';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UsersListPopupComponent } from './components/users-list-popup/users-list-popup.component';
+import { ManageSpeechesComponent } from './components/manage-speeches/manage-speeches.component';
 
 
 const routes: Routes = [];
@@ -58,6 +59,7 @@ const routes: Routes = [];
     DashboardComponent,
     EditSuggestionComponent,
     ManageBiharBrandComponent,
+    ManageSpeechesComponent,
     CreateBrandBiharComponent,
     ManageYatrayenComponent,
     CreateYatrayenComponent,

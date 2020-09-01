@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { LiveStreamService } from 'src/app/admin-dashboard/services/live-stream.service';
 import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/services/api.service';
+import { DomSanitizer } from '@angular/platform-browser';
 declare var window: any;
 
 export interface Information {
@@ -9,23 +11,23 @@ export interface Information {
   imgUrl?: string
 };
 
-const upComingEvents: Information[] = [
-  {
-    imgUrl: '/assets/img/upcoming_events/001.jpg',
-    title: 'TITLE_1_ECONOMIC_SOLUTION',
-    description: `DESCRIPTION_1_SELF_HELP`,
-  },
-  {
-    imgUrl: '/assets/img/upcoming_events/002.jpg',
-    title: 'TITLE_2_RESERVED_EMPLOYMENT',
-    description: `DESCRIPTION_2_THE_BIHAR`,
-  },
-  {
-    imgUrl: '/assets/img/upcoming_events/003.jpg',
-    title: 'TITLE_3_OPPORTUNITIES_INCREASED',
-    description: `DESCRIPTION_3_THE_GOVERNMENT`,
-  },
-];
+// const upComingEvents: Information[] = [
+//   {
+//     imgUrl: '/assets/img/upcoming_events/001.jpg',
+//     title: 'TITLE_1_ECONOMIC_SOLUTION',
+//     description: `DESCRIPTION_1_SELF_HELP`,
+//   },
+//   {
+//     imgUrl: '/assets/img/upcoming_events/002.jpg',
+//     title: 'TITLE_2_RESERVED_EMPLOYMENT',
+//     description: `DESCRIPTION_2_THE_BIHAR`,
+//   },
+//   {
+//     imgUrl: '/assets/img/upcoming_events/003.jpg',
+//     title: 'TITLE_3_OPPORTUNITIES_INCREASED',
+//     description: `DESCRIPTION_3_THE_GOVERNMENT`,
+//   },
+// ];
 
 const ourAchievements: Information[] = [
   {
@@ -57,20 +59,49 @@ export class HomePageComponent implements OnInit, OnDestroy {
   isStreamLive = false;
   bannerMessage = 'STARTING_SOON';
 
+  brandUrl = '/brand-bihar';
+  speechesUrl = '/speeches';
 
+  baseUrl:string = 'https://www.youtube.com/embed/';
+
+  async fetchBrandBiharList() {
+    const response = await this.apiService.get(this.brandUrl).toPromise();
+    const yatrayen = response['data'];
+    this.brandBiharList= yatrayen.map((item)=> {
+      const videoId= item.videoUrl;
+      const videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.baseUrl}${videoId}`);
+      return { ...item, videoUrl };
+    });
+  };
+
+  async fetchYatrayenList() {
+    const response = await this.apiService.get(this.speechesUrl).toPromise();
+    const yatrayen = response['data'];
+    this.yatrayen= yatrayen.map((item)=> {
+      const videoId= item.videoUrl;
+      const videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.baseUrl}${videoId}`);
+      return { ...item, videoUrl };
+    });
+    console.log(this.yatrayen);
+  };
+  
   streamUrl = 'https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8';
 
-  upComingEvents = upComingEvents;
-  ourAchievements = upComingEvents;
+  brandBiharList = [];
+  yatrayen = [];
 
   constructor(
     private _liveStream: LiveStreamService,
+    private apiService: ApiService,
+    protected sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
     this.$intervalRef = this._liveStream.getLiveRailyStatus().subscribe(state => {
       this.liveRailyStatus = state;
     })
+    this.fetchBrandBiharList();
+    this.fetchYatrayenList();
   }
 
   ngOnDestroy() {

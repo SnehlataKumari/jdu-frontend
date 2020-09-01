@@ -125,11 +125,11 @@
     </div>
     <div class="row equalize xs-equalize-auto">
       <!-- start features box item -->
-      <app-information-card
-        *ngFor="let event of upComingEvents;"
-        [imgUrl]="event.imgUrl"
-        [description]="event.description"
-        [title]="event.title"></app-information-card>
+      <carousel height="300" cellWidth="300">
+        <div  class="carousel-cell" *ngFor="let event of yatrayen;">
+          <iframe class="e2e-iframe-untrusted-src"  [src]="event.videoUrl" allowfullscreen></iframe>
+        </div>
+      </carousel>
       <!-- end feature box item -->
     </div>
   </div>
@@ -147,11 +147,15 @@
     </div>
     <div class="row equalize xs-equalize-auto">
       <!-- start features box item -->
-      <app-information-card
-        *ngFor="let event of ourAchievements;"
-        [imgUrl]="event.imgUrl"
-        [description]="event.description"
-        [title]="event.title"></app-information-card>
+      <carousel height="300" cellWidth="300">
+        <div  class="carousel-cell" *ngFor="let event of brandBiharList;">
+          <iframe class="e2e-iframe-untrusted-src"  [src]="event.videoUrl" allowfullscreen></iframe>
+          <!-- <app-information-card
+          [imgUrl]="event.videoUrl"
+          [description]="event.description"
+          [title]="event.title"></app-information-card> -->
+        </div>
+      </carousel>
       <!-- end feature box item -->
     </div>
   </div>

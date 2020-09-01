@@ -30,6 +30,11 @@ export class DashboardComponent implements OnInit {
       icon: 'supervised_user_circle'
     },
     {
+      link: '/admin/manage-speeches',
+      title: 'Manage speeches',
+      icon: 'supervised_user_circle'
+    },
+    {
       link: '/admin/manage-yatrayen',
       title: 'Manage yatrayen',
       icon: 'supervised_user_circle'

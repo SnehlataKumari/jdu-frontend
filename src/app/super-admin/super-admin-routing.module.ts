@@ -11,6 +11,7 @@ import { AddSuggestionsComponent } from '../shared/components/add-suggestions/ad
 import { AddSuggestionsFormComponent } from '../shared/components/add-suggestions-form/add-suggestions-form.component';
 import { ManageBiharBrandComponent } from '../shared/components/manage-bihar-brand/manage-bihar-brand.component';
 import { ManageYatrayenComponent } from '../shared/components/manage-yatrayen/manage-yatrayen.component';
+import { ManageSpeechesComponent } from '../shared/components/manage-speeches/manage-speeches.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,11 @@ const routes: Routes = [
           },
           {
             path: 'manage-brand-bihar',
-            component: ManageBiharBrandComponent
+            component: ManageBiharBrandComponent,
+          },
+          {
+            path: 'manage-speeches',
+            component: ManageSpeechesComponent,
           },
           {
             path: 'manage-yatrayen',

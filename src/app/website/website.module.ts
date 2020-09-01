@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 import { WebsiteRoutingModule } from './website-routing.module';
 import { WebsiteComponent } from './website.component';
@@ -20,16 +21,18 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { UsersDashboardComponent } from './components/users-dashboard/users-dashboard.component';
+import { SpeechesPageComponent } from './components/speeches-page/speeches-page.component';
 
 @NgModule({
-  declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent, DocumentsPageComponent, ShowMessageComponent, UsersDashboardComponent],
+  declarations: [WebsiteComponent, HomePageComponent, LiveStreamPlayerComponent, HeaderComponent, FooterComponent, PrivateRoomPageComponent, BannerComponent, SuggestionPageComponent, YatrayenPageComponent, ImpactsPageComponent, BrandBiharPageComponent, DocumentsPageComponent, ShowMessageComponent, UsersDashboardComponent, SpeechesPageComponent],
   imports: [
     CommonModule,
     FormsModule,
     WebsiteRoutingModule,
     SharedModule,
     NgxCaptchaModule,
-    TranslateModule
+    TranslateModule,
+    IvyCarouselModule
   ]
 })
 export class WebsiteModule { }
