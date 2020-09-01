@@ -26,8 +26,11 @@ export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
     var element = document.querySelector(".theoplayer-container");
     // const player = new THEOplayer.Player(element, {
     var player = new THEOplayer.Player(this.streamingcanvas.nativeElement, {
-      libraryLocation: "https://cdn.myth.theoplayer.com/7f6e353d-67ba-4ec5-b463-f35901c47953"
+      // libraryLocation: "https://cdn.myth.theoplayer.com/f4d6ebbe-f1af-4acf-9e12-6a5e1dd09394"
+      libraryLocation: "https://cdn.myth.theoplayer.com/243aba29-704d-4b69-b7bf-1cfcab4dbaf2"
     });
+
+    console.log(this.streamUrl);
 
     // OPTIONAL CONFIGURATION
     // Customized video player parameters
