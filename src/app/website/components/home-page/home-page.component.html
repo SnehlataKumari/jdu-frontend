@@ -124,13 +124,12 @@
       </div>
     </div>
     <div class="row equalize xs-equalize-auto">
-      <!-- start features box item -->
-      <carousel height="300" cellWidth="300">
-        <div  class="carousel-cell" *ngFor="let event of yatrayen;">
-          <iframe class="e2e-iframe-untrusted-src"  [src]="event.videoUrl" allowfullscreen></iframe>
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem class="slide" class="carousel-cell" *ngFor="let event of yatrayen;">
+          <iframe class="e2e-iframe-untrusted-src"  [src]="event && event.videoUrl" allowfullscreen></iframe>
+          <p class="dec">{{event && event.title}}</p>
         </div>
-      </carousel>
-      <!-- end feature box item -->
+      </ngx-slick-carousel>
     </div>
   </div>
 </section>
@@ -146,17 +145,12 @@
       </div>
     </div>
     <div class="row equalize xs-equalize-auto">
-      <!-- start features box item -->
-      <carousel height="300" cellWidth="300">
-        <div  class="carousel-cell" *ngFor="let event of brandBiharList;">
-          <iframe class="e2e-iframe-untrusted-src"  [src]="event.videoUrl" allowfullscreen></iframe>
-          <!-- <app-information-card
-          [imgUrl]="event.videoUrl"
-          [description]="event.description"
-          [title]="event.title"></app-information-card> -->
+      <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem class="slide" class="carousel-cell" *ngFor="let event of brandBiharList;">
+          <iframe class="e2e-iframe-untrusted-src"  [src]="event && event.videoUrl" allowfullscreen></iframe>
+          <p class="dec">{{event && event.title}}</p>
         </div>
-      </carousel>
-      <!-- end feature box item -->
+      </ngx-slick-carousel>
     </div>
   </div>
 </section>

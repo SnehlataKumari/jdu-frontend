@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { WebsiteRoutingModule } from './website-routing.module';
 import { WebsiteComponent } from './website.component';
@@ -32,7 +32,7 @@ import { SpeechesPageComponent } from './components/speeches-page/speeches-page.
     SharedModule,
     NgxCaptchaModule,
     TranslateModule,
-    IvyCarouselModule
+    SlickCarouselModule
   ]
 })
 export class WebsiteModule { }

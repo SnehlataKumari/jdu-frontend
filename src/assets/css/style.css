@@ -3752,3 +3752,19 @@ aside .latest-post li figure {width: 75px;}
 .c-btn span {font-size: 15px;}
 .selected-list .c-list .c-token .c-remove svg {fill:red!important}
 .c-btn { border: 1px solid #ccc;}
+.slick-prev:before {
+	color: green!important;
+}
+.slick-next:before {
+	color: green!important;
+}
+@media screen and (max-width:768px){
+
+	.slick-prev { left: 0px!important; }
+	.slick-next { right: 0px!important; }
+}
+.slick-slide {
+	display: flex!important;
+	flex-direction: column;
+	align-items: center;
+}

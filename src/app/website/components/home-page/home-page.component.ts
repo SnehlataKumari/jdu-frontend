@@ -62,13 +62,13 @@ export class HomePageComponent implements OnInit, OnDestroy {
   brandUrl = '/brand-bihar';
   speechesUrl = '/speeches';
 
-  baseUrl:string = 'https://www.youtube.com/embed/';
+  baseUrl: string = 'https://www.youtube.com/embed/';
 
   async fetchBrandBiharList() {
     const response = await this.apiService.get(this.brandUrl).toPromise();
     const yatrayen = response['data'];
-    this.brandBiharList= yatrayen.map((item)=> {
-      const videoId= item.videoUrl;
+    this.brandBiharList = yatrayen.map((item) => {
+      const videoId = item.videoUrl;
       const videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.baseUrl}${videoId}`);
       return { ...item, videoUrl };
     });
@@ -77,19 +77,43 @@ export class HomePageComponent implements OnInit, OnDestroy {
   async fetchYatrayenList() {
     const response = await this.apiService.get(this.speechesUrl).toPromise();
     const yatrayen = response['data'];
-    this.yatrayen= yatrayen.map((item)=> {
-      const videoId= item.videoUrl;
+    this.yatrayen = yatrayen.map((item) => {
+      const videoId = item.videoUrl;
       const videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.baseUrl}${videoId}`);
       return { ...item, videoUrl };
     });
-    console.log(this.yatrayen);
   };
-  
+
   streamUrl = 'https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8';
 
   brandBiharList = [];
   yatrayen = [];
+  slideConfig = {
+    "slidesToShow": 3, "slidesToScroll": 3,
+    arrows: true,
+    infinite: true,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          arrows: true,
 
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          arrows: true,
+        }
+      }
+    ]
+  };
   constructor(
     private _liveStream: LiveStreamService,
     private apiService: ApiService,

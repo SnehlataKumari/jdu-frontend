@@ -1,3 +1,32 @@
-.carousel-cell {
-    width: 400px;
+// .carousel-cell {
+//     width: 300px!important;
+// }
+
+.carousel {
+	.dec {
+		margin-top: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+
+	}
+	.slick-next {
+		&:before {
+			color: green;
+		}
+	}
+}
+@media screen and (max-width: 480px) {
+	iframe {
+		width:350px;
+	}
+}
+@media screen and (max-width: 400px) {
+	iframe {
+		width:300px;
+	}
+}
+@media screen and (min-width: 767px) {
+	iframe {
+		width:350px;
+	}
 }
