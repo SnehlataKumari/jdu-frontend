@@ -18,7 +18,7 @@ export class LiveStreamPlayerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.startPlayer();
+      // this.startPlayer();
     }, 100);
   }
 
