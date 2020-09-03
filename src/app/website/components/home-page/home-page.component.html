@@ -125,9 +125,9 @@
     </div>
     <div class="row equalize xs-equalize-auto">
       <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-        <div ngxSlickItem class="slide" class="carousel-cell" *ngFor="let event of yatrayen;">
-          <iframe class="e2e-iframe-untrusted-src"  [src]="event && event.videoUrl" allowfullscreen></iframe>
-          <p class="dec">{{event && event.title}}</p>
+        <div ngxSlickItem class="slide pointer"  *ngFor="let event of yatrayen;" (click)="openDetails(event._id)">
+          <img   [src]="event.imageUrl" allowfullscreen/>
+          <p class="dec">{{event.title}}</p>
         </div>
       </ngx-slick-carousel>
     </div>

@@ -34,10 +34,10 @@ export class DashboardComponent implements OnInit {
     });
     this.getCount()
   }
-  brandCount = 0;
-  speechesCount=0;
-  documentCount=0;
-  yatrayenCount=0;
+  brandCount;
+  speechesCount;
+  documentCount;
+  yatrayenCount;
   async getCount() {
     this.apiService.get('/brand-bihar').toPromise().then((response)=> {
       this.brandCount = response['data']? response['data'].length : 0 ;
@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
     this.apiService.get('/speeches').toPromise().then((response)=> {
       this.speechesCount = response['data']? response['data'].length : 0 ;
     });
-    this.documentsService.getUsersDocuments().toPromise().then((response)=> {
+    this.documentsService.getAllDocuments().toPromise().then((response)=> {
       this.documentCount = response['data']? response['data'].length : 0 ;
     });
     this.apiService.get('/yatrayen').toPromise().then((response)=> {

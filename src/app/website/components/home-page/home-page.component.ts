@@ -3,6 +3,7 @@ import { LiveStreamService } from 'src/app/admin-dashboard/services/live-stream.
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 declare var window: any;
 
 export interface Information {
@@ -60,7 +61,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   bannerMessage = 'STARTING_SOON';
 
   brandUrl = '/brand-bihar';
-  speechesUrl = '/speeches';
+  speechesUrl = '/yatrayen';
 
   baseUrl: string = 'https://www.youtube.com/embed/';
 
@@ -77,13 +78,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
   async fetchYatrayenList() {
     const response = await this.apiService.get(this.speechesUrl).toPromise();
     const yatrayen = response['data'];
-    this.yatrayen = yatrayen.map((item) => {
-      const videoId = item.videoUrl;
-      const videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.baseUrl}${videoId}`);
-      return { ...item, videoUrl };
-    });
+    this.yatrayen = yatrayen;
   };
-
+  
+  openDetails(id) {
+    this.router.navigateByUrl('/yatrayen/'+id);
+  }
   streamUrl = 'https://cdn3.wowza.com/1/KzJsblU0S2RDNGUv/N0NtNnZM/hls/live/playlist.m3u8';
 
   brandBiharList = [];
@@ -117,7 +117,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(
     private _liveStream: LiveStreamService,
     private apiService: ApiService,
-    protected sanitizer: DomSanitizer
+    protected sanitizer: DomSanitizer,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
