@@ -36,6 +36,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UsersListPopupComponent } from './components/users-list-popup/users-list-popup.component';
 import { ManageSpeechesComponent } from './components/manage-speeches/manage-speeches.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 const routes: Routes = [];

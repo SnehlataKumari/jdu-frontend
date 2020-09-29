@@ -1,0 +1,24 @@
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-title>Update password</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label class="form-control-label">Password</label>
+          <div class="input-group input-group-merge">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img src="assets/images/icon/password.svg" width="20px" height="20px">
+              </span>
+            </div>
+            <input [type]="showPassword ? 'text' :'password'"
+              formControlName="password"
+              class="form-control" id="password">
+            <span (click)="togglePassField()" class="fas fa-eye-slash field-icon password toggle-password"
+              [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}"></span>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -10,6 +10,7 @@ import { UploadUsersCsvFormComponent } from '../upload-users-csv-form/upload-use
 import { FormControl } from '@angular/forms';
 import { pick } from 'lodash';
 import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from 'src/app/constants';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-users-page',
@@ -187,6 +188,19 @@ export class UsersPageComponent implements OnInit {
       this.reFetchResourceList();
     });
 
+  }
+
+  onChangePassword(element) {
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      width: '600px',
+      data: {
+        user: element
+      }
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.reFetchResourceList();
+    // });
   }
 
   openDialogue(user) {
