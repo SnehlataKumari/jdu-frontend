@@ -6,6 +6,7 @@ import { filter } from 'lodash';
 import { CreateUserFormComponent } from '../create-user-form/create-user-form.component';
 import { ResourceService } from '../../services/resource.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { UploadUsersCsvFormComponent } from '../upload-users-csv-form/upload-users-csv-form.component';
 import { FormControl } from '@angular/forms';
 import { pick } from 'lodash';
@@ -57,6 +58,7 @@ export class UsersPageComponent implements OnInit {
   constructor(
     private resourceService: ResourceService,
     private authService: AuthService,
+    private alertService: AlertService,
     public dialog: MatDialog
   ) { }
 
@@ -215,6 +217,19 @@ export class UsersPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.reFetchResourceList();
+    });
+  }
+
+  onPasswordChange(user) {
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      width: '600px',
+      data: {
+        user
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.alertService.success('Password changed successfully!');
     });
   }
 

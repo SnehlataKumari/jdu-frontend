@@ -36,8 +36,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UsersListPopupComponent } from './components/users-list-popup/users-list-popup.component';
 import { ManageSpeechesComponent } from './components/manage-speeches/manage-speeches.component';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const routes: Routes = [];
 
@@ -67,7 +66,8 @@ const routes: Routes = [];
     InformationCardVideoComponent,
     ShowYatraComponent,
     UsersListComponent,
-    UsersListPopupComponent
+    UsersListPopupComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -110,6 +110,7 @@ const routes: Routes = [];
     ShowYatraComponent,
     AgGridModule,
     UsersListComponent,
+    ChangePasswordComponent
   ]
 })
 export class SharedModule { }

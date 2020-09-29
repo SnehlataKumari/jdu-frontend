@@ -2,9 +2,6 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from 'src/app/constants';
-import { AuthService } from 'src/app/auth/services/auth.service';
-import { pick, filter } from 'lodash';
 
 @Component({
   selector: 'app-change-password',
@@ -16,15 +13,15 @@ export class ChangePasswordComponent implements OnInit {
   form: FormGroup;
   user;
 
-  showPassword = false;
-  
+  @Input() error: string | null;
+
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    private api: ApiService,
     public dialogRef: MatDialogRef<ChangePasswordComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
       this.user = data.user;
-    }
+     }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -32,14 +29,19 @@ export class ChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      password: [''],
+      password: ['', Validators.required],
     });
   }
 
   async submit() {
-    console.log(this.form.value);
-    
-    // const response = await this.authService.changePassword(this.form.value.password)
-    // this.dialogRef.close(response);
+    if (this.form.valid) {
+      const formValues = this.form.value;
+      let response;
+      const {
+        password
+      } = formValues;
+      response = await this.api.post(`/auth/${this.user._id}/update-password`, { newPassword: password}).toPromise();
+      this.dialogRef.close(response);
+    }
   }
 }
