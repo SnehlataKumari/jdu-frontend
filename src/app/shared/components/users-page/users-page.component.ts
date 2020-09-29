@@ -12,6 +12,7 @@ import { FormControl } from '@angular/forms';
 import { pick } from 'lodash';
 import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from 'src/app/constants';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { LoginHistoryComponent } from '../login-history/login-history.component';
 
 @Component({
   selector: 'app-users-page',
@@ -30,6 +31,7 @@ export class UsersPageComponent implements OnInit {
   keys;
 
   isMessage =false;
+  isSuperAdmin = false;
 
   branchList = BRANCH_LIST;
   designationList = DESIGNATION_LIST;
@@ -70,6 +72,8 @@ export class UsersPageComponent implements OnInit {
   async ngOnInit() {
     this.isMessage = this.type == "messages"? true : false;
     const loggedInUserRole = this.authService.getLogginedUserRole();
+    this.isSuperAdmin = loggedInUserRole === 'SUPER_ADMIN';
+
     this.displayRoles = loggedInUserRole === 'SUPER_ADMIN' ? pick(USER_ROLES, ['ADMIN']) : pick(USER_ROLES, filter(Reflect.ownKeys(USER_ROLES), (role) => !(role === 'ADMIN' || role === 'SUPER_ADMIN')));
     this.keys = Reflect.ownKeys(this.displayRoles);
 
@@ -190,6 +194,19 @@ export class UsersPageComponent implements OnInit {
       this.reFetchResourceList();
     });
 
+  }
+
+  showLoginHistory(element) {
+    const dialogRef = this.dialog.open(LoginHistoryComponent, {
+      width: '600px',
+      data: {
+        user: element
+      }
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.reFetchResourceList();
+    // });
   }
 
   onChangePassword(element) {

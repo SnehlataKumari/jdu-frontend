@@ -1,0 +1,28 @@
+.mat-form-field {
+  width: 100%;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forgot-pass-link {
+  align-self: center;
+  padding: 0 16px;
+  text-decoration: underline;
+  font-size: smaller;
+  font-style: italic;
+  line-height: 36px;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: unset;
+}
