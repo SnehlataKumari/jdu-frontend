@@ -32,7 +32,7 @@
       <td>
         <app-constant *ngFor="let role of document.roles" [constant]="ROLES" [code]="role"></app-constant></td>
       <td>
-        <a [href]="'http://'+document.fullPath" mat-button color="primary" [attr.download]="document.originalname">Download</a>
+        <a [href]="document.fullPath" mat-button color="primary" [attr.download]="document.originalname">Download</a>
         <button mat-button color="warn" (click)="onDelete(document)">Delete</button>
       </td>
     </tr>
