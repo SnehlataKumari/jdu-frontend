@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 const loggedInRoutes = [
   { routePath: '/private-room', title: 'Private Room' },
@@ -29,7 +30,11 @@ export class HeaderComponent implements OnInit {
   sticky = false
   headerAppear = false
   menuOpen = false
-  constructor(public authService: AuthService, private router: Router) { 
+  constructor(
+    public notificationService: NotificationService,
+    public authService: AuthService,
+    private router: Router
+  ) { 
     router.events.subscribe((event) => {
       if(event instanceof NavigationEnd) {
         this.menuOpen =false;

@@ -58,7 +58,6 @@ export class CreateUserFormComponent implements OnInit {
       district: [this.initialValues.district, Validators.required],
       vidhansabha: [this.initialValues.vidhansabha, Validators.required],
       username: [this.initialValues.username, Validators.required],
-      password: [this.initialValues.password, Validators.required],
     });
 
     this.form.controls.district.valueChanges.subscribe((value) => {

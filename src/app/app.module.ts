@@ -11,6 +11,7 @@ import { WebsiteModule } from './website/website.module';
 import { SharedModule } from './shared/shared.module';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { NotificationService } from './services/notification.service';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,4 +48,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    private notificationService: NotificationService
+  ) {
+    notificationService.fetchNotifications();
+  }
+}

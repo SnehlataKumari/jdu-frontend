@@ -18,6 +18,8 @@
 
             <a href="javascript:void(0)" title="Twitter" target="_blank" class="text-link-white"><i
                 class="fa fa-twitter"></i></a>
+            <a href="javascript:void(0)" [matMenuTriggerFor]="menu" title="Notification" class="text-link-white"><i
+                class="fa fa-bell"></i></a>
             <!-- <a href="javascript:void(0)" title="Linked In" target="_blank" class="text-link-white"><i
                 class="fa fa-linkedin"></i></a> -->
             <!-- <a href="javascript:void(0)" title="Google Plus" target="_blank" class="text-link-white"><i
@@ -65,5 +67,9 @@
       </div>
     </div>
   </nav>
+
+  <mat-menu #menu="matMenu">
+    <li mat-menu-item *ngFor="let noti of (notificationService.$notifications | async)">{{noti.message}}</li>
+  </mat-menu>
   <!-- end navigation -->
 </header>
