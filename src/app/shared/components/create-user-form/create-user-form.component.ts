@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from 'src/app/constants';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { pick, filter } from 'lodash';
@@ -59,6 +59,12 @@ export class CreateUserFormComponent implements OnInit {
       vidhansabha: [this.initialValues.vidhansabha, Validators.required],
       username: [this.initialValues.username, Validators.required],
     });
+
+    if (this.isCreateMode) {
+      this.form.addControl('password', new FormControl('', [
+        Validators.required,
+        Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]));
+    } 
 
     this.form.controls.district.valueChanges.subscribe((value) => {
       this.vidhanSabhaList = this.districtMap[value].map(i => i.Vidhansabha);

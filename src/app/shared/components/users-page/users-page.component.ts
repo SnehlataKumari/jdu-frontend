@@ -13,6 +13,17 @@ import { pick } from 'lodash';
 import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from 'src/app/constants';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { LoginHistoryComponent } from '../login-history/login-history.component';
+import * as moment from 'moment';
+
+const arrayToCSV = (objArray) => {
+  const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+  let str = `${Object.keys(array[0]).map(value => `"${value}"`).join(",")}` + '\r\n';
+
+  return array.reduce((str, next) => {
+    str += `${Object.values(next).map(value => `"${value}"`).join(",")}` + '\r\n';
+    return str;
+  }, str);
+}
 
 @Component({
   selector: 'app-users-page',
@@ -196,6 +207,27 @@ export class UsersPageComponent implements OnInit {
 
   }
 
+  onExportCSV() {
+    console.log(this.dataSource.filteredData);
+    const toPick = ['name', 'branch', 'designation', 'district', 'vidhansabha', 'username', 'email', 'mobileNumber', 'role', 'createdAt'];
+    const toExport = this.dataSource.filteredData
+      .map(user => {
+        const uObj = pick(user, toPick);
+        return {
+          ...uObj,
+          createdAt: moment(uObj.createdAt).format('MMM DD, YYYY')
+        }
+      });
+
+    const csv = arrayToCSV(toExport),
+      a = document.createElement('a');
+    a.textContent = 'download';
+    a.download = "users.csv";
+    a.href = 'data:text/csv;charset=utf-8,' + escape(csv);
+    // document.body.appendChild(a);
+    a.click();
+  }
+
   showLoginHistory(element) {
     const dialogRef = this.dialog.open(LoginHistoryComponent, {
       width: '600px',
@@ -243,10 +275,6 @@ export class UsersPageComponent implements OnInit {
       data: {
         user
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.alertService.success('Password changed successfully!');
     });
   }
 

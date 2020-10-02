@@ -29,6 +29,11 @@
           </mat-form-field>
         </p> -->
   
+        <p *ngIf="isCreateMode">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </p>
         <p>
           <mat-form-field>
             <mat-label>Role</mat-label>
