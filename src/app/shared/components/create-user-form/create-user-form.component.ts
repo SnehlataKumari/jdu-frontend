@@ -6,6 +6,8 @@ import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from '
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { pick, filter } from 'lodash';
 
+const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
 @Component({
   selector: 'app-create-user-form',
   templateUrl: './create-user-form.component.html',
@@ -33,8 +35,8 @@ export class CreateUserFormComponent implements OnInit {
     private authService: AuthService,
     public dialogRef: MatDialogRef<CreateUserFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
-      console.log(data.classList);
-     }
+    console.log(data.classList);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -61,10 +63,13 @@ export class CreateUserFormComponent implements OnInit {
     });
 
     if (this.isCreateMode) {
-      this.form.addControl('password', new FormControl('', [
-        Validators.required,
-        Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]));
-    } 
+      this.form.addControl('password', new FormControl('',
+        [
+          Validators.required,
+          Validators.pattern(passwordExpression)]
+      )
+      );
+    }
 
     this.form.controls.district.valueChanges.subscribe((value) => {
       this.vidhanSabhaList = this.districtMap[value].map(i => i.Vidhansabha);
@@ -80,12 +85,12 @@ export class CreateUserFormComponent implements OnInit {
       } = formValues;
 
       if (formValues._id == '') {
-        response = await this.api.post(this.data.resourceUrl, {...othr, password}).toPromise();
+        response = await this.api.post(this.data.resourceUrl, { ...othr, password }).toPromise();
       } else {
         const url = `${this.data.resourceUrl}/${_id}`;
         response = await this.api.put(url, formValues).toPromise();
       }
-      
+
       this.dialogRef.close(response);
     }
   }
