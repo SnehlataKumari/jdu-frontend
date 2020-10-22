@@ -4,6 +4,14 @@
       {{isMessage? 'Sent to': 'Users'}}
     </h3>
     <div *ngIf="!isMessage">
+
+      <a class="btn btn-success" [href]="environment.hostUrl+'/users/sample-csv'" target="_blank" >
+        Download Sample CSV
+      </a>
+      <a class="btn btn-success" [href]="environment.hostUrl+'/users/default-values-xlsx'" target="_blank">
+        Download Defaut Values XLSX
+      </a>
+
       <button mat-raised-button color="primary"  class="ml20" (click)="onAddResource()">
         <mat-icon>add</mat-icon>
         Add

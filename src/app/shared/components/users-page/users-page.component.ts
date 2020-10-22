@@ -14,6 +14,7 @@ import { USER_ROLES, BRANCH_LIST, DESIGNATION_LIST, DISTRICT_VIDHAN_MAP } from '
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { LoginHistoryComponent } from '../login-history/login-history.component';
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
 
 const arrayToCSV = (objArray) => {
   const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
@@ -35,7 +36,7 @@ export class UsersPageComponent implements OnInit {
   @Input() resourceUrl: string = '/users';
   @Input() type: 'user-management' | 'messages' = 'user-management';
   @Input() selection;
-
+  environment = environment;
   classMap;
   classList;
   displayRoles;
